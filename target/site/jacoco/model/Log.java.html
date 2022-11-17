@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Log.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IspwMavenWebApp Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Log.java</span></div><h1>Log.java</h1><pre class="source lang-java linenums">package model;
+
+import java.io.IOException;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
+public class Log {
+
+<span class="fc" id="L13">	public static final Logger LOGGER = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME );</span>
+	private FileHandler fh;
+	
+	 
+	
+	public Log() 
+<span class="nc" id="L19">	{</span>
+<span class="nc" id="L20">		LogManager.getLogManager().reset();</span>
+<span class="nc" id="L21">		LOGGER.setLevel(Level.ALL);</span>
+		
+<span class="nc" id="L23">		ConsoleHandler cH = new ConsoleHandler();</span>
+<span class="nc" id="L24">		cH.setLevel(Level.SEVERE);</span>
+		
+		
+		
+		
+<span class="nc" id="L29">		LOGGER.addHandler(cH);</span>
+		
+		
+		
+		
+		try {
+<span class="nc" id="L35">			fh = new FileHandler(Logger.GLOBAL_LOGGER_NAME,true);</span>
+		}
+<span class="nc" id="L37">		catch (SecurityException |IOException e) </span>
+		{
+<span class="nc" id="L39">			LOGGER.warning(&quot;No handler file! : &quot;+e);</span>
+<span class="nc" id="L40">		}</span>
+<span class="nc" id="L41">		LOGGER.addHandler(fh);</span>
+<span class="nc" id="L42">		SimpleFormatter formatter = new SimpleFormatter();</span>
+		
+<span class="nc" id="L44">		fh.setFormatter(formatter);</span>
+		
+
+		
+		
+<span class="nc" id="L49">	}</span>
+
+
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

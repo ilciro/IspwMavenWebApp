@@ -1,0 +1,11 @@
+Titolo :cambio giornale	Editore :cambio ediitore	Ricavo totale :-6.25
+Titolo :La Republica	Editore :La Republica	Ricavo totale :0.0
+Titolo :La Republica	Editore :La Republica	Ricavo totale :94.0
+Titolo :La Republica	Editore :La Republica	Ricavo totale :28.0
+Titolo :La Republica	Editore :La Republica	Ricavo totale :10.0
+Titolo :La Republica	Editore :La Republica	Ricavo totale :30.0
+Titolo :Il Fatto Quotidiano	Editore :Il Fatto Quotidiano	Ricavo totale :0.0
+Titolo :Il Fatto Quotidiano	Editore :Il Fatto Quotidiano	Ricavo totale :0.0
+Titolo :Il Fatto Quotidiano	Editore :Il Fatto Quotidiano	Ricavo totale :0.0
+Titolo :Il Fatto Quotidiano	Editore :Il Fatto Quotidiano	Ricavo totale :30.0
+Titolo :giornale da inserire	Editore :editore ins prova	Ricavo totale :245.0

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContrassegnoDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IspwMavenWebApp Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">database</a> &gt; <span class="el_source">ContrassegnoDao.java</span></div><h1>ContrassegnoDao.java</h1><pre class="source lang-java linenums">package database;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+
+import utilities.ConnToDb;
+import model.Fattura;
+import model.Log;
+
+<span class="fc" id="L13">public class ContrassegnoDao {</span>
+	
+<span class="fc" id="L15">	private static String eccezione=&quot;eccezione ottenuta:&quot;;</span>
+	private String query;
+
+	
+
+	public void inserisciFattura(Fattura f) throws SQLException 
+	{
+		 
+<span class="fc" id="L23">		query=&quot;insert into fattura values (?,?,?,?,?,?)&quot;;</span>
+		 		
+<span class="fc" id="L25"> 		try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L26"> 			PreparedStatement prepQ=conn.prepareStatement(query);){</span>
+ 			
+<span class="fc" id="L28"> 			prepQ.setString(1, f.getNome());</span>
+<span class="fc" id="L29"> 			prepQ.setString(2, f.getCognome());</span>
+<span class="fc" id="L30"> 			prepQ.setString(3, f.getVia());</span>
+<span class="fc" id="L31"> 			prepQ.setString(4,f.getCom());</span>
+<span class="fc" id="L32"> 			prepQ.setInt(5, 0);</span>
+<span class="fc" id="L33"> 			prepQ.setFloat(6,f.getAmmontare());</span>
+<span class="fc" id="L34"> 			prepQ.execute();</span>
+ 			
+ 			 
+<span class="nc" id="L37"> 		}catch(SQLException e)</span>
+ 		{
+<span class="nc" id="L39"> 			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
+<span class="fc" id="L40"> 		}</span>
+       
+		 
+
+         
+        	 
+<span class="fc" id="L46">	}  </span>
+	public void daiPrivilegi() throws SQLException 
+	{
+		
+<span class="fc" id="L50">			query=&quot;set sql_safe_updates=?&quot;;</span>
+<span class="fc" id="L51">			try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L52">					PreparedStatement prepQ=conn.prepareStatement(query);)</span>
+			{
+<span class="fc" id="L54">				prepQ.setInt(1, 0);</span>
+<span class="nc" id="L55">				prepQ.executeQuery();</span>
+<span class="fc" id="L56">			}catch(SQLException e)</span>
+			{
+<span class="fc" id="L58">				Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
+<span class="nc" id="L59">			}</span>
+
+<span class="fc" id="L61">		}</span>
+	
+
+	public int retUltimoOrdine() throws SQLException 
+	{
+<span class="fc" id="L66">		int id=0;</span>
+<span class="fc" id="L67">		 query=&quot;select count(*) as massimo from fattura&quot;;</span>
+		 
+<span class="fc" id="L69">		 try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L70">				 PreparedStatement prepQ=conn.prepareStatement(query);</span>
+				 )
+		 {
+<span class="fc" id="L73">			 ResultSet rs=prepQ.executeQuery();</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">			 while(rs.next())</span>
+				{
+<span class="fc" id="L76">					id=rs.getInt(&quot;massimo&quot;);</span>
+
+				}
+			
+<span class="nc" id="L80">		 }catch(SQLException e)</span>
+		 {
+<span class="nc" id="L82">			 Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
+<span class="fc" id="L83">		 }</span>
+
+		
+			
+<span class="fc" id="L87">		return id;</span>
+		
+		
+	}
+	
+	public boolean annullaOrdine(int idC) throws SQLException
+	{
+<span class="fc" id="L94">		boolean state=false;</span>
+<span class="fc" id="L95">		int row=0;</span>
+		
+<span class="fc" id="L97">		query=&quot;delete from fattura where id=?&quot;;</span>
+<span class="fc" id="L98">		try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L99">				PreparedStatement prepQ=conn.prepareStatement(query);)</span>
+		{
+<span class="fc" id="L101">			prepQ.setInt(1,idC);</span>
+<span class="fc" id="L102">			row=prepQ.executeUpdate();</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">			if(row==1)</span>
+<span class="fc" id="L104">				state=true;</span>
+<span class="nc" id="L105">		}catch(SQLException e)</span>
+		{
+<span class="nc" id="L107">			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
+<span class="fc" id="L108">		}</span>
+			
+<span class="fc" id="L110">			return state;</span>
+
+		}
+		
+}
+	
+
+		
+
+	
+	
+	
+	
+	
+	
+
+         
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

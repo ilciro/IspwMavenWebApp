@@ -129,11 +129,12 @@
 	    <artifactId>jacoco-maven-plugin</artifactId>
 	    <version>${jacoco.version}</version>
 	    <configuration>
-	    <!--
+	    
 	      <excludes>
 	        <exclude>**/view/**</exclude>
+	        <exclude>**/test/**</exclude>
 	      </excludes>
-	      -->
+	     
 	    </configuration>
 	    <executions>
 	        <execution>
