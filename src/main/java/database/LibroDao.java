@@ -31,13 +31,14 @@ public class LibroDao  {
 
 	private static final String LIBRO = "libro";
 	private static final String ECCEZIONE="ECCEZIONE generata:";
+	private static String queryL="select * from libro where idProd=?";
 
 
 	public float getCosto(Libro l) throws SQLException
 	{
 		float prezzo=(float) 0.0;
 		
-		query="select * from libro where idProd=?";
+		query=queryL;
 
 		
 		try(Connection conn=ConnToDb.generalConnection();
@@ -167,7 +168,7 @@ public class LibroDao  {
 
 	public Libro getLibro(Libro l) throws SQLException
 	{
-		query="select * from libro where idProd=?";
+		query=queryL;
 		try(Connection conn=ConnToDb.generalConnection();
 				PreparedStatement prepQ=conn.prepareStatement(query);)
 		{
@@ -462,7 +463,7 @@ public class LibroDao  {
 
 	public ObservableList<Libro> getLibriSingoloById(Libro l) throws SQLException
 	{
-		query="select * from libro where idProd=?";
+		query=queryL;
 		ObservableList<Libro> catalogo=FXCollections.observableArrayList();
 		try(Connection conn=ConnToDb.generalConnection();
 				PreparedStatement prepQ=conn.prepareStatement(query);)

@@ -35,6 +35,7 @@ public class ControllerAcquista {
 	private static final String LIBRO = "libro";  
 	private static final String RIVISTA="rivista";
 	private static final String GIORNALE="giornale";
+	private static String erroreId="id < 0";
 	
 
 	
@@ -96,7 +97,7 @@ public class ControllerAcquista {
 		try {
 			pagD.daiPrivilegi();
 		} catch (SQLException e) {
-			Log.LOGGER.log(Level.SEVERE,"eccezione ottenuta: .",e.getMessage());
+			Log.LOGGER.log(Level.SEVERE,"eccezione ottenuta: .{0}",e.getMessage());
 		}
 		
 
@@ -150,7 +151,7 @@ public class ControllerAcquista {
 		
 		if(rimanenza-i<0)
 		 {
-			Log.LOGGER.log(Level.SEVERE,stringaErrore,new IdException("id < 0"));
+			Log.LOGGER.log(Level.SEVERE,stringaErrore,new IdException(erroreId));
 
 		}
 		
@@ -164,7 +165,7 @@ public class ControllerAcquista {
 		if(rimanenza-i<0)
 		
 		{
-			Log.LOGGER.log(Level.SEVERE,stringaErrore,new IdException("id < 0"));
+			Log.LOGGER.log(Level.SEVERE,stringaErrore,new IdException(erroreId));
 		}
 
 
@@ -178,7 +179,7 @@ public class ControllerAcquista {
 		rimanenza=rD.getQuantita(r);
 		if(rimanenza-i<0)
 		{
-			Log.LOGGER.log(Level.SEVERE,stringaErrore,  new IdException("id < 0"));
+			Log.LOGGER.log(Level.SEVERE,stringaErrore,  new IdException(erroreId));
 		}
 
 		

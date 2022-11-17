@@ -150,32 +150,5 @@ public class NegozioDao {
 			
 		return state;
 	}
-	/*
-	public List<Negozio> getNegoziList() throws SQLException
-	{
-		Negozio shop; 
-		
-		 List<Negozio> listOfNegozi;
-		listOfNegozi=new ArrayList<>();
-
-		
-			query="select nome,via,isValid"
-			 conn= ConnToDb.generalConnection();
-			 prepQ=conn.prepareStatement("SELECT  "
-						+ "`negozio`.`nome`,"
-		        		+ "    `negozio`.`via`,"
-		        		+ "    `negozio`.`isValid`,"
-		        		+ "    `negozio`.`isOpen`"
-		        		+ "FROM `ispw`.`negozio`");
-	 			rs=prepQ.executeQuery();
-			
-				while (rs.next())
-				{
-					shop = new Negozio(rs.getString(1),rs.getString(2),rs.getBoolean(3),rs.getBoolean(4));
-					listOfNegozi.add(shop);
-				}
-		conn.close();
-		return listOfNegozi;
-	}
-*/
+	
 }

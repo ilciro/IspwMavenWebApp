@@ -95,28 +95,9 @@ public class PagamentoDao {
 		return catalogo;
 	}
 	
-	//inserire nella web
-	/*
 	
-	public List<Pagamento> getPagamentiList() throws SQLException  {
 
-		List<Pagamento> catalogo=new ArrayList<>();
-		conn= ConnToDb.generalConnection();
-		 st=conn.createStatement();
-		 rs = st.executeQuery("SELECT id_op,metodo,esito,nomeUtente,spesaTotale,tipoAcquisto,idProd from ispw.pagamento where nomeUtente='"+User.getInstance().getNome()+"'");
-		
-		while(rs.next())
-		{
-
-
-			catalogo.add(new Pagamento (rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getFloat(5),rs.getString(6)));
-
-		}
-	conn.close();
-	return catalogo;
-}
-
-	*/
+	
 		
 	public int retUltimoOrdine() throws SQLException 
 	{

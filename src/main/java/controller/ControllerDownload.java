@@ -53,8 +53,7 @@ public class ControllerDownload {
 		int idP=pDao.retUltimoOrdine();
 		statusP=pDao.annullaOrdine(idP);
 		
-		System.out.println( "status f:" + statusF + " statusP: "+statusP);
-		System.out.println("nr ordine"+ cDao.retUltimoOrdine());
+		
 		if(typeP.equals("cash") &&(statusF && statusP))
 			{
 				//aggiorno disponibilita
