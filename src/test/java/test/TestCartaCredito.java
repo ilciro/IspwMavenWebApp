@@ -19,14 +19,12 @@ class TestCartaCredito {
 	private CartaDiCredito cc1=new CartaDiCredito(3,"8541-8596-5552-9858",(double)3000.0,(double)200,dataS,"pippo",(float)156.3);
 	private CartaDiCredito cc2=new CartaDiCredito("pippo","pluto","1452-9958-7485-2222",new Date(),"852",(float)125.36);
 
-
 	@BeforeAll
 	public static void init() throws FileNotFoundException, ClassNotFoundException, SQLException
 	{
 		CreateDefaultDB.createDefaultDB();
 	}
 	
-
 	@Test
 	void testGetTipo() {
 		assertEquals(3,cc1.getTipo());

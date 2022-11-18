@@ -10,6 +10,7 @@ C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestUser
 C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestControllerPagamentoCC.java
 C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestControllerCompravendita.java
 C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestCartaCredito.java
+C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\CreazioneDb.java
 C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestPagamento.java
 C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestControllerVisualizza.java
 C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestGiornale.java
@@ -22,6 +23,7 @@ C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestCont
 C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestControllerReportPage.java
 C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestPagamentoDao.java
 C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestControllerPassword.java
+C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\ZCancellaDB.java
 C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestDaoUser.java
 C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestLibro.java
 C:\Users\dani\eclipse-workspace\2022\IspwMavenWebApp\src\test\java\test\TestControllerHPAL.java

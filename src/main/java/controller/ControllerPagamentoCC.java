@@ -89,7 +89,7 @@ public class ControllerPagamentoCC {
 		rD=new RivistaDao();
 		r=new Rivista();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Log.LOGGER.log(Level.SEVERE,"eccezione ottenuta .",e.getCause());
 		}
 	}
 

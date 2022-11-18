@@ -100,7 +100,6 @@ class TestUser {
 		assertEquals(11,row);
 	}
 	
-	
 
 
 }

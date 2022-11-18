@@ -3,7 +3,7 @@ IspwMavenWebApp Maven Webapp,exception,IdException,4,0,0,0,2,0,1,0,1,0
 IspwMavenWebApp Maven Webapp,exception,LogoutException,0,4,0,0,0,2,0,1,0,1
 IspwMavenWebApp Maven Webapp,controller,ControllerRegistraUtente,11,119,11,11,3,27,11,6,0,6
 IspwMavenWebApp Maven Webapp,controller,ControllerReportRaccolta,0,9,0,0,0,3,0,3,0,3
-IspwMavenWebApp Maven Webapp,controller,ControllerAcquista,149,305,7,17,30,73,14,16,10,8
+IspwMavenWebApp Maven Webapp,controller,ControllerAcquista,149,307,7,17,30,74,14,16,10,8
 IspwMavenWebApp Maven Webapp,controller,ControllerModifPage,0,251,0,0,0,52,0,7,0,7
 IspwMavenWebApp Maven Webapp,controller,ControllerScegliNegozio,7,26,0,0,3,8,2,3,2,3
 IspwMavenWebApp Maven Webapp,controller,ControllerPassword,11,43,5,3,1,11,4,2,0,2
@@ -15,7 +15,7 @@ IspwMavenWebApp Maven Webapp,controller,ControllerVisualizzaProfilo,0,22,1,1,0,8
 IspwMavenWebApp Maven Webapp,controller,ControllerCompravendita,90,103,18,0,27,25,14,8,5,8
 IspwMavenWebApp Maven Webapp,controller,ControllerLogin,4,58,2,2,1,16,2,3,0,3
 IspwMavenWebApp Maven Webapp,controller,ControllerVisualizza,18,84,0,0,4,18,2,4,2,4
-IspwMavenWebApp Maven Webapp,controller,ControllerDownload,39,210,8,10,10,50,9,9,1,6
+IspwMavenWebApp Maven Webapp,controller,ControllerDownload,39,199,8,10,10,48,9,9,1,6
 IspwMavenWebApp Maven Webapp,controller,ControllerAggiungiPage,6,199,4,4,2,41,4,4,0,4
 IspwMavenWebApp Maven Webapp,controller,ControllerModificaUtente,0,164,13,13,0,40,13,4,0,4
 IspwMavenWebApp Maven Webapp,controller,ControllerPagamentoCC,3,442,9,23,2,84,9,13,0,6
@@ -26,7 +26,7 @@ IspwMavenWebApp Maven Webapp,controller,ControllerRicercaPage,3,55,0,6,1,14,1,5,
 IspwMavenWebApp Maven Webapp,controller,ControllerReportPage,0,32,0,0,0,13,0,5,0,5
 IspwMavenWebApp Maven Webapp,database,RivistaDao,342,873,12,22,86,205,10,29,3,19
 IspwMavenWebApp Maven Webapp,database,NegozioDao,48,154,7,3,15,45,4,8,0,7
-IspwMavenWebApp Maven Webapp,database,LibroDao,182,1026,3,23,55,217,4,29,2,18
+IspwMavenWebApp Maven Webapp,database,LibroDao,182,1029,3,23,55,218,4,30,2,19
 IspwMavenWebApp Maven Webapp,database,ContrassegnoDao,25,127,0,4,8,41,0,8,0,6
 IspwMavenWebApp Maven Webapp,database,UsersDao,270,782,4,10,77,234,11,26,8,22
 IspwMavenWebApp Maven Webapp,database,GiornaleDao,272,898,11,23,79,204,9,30,3,19

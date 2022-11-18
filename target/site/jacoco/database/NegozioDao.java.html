@@ -150,33 +150,6 @@ import javafx.collections.ObservableList;
 			
 <span class="fc" id="L151">		return state;</span>
 	}
-	/*
-	public List&lt;Negozio&gt; getNegoziList() throws SQLException
-	{
-		Negozio shop; 
-		
-		 List&lt;Negozio&gt; listOfNegozi;
-		listOfNegozi=new ArrayList&lt;&gt;();
-
-		
-			query=&quot;select nome,via,isValid&quot;
-			 conn= ConnToDb.generalConnection();
-			 prepQ=conn.prepareStatement(&quot;SELECT  &quot;
-						+ &quot;`negozio`.`nome`,&quot;
-		        		+ &quot;    `negozio`.`via`,&quot;
-		        		+ &quot;    `negozio`.`isValid`,&quot;
-		        		+ &quot;    `negozio`.`isOpen`&quot;
-		        		+ &quot;FROM `ispw`.`negozio`&quot;);
-	 			rs=prepQ.executeQuery();
-			
-				while (rs.next())
-				{
-					shop = new Negozio(rs.getString(1),rs.getString(2),rs.getBoolean(3),rs.getBoolean(4));
-					listOfNegozi.add(shop);
-				}
-		conn.close();
-		return listOfNegozi;
-	}
-*/
+	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

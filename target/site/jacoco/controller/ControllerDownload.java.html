@@ -53,31 +53,30 @@ public class ControllerDownload {
 <span class="fc" id="L53">		int idP=pDao.retUltimoOrdine();</span>
 <span class="fc" id="L54">		statusP=pDao.annullaOrdine(idP);</span>
 		
-<span class="fc" id="L56">		System.out.println( &quot;status f:&quot; + statusF + &quot; statusP: &quot;+statusP);</span>
-<span class="fc" id="L57">		System.out.println(&quot;nr ordine&quot;+ cDao.retUltimoOrdine());</span>
-<span class="pc bpc" id="L58" title="2 of 6 branches missed.">		if(typeP.equals(&quot;cash&quot;) &amp;&amp;(statusF &amp;&amp; statusP))</span>
+		
+<span class="pc bpc" id="L57" title="2 of 6 branches missed.">		if(typeP.equals(&quot;cash&quot;) &amp;&amp;(statusF &amp;&amp; statusP))</span>
 			{
 				//aggiorno disponibilita
 				
-<span class="pc bpc" id="L62" title="2 of 4 branches missed.">				switch(typeO)</span>
+<span class="pc bpc" id="L61" title="2 of 4 branches missed.">				switch(typeO)</span>
 				{
 					case &quot;libro&quot;:
 					{
-<span class="fc" id="L66">						l.setId(vis.getId());</span>
-<span class="fc" id="L67">						lD.incrementaDisponibilita(l);</span>
-<span class="fc" id="L68">						break;</span>
+<span class="fc" id="L65">						l.setId(vis.getId());</span>
+<span class="fc" id="L66">						lD.incrementaDisponibilita(l);</span>
+<span class="fc" id="L67">						break;</span>
 					}
 					case &quot;giornale&quot;:
 					{
-<span class="fc" id="L72">						g.setId(vis.getId());</span>
-<span class="fc" id="L73">						gD.incrementaDisponibilita(g);</span>
-<span class="fc" id="L74">						break;</span>
+<span class="fc" id="L71">						g.setId(vis.getId());</span>
+<span class="fc" id="L72">						gD.incrementaDisponibilita(g);</span>
+<span class="fc" id="L73">						break;</span>
 					}
 					case &quot;rivista&quot;:
 					{
-<span class="nc" id="L78">						r.setId(vis.getId());</span>
-<span class="nc" id="L79">						rD.incrementaDisponibilita(r);</span>
-<span class="nc" id="L80">						break;</span>
+<span class="nc" id="L77">						r.setId(vis.getId());</span>
+<span class="nc" id="L78">						rD.incrementaDisponibilita(r);</span>
+<span class="nc" id="L79">						break;</span>
 					}
 					default :
 						break;
@@ -87,29 +86,29 @@ public class ControllerDownload {
 			
 			
 		}
-<span class="pc bpc" id="L90" title="1 of 4 branches missed.">		 if(typeP.equals(&quot;cCredito&quot;) &amp;&amp; statusP)</span>
+<span class="pc bpc" id="L89" title="1 of 4 branches missed.">		 if(typeP.equals(&quot;cCredito&quot;) &amp;&amp; statusP)</span>
 		{
 			
 				//aggiorno disponibilita
-<span class="pc bpc" id="L94" title="3 of 4 branches missed.">				switch(typeO)</span>
+<span class="pc bpc" id="L93" title="3 of 4 branches missed.">				switch(typeO)</span>
 				{
 					case &quot;libro&quot;:
 					{
-<span class="nc" id="L98">						l.setId(vis.getId());</span>
-<span class="nc" id="L99">						lD.incrementaDisponibilita(l);</span>
-<span class="nc" id="L100">						break;</span>
+<span class="nc" id="L97">						l.setId(vis.getId());</span>
+<span class="nc" id="L98">						lD.incrementaDisponibilita(l);</span>
+<span class="nc" id="L99">						break;</span>
 					}
 					case &quot;giornale&quot;:
 					{
-<span class="nc" id="L104">						g.setId(vis.getId());</span>
-<span class="nc" id="L105">						gD.incrementaDisponibilita(g);</span>
-<span class="nc" id="L106">						break;</span>
+<span class="nc" id="L103">						g.setId(vis.getId());</span>
+<span class="nc" id="L104">						gD.incrementaDisponibilita(g);</span>
+<span class="nc" id="L105">						break;</span>
 					}
 					case &quot;rivista&quot;:
 					{
-<span class="fc" id="L110">						r.setId(vis.getId());</span>
-<span class="fc" id="L111">						rD.incrementaDisponibilita(r);</span>
-<span class="fc" id="L112">						break;</span>
+<span class="fc" id="L109">						r.setId(vis.getId());</span>
+<span class="fc" id="L110">						rD.incrementaDisponibilita(r);</span>
+<span class="fc" id="L111">						break;</span>
 					}
 					default :
 						break;
@@ -121,33 +120,33 @@ public class ControllerDownload {
 		
 		
 		
-<span class="fc" id="L124">	}</span>
+<span class="fc" id="L123">	}</span>
 
-<span class="fc" id="L126">	public ControllerDownload() {</span>
-<span class="fc" id="L127">		this.setNrOrdine(UUID.randomUUID().toString());</span>
-<span class="fc" id="L128">		l = new Libro();</span>
-<span class="fc" id="L129">		cDao=new ContrassegnoDao();</span>
-<span class="fc" id="L130">		pDao=new PagamentoDao();</span>
-<span class="fc" id="L131">		lD=new LibroDao();</span>
-<span class="fc" id="L132">		g=new Giornale();</span>
-<span class="fc" id="L133">		gD=new GiornaleDao();</span>
-<span class="fc" id="L134">		r=new Rivista();</span>
-<span class="fc" id="L135">		rD=new RivistaDao();</span>
-<span class="fc" id="L136">	}</span>
+<span class="fc" id="L125">	public ControllerDownload() {</span>
+<span class="fc" id="L126">		this.setNrOrdine(UUID.randomUUID().toString());</span>
+<span class="fc" id="L127">		l = new Libro();</span>
+<span class="fc" id="L128">		cDao=new ContrassegnoDao();</span>
+<span class="fc" id="L129">		pDao=new PagamentoDao();</span>
+<span class="fc" id="L130">		lD=new LibroDao();</span>
+<span class="fc" id="L131">		g=new Giornale();</span>
+<span class="fc" id="L132">		gD=new GiornaleDao();</span>
+<span class="fc" id="L133">		r=new Rivista();</span>
+<span class="fc" id="L134">		rD=new RivistaDao();</span>
+<span class="fc" id="L135">	}</span>
 
 	public void scaricaGiornale() throws IOException, DocumentException {
-<span class="fc" id="L139">		g.setId(vis.getId());		</span>
-<span class="fc" id="L140">		g.scarica();		</span>
-<span class="fc" id="L141">		g.leggi(vis.getId());</span>
+<span class="fc" id="L138">		g.setId(vis.getId());		</span>
+<span class="fc" id="L139">		g.scarica();		</span>
+<span class="fc" id="L140">		g.leggi(vis.getId());</span>
 		
-<span class="fc" id="L143">	}</span>
+<span class="fc" id="L142">	}</span>
 
 	public void scaricaRivista() throws DocumentException, IOException {
-<span class="fc" id="L146">		r.setId(vis.getId());</span>
-<span class="fc" id="L147">		r.scarica();</span>
-<span class="fc" id="L148">		r.leggi(vis.getId());</span>
+<span class="fc" id="L145">		r.setId(vis.getId());</span>
+<span class="fc" id="L146">		r.scarica();</span>
+<span class="fc" id="L147">		r.leggi(vis.getId());</span>
 		
-<span class="fc" id="L150">	}</span>
+<span class="fc" id="L149">	}</span>
 
 
 
@@ -155,15 +154,15 @@ public class ControllerDownload {
 
 
 	public String getNrOrdine() {
-<span class="nc" id="L158">		return nrOrdine;</span>
+<span class="nc" id="L157">		return nrOrdine;</span>
 	}
 
 
 
 
 	public void setNrOrdine(String nrOrdine) {
-<span class="fc" id="L165">		this.nrOrdine = nrOrdine;</span>
-<span class="fc" id="L166">	}</span>
+<span class="fc" id="L164">		this.nrOrdine = nrOrdine;</span>
+<span class="fc" id="L165">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
