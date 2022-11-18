@@ -18,10 +18,13 @@ public class Log {
 	public Log() 
 	{
 		LogManager.getLogManager().reset();
-		LOGGER.setLevel(Level.ALL);
+		LOGGER.setLevel(Level.INFO);
+		LOGGER.setLevel(Level.SEVERE);
+		
 		
 		ConsoleHandler cH = new ConsoleHandler();
 		cH.setLevel(Level.SEVERE);
+		LOGGER.setLevel(Level.INFO);
 		
 		
 		
