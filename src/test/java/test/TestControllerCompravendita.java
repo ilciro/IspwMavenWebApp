@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import controller.ControllerCompravendita;
 import model.User;
@@ -46,10 +48,11 @@ class TestControllerCompravendita {
 		assertNotNull(cC.getRiviste());
 	}
 
-	@Test
-	void testRetTipoUser() {
-		User.getInstance().setIdRuolo("ADMIN");
-		assertEquals("ADMIN",User.getInstance().getIdRuolo());
+	@ParameterizedTest
+	@ValueSource(strings= {"ADMIN","EDITORE","SCRITTORE"})
+	void testRetTipoUser(String strings) {
+		User.getInstance().setIdRuolo(strings);
+		assertEquals(strings,User.getInstance().getIdRuolo());
 	}
 
 }
