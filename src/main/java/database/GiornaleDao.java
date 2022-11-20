@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 
 import controller.ControllerSystemState;
-import model.Log;
 import model.raccolta.Factory;
 import model.raccolta.Giornale;
 import model.raccolta.Raccolta;
@@ -68,7 +67,7 @@ public class GiornaleDao {
 			}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("get DescG").log(Level.INFO, eccezione, e);
 		}
 
 	}
@@ -91,7 +90,7 @@ public class GiornaleDao {
 			}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("GetCosto g").log(Level.INFO, eccezione, e);
 		}
 		
 		return prezzo;
@@ -120,7 +119,7 @@ public class GiornaleDao {
 			prepQ.executeUpdate();
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("aggiornaDisp g").log(Level.INFO, eccezione, e);
 		}
 		
 		
@@ -134,11 +133,14 @@ public class GiornaleDao {
 			try(Connection conn=ConnToDb.generalConnection();
 					PreparedStatement prepQ=conn.prepareStatement(query);)
 			{
-				prepQ.setInt(1, 0);
-				prepQ.executeQuery();
+				prepQ.setInt(1,0);
+
+
+				prepQ.executeUpdate();
+
 			}catch(SQLException e)
 			{
-				Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+				java.util.logging.Logger.getLogger("Dai privilegi g").log(Level.INFO, eccezione, e);
 			}
 
 		
@@ -171,7 +173,7 @@ public class GiornaleDao {
 			}
 			}catch(SQLException e)
 			{
-				Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+				java.util.logging.Logger.getLogger("catalogo giornali").log(Level.INFO, eccezione, e);
 			}
 
 		return catalogo;
@@ -199,7 +201,7 @@ public class GiornaleDao {
 			
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("get giornale").log(Level.INFO, eccezione, e);
 		}
 		return g;
 
@@ -223,7 +225,7 @@ public class GiornaleDao {
 			}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("id girnoale").log(Level.INFO, eccezione, e);
 		}
 
 		return id;
@@ -248,7 +250,7 @@ public class GiornaleDao {
 			}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("ret tipo").log(Level.INFO, eccezione, e);
 		}
 		
 		return categoria;
@@ -273,7 +275,7 @@ public class GiornaleDao {
 			
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("nome giornale").log(Level.INFO, eccezione, e);
 		}
 			
 		return name;
@@ -298,7 +300,7 @@ public class GiornaleDao {
 					disp= 0;
 			}
 		}catch(SQLException e) {
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("get disp g").log(Level.INFO, eccezione, e);
 		}
 	
 	
@@ -323,7 +325,7 @@ public class GiornaleDao {
 				}			
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("get quantita g").log(Level.INFO, eccezione, e);
 		}
 
 		return q;
@@ -345,11 +347,11 @@ public class GiornaleDao {
 				disp = rs.getInt(1);
 				if (disp >= 1)
 					state=true;
-				Log.LOGGER.log(Level.INFO, "giornale trovato");
+				java.util.logging.Logger.getLogger("Controlla Disponibilita").log(Level.INFO, "giornale Trovato");
 			}
 			}catch(SQLException e)
 			{
-				Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+				java.util.logging.Logger.getLogger("Controlla disp").log(Level.INFO, eccezione, e);
 			}
 			
 	 	return state;
@@ -378,7 +380,7 @@ public class GiornaleDao {
 			
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("grionale singolo ").log(Level.INFO, eccezione, e);
 		}
 		return catalogo;
 
@@ -420,7 +422,7 @@ public class GiornaleDao {
 		
 			}catch(SQLException e)
 			{
-				Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+				java.util.logging.Logger.getLogger("creazione giornale").log(Level.INFO, eccezione, e);
 			}
 
 
@@ -441,9 +443,10 @@ public class GiornaleDao {
 			
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+						java.util.logging.Logger.getLogger("cancella").log(Level.INFO, eccezione, e);
 		}
-		Log.LOGGER.log(Level.INFO," row deleted {0}.",row);
+		java.util.logging.Logger.getLogger("cancella g").log(Level.INFO,"\n rows affcted {0}",row);
+
 
 
 
@@ -470,10 +473,12 @@ public class GiornaleDao {
 		}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+						java.util.logging.Logger.getLogger("giornale by id").log(Level.INFO, eccezione, e);
 		}
 		
-			Log.LOGGER.log(Level.SEVERE," Catalogo nel dao : {0}",catalogo);
+		java.util.logging.Logger.getLogger("elenco giornali by id").log(Level.INFO,"catalogo {0}",catalogo);
+
+			
 		return catalogo;
 
 	}
@@ -502,7 +507,7 @@ public class GiornaleDao {
 			
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("gionali by name").log(Level.INFO, eccezione, e);
 		}
 
 		
@@ -549,10 +554,11 @@ public class GiornaleDao {
 			row=prepQ.executeUpdate();
 			}catch(SQLException e)
 			{
-				Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+							java.util.logging.Logger.getLogger("update g").log(Level.INFO, eccezione, e);
 			}
 
-			Log.LOGGER.log(Level.INFO," rows aggiornate {0}.",row);
+			java.util.logging.Logger.getLogger("aggiorna g").log(Level.INFO," rows aggiornalte {0}",row);
+
 
 	}	
 
@@ -594,7 +600,7 @@ public class GiornaleDao {
 
 			}catch(SQLException e)
 			   {
-				Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+							java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 			   }
 
 
@@ -625,7 +631,7 @@ public class GiornaleDao {
 				
 			}catch(SQLException e)
 			{
-				Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+				java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 			}
 
 		

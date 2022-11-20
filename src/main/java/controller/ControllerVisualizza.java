@@ -6,7 +6,6 @@ import java.util.logging.Level;
 import database.GiornaleDao;
 import database.LibroDao;
 import database.RivistaDao;
-import model.Log;
 import model.raccolta.Giornale;
 import model.raccolta.Libro;
 import model.raccolta.Rivista;
@@ -39,7 +38,8 @@ public class ControllerVisualizza {
 	}
 	public int getID()
 	{
-		Log.LOGGER.log(Level.INFO,"{0}.",vis.getId());
+		java.util.logging.Logger.getLogger("Test getId").log(Level.INFO, "id {0}",vis.getId());
+
 		return vis.getId();
 	}
 	public Libro getDataL(int i) throws SQLException

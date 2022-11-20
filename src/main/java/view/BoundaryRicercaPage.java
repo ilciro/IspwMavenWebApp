@@ -9,7 +9,6 @@ import java.util.logging.Level;
 import controller.ControllerRicercaPage;
 import controller.ControllerVisualizza;
 import exception.IdException;
-import model.Log;
 import model.raccolta.Raccolta;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -97,7 +96,8 @@ public class BoundaryRicercaPage  implements Initializable{
 			throw new IdException("id non valido");
 			}catch(IdException e)
 			{
-				Log.LOGGER.log(Level.SEVERE,"eccezione .",e.getCause());
+				java.util.logging.Logger.getLogger("report libro").log(Level.SEVERE,"\n eccezione ottenuta .",e);
+
 			}
 		}
 			

@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 
 import controller.ControllerModificaUtente;
-import model.Log;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -99,14 +98,17 @@ public class BoundaryModificaUtente implements Initializable {
 				nuovaEmailL.getText(),nuovaPwd.getText(),
 				nuovaDescL.getText(),nuovaDNL.getValue(),vecchiaEmailL.getText()))
 		{
+			java.util.logging.Logger.getLogger("modifica utente").log(Level.INFO,"\n modifica avventuta con successo");
+
 			
-			Log.LOGGER.log(Level.INFO,"Modifica avvenuta con successo");
 
 		
 		}
 		else
 		{	
-			Log.LOGGER.log(Level.SEVERE,"dati non corretti");
+			java.util.logging.Logger.getLogger("errore modifica utente").log(Level.SEVERE,"\n errore nei dati");
+
+			
 		}
 
 		

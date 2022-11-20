@@ -8,7 +8,6 @@ import java.util.logging.Level;
 
 import controller.ControllerAcquista;
 import controller.ControllerSystemState;
-import model.Log;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -91,7 +90,7 @@ public class BoundaryAcquista implements Initializable {
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-			Log.LOGGER.log(Level.SEVERE , "\n Non vi e sufficiente disponibilita ");
+			java.util.logging.Logger.getLogger("Test pagacc").log(Level.SEVERE,"\n Non vi e sufficiente disponibilita");
 		}
 		else {
 		Stage stage;
@@ -126,7 +125,8 @@ public class BoundaryAcquista implements Initializable {
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-			Log.LOGGER.log(Level.SEVERE , "\n Non vi e sufficiente disponibilita ");
+			java.util.logging.Logger.getLogger("Test pagacc").log(Level.SEVERE,"\n Non vi e sufficiente disponibilita");
+
 		}
 		else {
 
@@ -163,7 +163,6 @@ public class BoundaryAcquista implements Initializable {
 				float tot;
 				tot = x * (Float.parseFloat(quantita.getText()));
 				totale.setText(String.valueOf( tot));
-				Log.LOGGER.log(Level.INFO," totale Libro nella boundaty {0}.",tot);
 				cA.inserisciAmmontareL(Integer.parseInt(quantita.getText()));
 				vis.setSpesaT(tot);
 				vis.setQuantita(Integer.parseInt(quantita.getText()));
@@ -177,7 +176,6 @@ public class BoundaryAcquista implements Initializable {
 				float tot1;
 				tot1 = y * (Float.parseFloat(quantita.getText()));
 				totale.setText(String.valueOf(tot1));
-				Log.LOGGER.log(Level.INFO," totale Giornale nella boundaty {0}.",tot1);
 				cA.inserisciAmmontareG(Integer.parseInt(quantita.getText()));
 				vis.setSpesaT(tot1);
 				vis.setQuantita(Integer.parseInt(quantita.getText()));
@@ -189,8 +187,6 @@ public class BoundaryAcquista implements Initializable {
 				float tot2;
 				tot2 = z * (Float.parseFloat(quantita.getText()));
 				totale.setText(String.valueOf(tot2));
-				Log.LOGGER.log(Level.INFO," totale rivista nel boundary {0}.",tot2);
-
 				cA.inserisciAmmontareR(Integer.parseInt(quantita.getText()));
 				vis.setSpesaT(tot2);
 				vis.setQuantita(Integer.parseInt(quantita.getText()));
@@ -247,7 +243,8 @@ public class BoundaryAcquista implements Initializable {
 		
 				costo.setText(String.valueOf(cA.getCosto()));
 			} catch (SQLException  e) {
-				Log.LOGGER.log(Level.SEVERE,"eccezione ottenuta:",e.getMessage());
+				java.util.logging.Logger.getLogger("Test initialize").log(Level.SEVERE," eccezione ottenuta {0}",e);
+
 				} 
 		
 		

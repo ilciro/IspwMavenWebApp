@@ -10,8 +10,9 @@ import database.GiornaleDao;
 import database.LibroDao;
 import database.PagamentoDao;
 import database.RivistaDao;
+
 import model.CartaDiCredito;
-import model.Log;
+
 import model.Pagamento;
 import model.raccolta.Giornale;
 import model.raccolta.Libro;
@@ -89,7 +90,8 @@ public class ControllerPagamentoCC {
 		rD=new RivistaDao();
 		r=new Rivista();
 		} catch (SQLException e) {
-			Log.LOGGER.log(Level.SEVERE,"eccezione ottenuta .",e.getCause());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, "errore in sql",e);
+
 		}
 	}
 
@@ -196,7 +198,8 @@ public class ControllerPagamentoCC {
 		//ammontare,acquisto,idProd
 		//settare in p
 		
-		Log.LOGGER.log(Level.INFO,"metodo {0}.",p.getAmmontare()+ p.getTipo()+p.getId());
+		java.util.logging.Logger.getLogger("Pagamento effettuato").log(Level.INFO, "info {0}",p.getAmmontare()+p.getTipo()+p.getId());
+
 		pDao.inserisciPagamento(p);
 	}
 	

@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.util.logging.Level;
 
 import org.apache.ibatis.jdbc.ScriptRunner;
-import model.Log;
 
 public class PopulateDefaultDb {
 
@@ -37,7 +36,7 @@ public class PopulateDefaultDb {
 
 	public static boolean createLibri() throws FileNotFoundException
 	{
-		Log.LOGGER.log(Level.INFO,"---------Chiamo stored insLibri---------\n\n");
+		java.util.logging.Logger.getLogger("Test create libri").log(Level.INFO,"---------Chiamo stored insLibri---------\n\n");
 		
 			conn=ConnToDb.generalConnection();
 			sr = new ScriptRunner(conn);
@@ -54,7 +53,8 @@ public class PopulateDefaultDb {
 
 	public static boolean createGiornale() throws FileNotFoundException
 	{
-		Log.LOGGER.log(Level.INFO,"---------Chiamo stored insGiornali---------\n\n");
+		java.util.logging.Logger.getLogger("Test create giornali").log(Level.INFO,"---------Chiamo stored insGiornali---------\n\n");
+
 		
 			conn=ConnToDb.generalConnection();
 			sr = new ScriptRunner(conn);
@@ -69,7 +69,8 @@ public class PopulateDefaultDb {
 
 	private static boolean createRivista() throws FileNotFoundException
 	{
-		Log.LOGGER.log(Level.INFO,"---------Chiamo stored insRiviste---------\n\n");
+		java.util.logging.Logger.getLogger("Test create riviste").log(Level.INFO,"---------Chiamo stored insRiviste---------\n\n");
+
 		conn=ConnToDb.generalConnection();
 			sr = new ScriptRunner(conn);
 			sr.setSendFullScript(true);
@@ -84,7 +85,8 @@ public class PopulateDefaultDb {
 
 	public static boolean createUser() throws FileNotFoundException
 	{
-		Log.LOGGER.log(Level.INFO,"---------Chiamo stored insUtenti---------\n\n");
+		java.util.logging.Logger.getLogger("Test create users").log(Level.INFO,"---------Chiamo stored insUsers---------\n\n");
+
 		
 			conn=ConnToDb.generalConnection();
 			sr = new ScriptRunner(conn);
@@ -98,7 +100,8 @@ public class PopulateDefaultDb {
 
 	public static boolean createNegozio() throws FileNotFoundException
 	{
-		Log.LOGGER.log(Level.INFO,"---------Chiamo stored insNegozi---------\n\n");
+		java.util.logging.Logger.getLogger("Test create negozio").log(Level.INFO,"---------Chiamo stored insNegozi---------\n\n");
+
 		
 			conn=ConnToDb.generalConnection();
 			sr = new ScriptRunner(conn);

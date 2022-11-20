@@ -3,7 +3,6 @@ package controller;
 import java.util.logging.Level;
 
 import exception.LogoutException;
-import model.Log;
 import model.User;
 
 public class ControllerHomePageAfterLogin {
@@ -17,7 +16,7 @@ public class ControllerHomePageAfterLogin {
 	{	
 		
 		String n = u.getNome();
-		Log.LOGGER.log(Level.INFO,"Stai sloggando con il nome di : {0}", n );
+		java.util.logging.Logger.getLogger("Test logout").log(Level.INFO, "stai sloggando come {0}" ,n);
 		
 		if (n==null)
 		{
@@ -34,7 +33,7 @@ public class ControllerHomePageAfterLogin {
 		u.setPassword(null);
 		
 		
-			Log.LOGGER.log(Level.INFO,"Logout  utente {0}", u.getEmail());
+		java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, "stai sloggando {0}",u.getEmail());
 			vis.setIsLogged(false);
 			return true;
 		}

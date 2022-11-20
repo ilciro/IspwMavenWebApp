@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import controller.ControllerPagamentoCC;
 import controller.ControllerSystemState;
 import model.CartaDiCredito;
-import model.Log;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -125,7 +124,8 @@ public class BoundaryPagamentoCC implements Initializable {
 			stage.show();
 			}
 		} else {
-			Log.LOGGER.log(Level.INFO,"riprovare");
+			java.util.logging.Logger.getLogger("procedi pagacc").log(Level.INFO,"\n riprovare");
+
 			Stage stage;
 			Parent root;
 			stage = (Stage) buttonI.getScene().getWindow();
@@ -159,7 +159,8 @@ public class BoundaryPagamentoCC implements Initializable {
 		try {
 			cPCC = new ControllerPagamentoCC();
 		} catch (Exception e) {
-			Log.LOGGER.log(Level.SEVERE,"eccezione Ottenuta.",e.getMessage());
+			java.util.logging.Logger.getLogger("Test pagacc").log(Level.SEVERE,"\n eccezione ottenuta .",e);
+
 		}
 		
 	}
@@ -186,7 +187,8 @@ public class BoundaryPagamentoCC implements Initializable {
 		         utilDate = format.parse(d);
 		         sqlDate = new java.sql.Date(utilDate.getTime());
 		    } catch (ParseException e) {
-		    	Log.LOGGER.log(Level.SEVERE,"eccezione Ottenuta:.",e.getMessage());
+				java.util.logging.Logger.getLogger("Test pagacc").log(Level.SEVERE,"\n eccezione ottenuta {0}",e);
+
 		    }
 		cPCC.aggiungiCartaDB(nome, cognome, codice, sqlDate, civ, (float) 0.0);
 		

@@ -4,10 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.util.logging.Level;
 
-import model.Log;
 import model.Pagamento;
 import model.User;
 import utilities.ConnToDb;
@@ -48,7 +46,7 @@ public class PagamentoDao {
 			prepQ.executeUpdate();
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+						java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 		
 		
@@ -62,11 +60,13 @@ public class PagamentoDao {
 		try(Connection conn=ConnToDb.generalConnection();
 				PreparedStatement prepQ=conn.prepareStatement(query);)
 		{
-			prepQ.setInt(1, 0);
-			prepQ.executeQuery();
+			prepQ.setInt(1,0);
+
+			prepQ.executeUpdate();
+
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 
 
@@ -89,7 +89,7 @@ public class PagamentoDao {
 			}
 			}catch(SQLException e)
 			{
-				Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+							java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 			}
 		
 		return catalogo;
@@ -113,7 +113,7 @@ public class PagamentoDao {
 			}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+						java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 				
 		return id;
@@ -135,7 +135,7 @@ public class PagamentoDao {
 				state=true;
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+						java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 			
 			return state;

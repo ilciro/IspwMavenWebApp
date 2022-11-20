@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 
 import database.UsersDao;
-import model.Log;
+
 import model.User;
 
 
@@ -19,7 +19,8 @@ public class ControllerVisualizzaProfilo {
 
 	public ControllerVisualizzaProfilo()
 	{
-		Log.LOGGER.log(Level.INFO,"ControllerVisualizzaProfilo");
+		java.util.logging.Logger.getLogger("Test Costruttore").log(Level.INFO, "Costruttore ControllerVisualizzaProfilo");
+
 	}
 
 	public boolean cancellaUtente() throws SQLException {

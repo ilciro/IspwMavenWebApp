@@ -26,6 +26,7 @@ test\TestControllerScegliNegozio.class
 test\TestFattura.class
 test\TestPagamentoDao.class
 test\TestControllerPagamentoCash.class
+test\TestRivistaDao.class
 test\TestControllerDownload.class
 test\TestControllerModificaUtente.class
 test\TestControllerAggiungiPage.class

@@ -7,7 +7,7 @@ import java.util.logging.Level;
 
 import controller.ControllerPagamentoCash;
 import controller.ControllerSystemState;
-import model.Log;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -73,8 +73,7 @@ public class BoundaryPagamentoCash implements Initializable{
 
 
 			if (n.equals("") || c.equals("") || v.equals("")) {
-				
-				Log.LOGGER.log(Level.SEVERE,"Pagamento con contanti NON andato a buon fine !!!");
+				java.util.logging.Logger.getLogger("procedi cash").log(Level.SEVERE,"\n errore nel pagamento");
 
 
 				Stage stage;
@@ -91,7 +90,8 @@ public class BoundaryPagamentoCash implements Initializable{
 
 				cPC.controlla(n, c, v, com);
 				
-				Log.LOGGER.log(Level.INFO,"{0}.","Pagamento contanti effettuato con successo");
+				java.util.logging.Logger.getLogger("pagamento cash").log(Level.INFO,"\n pagamento avvenuto");
+
 
 				if(vis.getIsPickup()) 
 				{
@@ -142,7 +142,8 @@ public class BoundaryPagamentoCash implements Initializable{
 				try {
 					cPC = new ControllerPagamentoCash();
 				} catch (Exception e) {
-					Log.LOGGER.log(Level.SEVERE,e,()->"result"+e);
+					java.util.logging.Logger.getLogger("Test pagacc").log(Level.SEVERE,"\n eccezione ottenuta {0}",e);
+
 
 					
 				}

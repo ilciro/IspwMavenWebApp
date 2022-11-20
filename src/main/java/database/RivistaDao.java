@@ -12,7 +12,7 @@ import java.util.logging.Level;
 
 
 import controller.ControllerSystemState;
-import model.Log;
+import exception.IdException;
 import model.raccolta.Factory;
 import model.raccolta.Raccolta;
 import model.raccolta.Rivista;
@@ -71,7 +71,7 @@ public class RivistaDao {
 	            }
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test GestDesc").log(Level.INFO, eccezione, e);
 		}
 	            
 	        
@@ -94,7 +94,7 @@ public class RivistaDao {
          }
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 		
 		
@@ -121,7 +121,7 @@ public class RivistaDao {
 			prepQ.executeUpdate();
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 		
 		
@@ -134,16 +134,17 @@ public class RivistaDao {
 		try(Connection conn=ConnToDb.generalConnection();
 				PreparedStatement prepQ=conn.prepareStatement(query);)
 		{
-			prepQ.setInt(1, 0);
-			prepQ.executeQuery();
+			prepQ.setInt(1,0);
+			prepQ.executeUpdate();
+
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 
 		
-
-		 Log.LOGGER.log(Level.INFO,"RivistaDaoDao. privilegi");
+		java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, "rivistaDao dai privilegi");
+		
 
 	}
 	
@@ -172,7 +173,7 @@ public class RivistaDao {
             }
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 		return catalogo;
 		
@@ -207,7 +208,7 @@ public class RivistaDao {
             }
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 		return catalogo;
 		 
@@ -233,7 +234,7 @@ public class RivistaDao {
         }
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
              return r;
 	}
@@ -257,7 +258,7 @@ public class RivistaDao {
          }
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 		return id;
 
@@ -281,7 +282,7 @@ public class RivistaDao {
 	         }
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 		return categoria;
 
@@ -303,7 +304,7 @@ public class RivistaDao {
 	        }
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
         	
         return name;
@@ -331,7 +332,7 @@ public class RivistaDao {
 				}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 			
 		
@@ -356,7 +357,7 @@ public class RivistaDao {
 			
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 
 		return q;
@@ -383,14 +384,14 @@ public class RivistaDao {
 					state=true;
 				else
 				{
-					Log.LOGGER.log(Level.WARNING, "rivista non trovato");
+					java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, new IdException("id non trovato"));
 					
 				
 				}
 			}
 			}catch(SQLException e)
 			{
-				Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+				java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 			}
 			
 	 	return state;
@@ -415,7 +416,7 @@ public class RivistaDao {
         }
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
              return catalogo;
              
@@ -460,7 +461,7 @@ public class RivistaDao {
 				}catch(SQLException e)
 				{
 					state=false;
-					Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+					java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 				}
 			
 		
@@ -482,9 +483,9 @@ public class RivistaDao {
 			 row=prepQ.executeUpdate();
 		 }catch(SQLException e)
 		 {
-			 Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+			 java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		 }
-		 Log.LOGGER.log(Level.INFO,"row deleted {0}.",row);
+		 java.util.logging.Logger.getLogger("Test Cancella").log(Level.INFO, "row delected{0}",row);
 
 	}
 
@@ -507,7 +508,7 @@ public class RivistaDao {
             }
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 		
 		return catalogo;
@@ -554,10 +555,9 @@ public class RivistaDao {
 			rowAffected = prepQ.executeUpdate();
 		 	}catch(SQLException e)
 		 	{
-		 		Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+		 		java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		 	}
-            Log.LOGGER.log(Level.INFO,"row affected .{0}",rowAffected);
-
+		 	java.util.logging.Logger.getLogger("Aggiorno").log(Level.INFO,"rows afffected{0}",rowAffected);
 	 }	
 	
 	public void generaReport() throws SQLException, IOException
@@ -601,7 +601,7 @@ public class RivistaDao {
 		            }
 		        	}catch(SQLException e)
 		        	{
-		        		Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+		        		java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		        	}
 		     
 	}
@@ -631,7 +631,7 @@ public class RivistaDao {
 			
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 
 

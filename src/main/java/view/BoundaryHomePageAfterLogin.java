@@ -6,7 +6,6 @@ import java.util.logging.Level;
 import controller.ControllerHomePageAfterLogin;
 import controller.ControllerSystemState;
 import exception.LogoutException;
-import model.Log;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -113,7 +112,8 @@ private void profile() throws IOException {
 	stage.show();
 	
 	message = "Sto nel terzo caso d'urso lode";		
-	Log.LOGGER.log(Level.INFO,"-> {0}",message);
+	java.util.logging.Logger.getLogger("Test profile").log(Level.INFO,message);
+
 }
 
 @FXML

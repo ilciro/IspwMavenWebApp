@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 
 import controller.ControllerSystemState;
-import model.Log;
 import model.raccolta.Factory;
 import model.raccolta.Libro;
 import model.raccolta.Raccolta;
@@ -53,7 +52,7 @@ public class LibroDao  {
 			}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 		return prezzo;
 
@@ -80,7 +79,7 @@ public class LibroDao  {
 			prepQ.executeUpdate();
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 		
 
@@ -94,11 +93,14 @@ public class LibroDao  {
 		try(Connection conn=ConnToDb.generalConnection();
 				PreparedStatement prepQ=conn.prepareStatement(query);)
 		{
-			prepQ.setInt(1, 0);
-			prepQ.executeQuery();
+			prepQ.setInt(1,0);
+
+
+			prepQ.executeUpdate();
+
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 			
 
@@ -127,7 +129,7 @@ public class LibroDao  {
 		}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 		
 
@@ -158,7 +160,7 @@ public class LibroDao  {
 		
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 		
 		
@@ -187,7 +189,7 @@ public class LibroDao  {
 		}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 		
 		return l;
@@ -214,7 +216,7 @@ public class LibroDao  {
 			}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 		return id;
 
@@ -242,7 +244,7 @@ public class LibroDao  {
 			}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 		return categoria;
 
@@ -269,7 +271,7 @@ public class LibroDao  {
 			prepQ.executeUpdate();
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 		
 
@@ -321,7 +323,7 @@ public class LibroDao  {
 				state= true; // true	
 				}catch(SQLException e)
 				{
-					Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getCause());
+								java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 				}
 			
 			
@@ -347,7 +349,7 @@ public class LibroDao  {
 
 			}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 			
 		
@@ -381,11 +383,11 @@ public class LibroDao  {
 						state=true;
 					
 				
-					Log.LOGGER.log(Level.INFO, "libro trovato");
+					java.util.logging.Logger.getLogger("Disponibilita").log(Level.INFO,"libro disponibile");
 				}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 				
 
@@ -410,7 +412,7 @@ public class LibroDao  {
 		}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 		return name;
 	}
@@ -437,11 +439,11 @@ public class LibroDao  {
 		}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 		
-		
-		Log.LOGGER.log(Level.INFO,"{0}",catalogo);
+		java.util.logging.Logger.getLogger("Catalogo").log(Level.INFO, "ctalogo {0}",catalogo);
+	
 		return catalogo;
 
 	}
@@ -457,8 +459,9 @@ public class LibroDao  {
 			row=prepQ.executeUpdate();
 		}
 		
+		java.util.logging.Logger.getLogger("Cancella libro").log(Level.INFO,"libro cancellato {0}",row);
 
-		Log.LOGGER.log(Level.INFO,"Libro cancellato : .{0}",row);
+		
 	}
 
 	public ObservableList<Libro> getLibriSingoloById(Libro l) throws SQLException
@@ -487,9 +490,10 @@ public class LibroDao  {
 
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getCause());
+						java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
-		Log.LOGGER.log(Level.INFO,"{0}",catalogo);
+		java.util.logging.Logger.getLogger("catalogo").log(Level.INFO,"catalogo trovato");
+
 		return catalogo;
 
 	}
@@ -544,7 +548,8 @@ public class LibroDao  {
 		rowAffected = prepQ.executeUpdate();
 		}
 
-		Log.LOGGER.log(Level.INFO, "row affected .{0}", rowAffected);
+		java.util.logging.Logger.getLogger("Aggiornamento libro").log(Level.INFO, "row affected {0}",rowAffected);
+
 
 	}	
 
@@ -586,7 +591,7 @@ public class LibroDao  {
 
 		}catch(SQLException e)
 			   {
-					Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getCause());
+								java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 			   }
 		   }
 		
@@ -612,7 +617,7 @@ public class LibroDao  {
 			prepQ.executeUpdate();
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,ECCEZIONE,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
 		}
 		
 		

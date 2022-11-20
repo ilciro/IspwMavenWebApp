@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 
 import controller.ControllerLogin;
-import model.Log;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -148,7 +147,8 @@ public class BoundaryLogin implements Initializable {
 		} 
 		else {
 			
-			Log.LOGGER.log(Level.SEVERE,"per favore registarsi o reinserisci credenziali");
+			java.util.logging.Logger.getLogger("Test login").log(Level.SEVERE,"\n reinserire credenziali ..\n");
+
 
 
 

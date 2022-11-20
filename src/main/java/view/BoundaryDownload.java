@@ -11,7 +11,6 @@ import com.itextpdf.text.DocumentException;
 
 import controller.ControllerDownload;
 import controller.ControllerSystemState;
-import model.Log;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -59,7 +58,8 @@ public class BoundaryDownload implements Initializable {
 		 if ((result.isPresent()) && (result.get() == ButtonType.OK))
 	        	
 	        {
-	            Log.LOGGER.log(Level.INFO,"ALL OK..!");
+				java.util.logging.Logger.getLogger("scarica").log(Level.INFO," all ok...");
+
 	            //passo 0 per evitare il NullPointer
             	cD.scaricaLibro();
 	            Stage stage;

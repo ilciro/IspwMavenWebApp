@@ -9,7 +9,7 @@ import java.util.logging.Level;
 
 import controller.ControllerModifPage;
 import controller.ControllerSystemState;
-import model.Log;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -350,7 +350,8 @@ public class BoundaryModificaPage implements Initializable {
 
 		} catch (SQLException   e) 	
 		{
-			Log.LOGGER.log(Level.SEVERE,e,()->"result"+e);
+			java.util.logging.Logger.getLogger("Test pagacc").log(Level.SEVERE,"\n eccezione ottenuta {0}",e);
+
 		} 
 		
 		/*

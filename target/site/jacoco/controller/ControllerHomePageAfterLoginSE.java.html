@@ -3,20 +3,20 @@
 import java.util.logging.Level;
 
 import exception.LogoutException;
-import model.Log;
 import model.User;
 
 public class ControllerHomePageAfterLoginSE {
-<span class="fc" id="L10">	private static User u = User.getInstance();</span>
-<span class="fc" id="L11">	private static ControllerSystemState vis = ControllerSystemState.getIstance() ;</span>
+<span class="fc" id="L9">	private static User u = User.getInstance();</span>
+<span class="fc" id="L10">	private static ControllerSystemState vis = ControllerSystemState.getIstance() ;</span>
 
 	// qui ci va la funzione di logout
 
 	public static boolean logout() throws   SecurityException, IllegalArgumentException, LogoutException
 	{	
 			
-<span class="fc" id="L18">			String n = u.getNome();</span>
-<span class="fc" id="L19">			Log.LOGGER.log(Level.INFO,&quot;Stai sloggando con il nome di : {0}&quot;, n );</span>
+<span class="fc" id="L17">			String n = u.getNome();</span>
+<span class="fc" id="L18">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, &quot;stai sloggando come {0}&quot;,n);</span>
+
 <span class="fc" id="L20">			u.setId(-1);</span>
 <span class="fc" id="L21">			u.setNome(null);</span>
 <span class="fc" id="L22">			u.setCognome(null);</span>
@@ -34,9 +34,10 @@ public class ControllerHomePageAfterLoginSE {
 			}
 			else
 			{	
-<span class="fc" id="L37">				Log.LOGGER.log(Level.INFO,&quot;Logout  utente {0}&quot;, u.getEmail());</span>
-<span class="fc" id="L38">				vis.setIsLogged(false);</span>
-<span class="fc" id="L39">				return true;</span>
+<span class="fc" id="L37">				java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, &quot;logout utente {0}&quot;,u.getEmail());</span>
+
+<span class="fc" id="L39">				vis.setIsLogged(false);</span>
+<span class="fc" id="L40">				return true;</span>
 			}
 
 		

@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import utilities.ConnToDb;
 import model.TempUser;
 import model.User;
-import model.Log;
+
 
 public class UsersDao {
 
@@ -130,12 +130,12 @@ public class UsersDao {
 			while(rs.next())
 			{
 				 int id=rs.getInt(1);
-				 Log.LOGGER.log(Level.INFO,"id user {0}",id+u.getId());
-
-					status=1;	 			
+				 if(id>0)
+					 status=1;	 			
 
 			}
-			
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, "idUser {0}",u.getEmail());
+
 		
 
 		conn.close();
@@ -150,16 +150,19 @@ public class UsersDao {
 		String email = uT.getEmail();
 		int status = -1;
 		
-
+		int idUser=0;
+		
+		query="SELECT idRuolo FROM ispw.users where Email = '"+email+"'";
 			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
+			prepQ=conn.prepareStatement(query);
 
-			query="SELECT idUser FROM ispw.users where Email = '"+email+"'";
-			rs = st.executeQuery(query);
-			while(rs.next())
+			
+			rs = prepQ.executeQuery();
+			if(rs.next())
 			{
-								 	
-				status=1; // true
+			idUser=rs.getInt("idUser");		
+				if(idUser!=0)
+					status=1; // true
 				
 				// account al ready exists
 			}
@@ -207,6 +210,7 @@ public class UsersDao {
 	public static boolean checkResetpass (User u, String pwd,String email ) throws SQLException
 	{
 
+		int row =0;
 		
 			conn = ConnToDb.generalConnection();
 			query="Update ispw.users SET pwd = ?  where Email = '"+email+"'";
@@ -214,13 +218,13 @@ public class UsersDao {
 			
 			prepQ=conn.prepareStatement(query);
 			prepQ.setString(1,pwd);
-			prepQ.executeUpdate();			
+			row=prepQ.executeUpdate();			
+			if(row==1)
+				state= true;
 			
-			Log.LOGGER.log(Level.INFO,"update pwd ok .{0}",u.getNome());
-			state= true;
-
 		conn.close();
 		// errore
+		java.util.logging.Logger.getLogger("Reset pwd").log(Level.INFO, "row affected{0}",u.getEmail());
 		return state ;
 	}
 
@@ -239,6 +243,7 @@ public class UsersDao {
 	{
 		String email = user.getEmail();
 		String ruolo=user.getIdRuolo();
+		int row=0;
 		
 		
 		
@@ -248,16 +253,18 @@ public class UsersDao {
 				query="DELETE FROM ispw.users WHERE Email = ?";
 				prepQ=conn.prepareStatement(query);
 				prepQ.setString(1,email);
-				prepQ.executeUpdate();
-				Log.LOGGER.log(Level.INFO,"cancello utente user .{0}" ,ruolo);
-				state= true;
+				row=prepQ.executeUpdate();
+				if(row==1)
+					state= true;
 
-			
-
+							
 			
 
 		
 				conn.close();
+			java.util.logging.Logger.getLogger("Test Cance").log(Level.INFO,"cancello user ruolo{0}",ruolo);
+
+
 		
 		return state ;
 		
@@ -274,7 +281,8 @@ public class UsersDao {
 			prepQ=conn.prepareStatement(query);
 			prepQ.setString(1,email);
 			prepQ.executeUpdate();
-			Log.LOGGER.log(Level.INFO,"cancello utente user .{0}" ,uT.getIdRuolo());
+			java.util.logging.Logger.getLogger("delete temp user").log(Level.INFO,"\n ruolo {0}",uT.getIdRuolo());
+
 			state= true;
 
 
@@ -728,7 +736,8 @@ public class UsersDao {
 			}
 		}catch(SQLException  e)
 			{
-				Log.LOGGER.log(Level.SEVERE,()->"eccezione ottenuta :"+e);
+			java.util.logging.Logger.getLogger("lista utenti").log(Level.SEVERE,"\n eccezione ottenuta .",e);
+
 			}
 			b.flush();
 		

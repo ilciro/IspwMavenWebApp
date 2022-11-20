@@ -18,7 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.Log;
+
 
 public class BoundaryVisualizzaProfilo implements Initializable  {
 	@FXML
@@ -140,7 +140,8 @@ public class BoundaryVisualizzaProfilo implements Initializable  {
 				}
 			} catch ( SQLException | IOException | LogoutException e) {
 				
-				Log.LOGGER.log(Level.SEVERE,"eccezione generata :.",e.getCause());
+				java.util.logging.Logger.getLogger("elimina profilo").log(Level.SEVERE,"\n eccezione ottenuta .",e);
+
 			}
 	
 	}

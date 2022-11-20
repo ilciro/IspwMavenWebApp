@@ -7,7 +7,6 @@ import java.util.logging.Level;
 
 import controller.ControllerRicercaPerTipo;
 import controller.ControllerSystemState;
-import model.Log;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -82,7 +81,8 @@ public class BoundaryRicercaPerTipo implements Initializable {
 		else
 		{
 			
-			Log.LOGGER.log(Level.WARNING,"not found");
+			java.util.logging.Logger.getLogger("report libro").log(Level.WARNING,"\n not found");
+
 
 		}
 	}
@@ -103,7 +103,8 @@ public class BoundaryRicercaPerTipo implements Initializable {
 		else
 		{
 			
-			Log.LOGGER.log(Level.WARNING," not found ");
+			java.util.logging.Logger.getLogger("report libro").log(Level.WARNING,"\n not found ");
+
 
 		}
 	}
@@ -124,7 +125,8 @@ public class BoundaryRicercaPerTipo implements Initializable {
 		else
 		{
 			
-			Log.LOGGER.log(Level.WARNING," not found ");
+			java.util.logging.Logger.getLogger("report libro").log(Level.WARNING,"\n not found");
+
 
 		}
 	}

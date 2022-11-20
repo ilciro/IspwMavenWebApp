@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 
 import database.UsersDao;
-import model.Log;
 import model.User;
 
 public class ControllerLogin {
@@ -31,7 +30,8 @@ public class ControllerLogin {
 				String r =UsersDao.getRuolo(user);
 				// predno e li assegno all'oggetto user
 				UsersDao.pickData(user);
-				Log.LOGGER.log(Level.INFO,"\n loggato come : {0}",r);
+				java.util.logging.Logger.getLogger("Test log").log(Level.INFO, "loggato come {0}", r);
+
 				ControllerSystemState.getIstance().setIsLogged(true);
 				 esito = true;
 			}

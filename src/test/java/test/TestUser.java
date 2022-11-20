@@ -10,7 +10,7 @@ import java.util.logging.Level;
 
 import org.junit.jupiter.api.Test;
 
-import model.Log;
+
 import model.User;
 import utilities.ConnToDb;
 
@@ -93,7 +93,8 @@ class TestUser {
 			row=prepQ.executeUpdate();
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.INFO, "db cancellato");
+			java.util.logging.Logger.getLogger("cancella db").log(Level.INFO,"db cancellato \n");
+
 		}
 		
 

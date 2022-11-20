@@ -8,7 +8,6 @@ import java.util.logging.Level;
 
 import utilities.ConnToDb;
 import model.Fattura;
-import model.Log;
 
 public class ContrassegnoDao {
 	
@@ -36,7 +35,7 @@ public class ContrassegnoDao {
  			 
  		}catch(SQLException e)
  		{
- 			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+ 			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
  		}
        
 		 
@@ -51,11 +50,13 @@ public class ContrassegnoDao {
 			try(Connection conn=ConnToDb.generalConnection();
 					PreparedStatement prepQ=conn.prepareStatement(query);)
 			{
-				prepQ.setInt(1, 0);
-				prepQ.executeQuery();
+				prepQ.setInt(1,0);
+
+				prepQ.executeUpdate();
+
 			}catch(SQLException e)
 			{
-				Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+				java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 			}
 
 		}
@@ -79,7 +80,7 @@ public class ContrassegnoDao {
 			
 		 }catch(SQLException e)
 		 {
-			 Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			 java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		 }
 
 		
@@ -104,7 +105,7 @@ public class ContrassegnoDao {
 				state=true;
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 			
 			return state;

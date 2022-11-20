@@ -8,7 +8,6 @@ import database.LibroDao;
 import database.PagamentoDao;
 import database.RivistaDao;
 import exception.IdException;
-import model.Log;
 import model.raccolta.Giornale;
 import model.raccolta.Libro;
 import model.raccolta.Rivista;
@@ -97,7 +96,7 @@ public class ControllerAcquista {
 		try {
 			pagD.daiPrivilegi();
 		} catch (SQLException e) {
-			Log.LOGGER.log(Level.SEVERE,"eccezione ottenuta: .{0}",e.getMessage());
+				java.util.logging.Logger.getLogger("Costruttore ControllerAcquista").log(Level.INFO, stringaErrore, e);
 		}
 		
 
@@ -151,7 +150,8 @@ public class ControllerAcquista {
 		
 		if(rimanenza-i<0)
 		 {
-			Log.LOGGER.log(Level.SEVERE,stringaErrore,new IdException(erroreId));
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, stringaErrore,new IdException(erroreId));
+
 
 		}
 		
@@ -165,7 +165,8 @@ public class ControllerAcquista {
 		if(rimanenza-i<0)
 		
 		{
-			Log.LOGGER.log(Level.SEVERE,stringaErrore,new IdException(erroreId));
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, stringaErrore,new IdException(erroreId));
+
 		}
 
 
@@ -179,7 +180,8 @@ public class ControllerAcquista {
 		rimanenza=rD.getQuantita(r);
 		if(rimanenza-i<0)
 		{
-			Log.LOGGER.log(Level.SEVERE,stringaErrore,  new IdException(erroreId));
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, stringaErrore,new IdException(erroreId));
+
 		}
 
 		

@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 
-import model.Log;
 
 public class ConnToDb 
 {
@@ -40,14 +39,14 @@ public class ConnToDb
 			Class.forName(driver);
 
 			conn = DriverManager.getConnection(url,user,pwd);
-			Log.LOGGER.log(Level.INFO,"Connesso initial..........\\n");
+			java.util.logging.Logger.getLogger("Test InitialConnection").log(Level.INFO, "Connesso initial.....\n");
 
 			status= true;
 
 		} 
 		catch (SQLException | ClassNotFoundException  e1)
 		{
-			Log.LOGGER.log(Level.SEVERE,()->errore+e1);
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, "errore in mysql", e1);
 
 		} 
 		
@@ -70,11 +69,13 @@ public class ConnToDb
 				//actuac DB project
 
 				 Class.forName(driver);
+				 java.util.logging.Logger.getLogger("Test connection").log(Level.INFO, connessione);
 				
-				Log.LOGGER.log(Level.INFO,connessione);
+				
 
 				conn = DriverManager.getConnection(url, user,pwd);
-				Log.LOGGER.log(Level.INFO,"Connesso standard..........\\n");
+				java.util.logging.Logger.getLogger("Test connection standard").log(Level.INFO, "Connesso standard ........\n");
+				
 
 				status= true;
 			}
@@ -82,7 +83,7 @@ public class ConnToDb
 		} 
 		catch (SQLException | ClassNotFoundException  e1) 
 		{
-			Log.LOGGER.log(Level.SEVERE,()->errore+e1);
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, errore, e1);
 
 		} 
 		
@@ -101,14 +102,14 @@ public class ConnToDb
 		try
 		{
 			Class.forName(driver);
-			Log.LOGGER.log(Level.INFO,connessione);
+			java.util.logging.Logger.getLogger("Test General connection").log(Level.INFO, connessione);
 			conn = DriverManager.getConnection(url, user,pwd);
-			Log.LOGGER.log(Level.INFO,"Connesso standard..........\\n");
+			java.util.logging.Logger.getLogger("Test General connection standard").log(Level.INFO, "Connesso standard ........\n");
 
 		} 
 		catch (SQLException  | ClassNotFoundException e1)
 		{
-			Log.LOGGER.log(Level.SEVERE,()->errore+e1);
+			java.util.logging.Logger.getLogger("Test general connection error").log(Level.INFO, errore, e1);
 
 
 		} 

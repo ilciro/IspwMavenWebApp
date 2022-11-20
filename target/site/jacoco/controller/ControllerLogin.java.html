@@ -4,34 +4,34 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 
 import database.UsersDao;
-import model.Log;
 import model.User;
 
-<span class="fc" id="L10">public class ControllerLogin {</span>
+<span class="fc" id="L9">public class ControllerLogin {</span>
 	
-<span class="fc" id="L12">	private  User user = User.getInstance();</span>
+<span class="fc" id="L11">	private  User user = User.getInstance();</span>
 	protected boolean esito;
 
 	
 	public boolean controlla(String m, String p) throws SQLException
 	{
 		
-<span class="fc" id="L19">		esito = false;</span>
+<span class="fc" id="L18">		esito = false;</span>
 		
-<span class="fc" id="L21">			user.setEmail(m);</span>
-<span class="fc" id="L22">			user.setPassword(p);</span>
+<span class="fc" id="L20">			user.setEmail(m);</span>
+<span class="fc" id="L21">			user.setPassword(p);</span>
 			
-<span class="pc bpc" id="L24" title="1 of 2 branches missed.">			 if (UsersDao.checkUser(user) == 1)</span>
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">			 if (UsersDao.checkUser(user) == 1)</span>
 			{
 				// utente trovato
 				// vai col login
 				// vai con la specializzazione prendendo i dati dal dao
 				
 				// qui prendo il ruolo in base ala mail dell'utente
-<span class="fc" id="L31">				String r =UsersDao.getRuolo(user);</span>
+<span class="fc" id="L30">				String r =UsersDao.getRuolo(user);</span>
 				// predno e li assegno all'oggetto user
-<span class="fc" id="L33">				UsersDao.pickData(user);</span>
-<span class="fc" id="L34">				Log.LOGGER.log(Level.INFO,&quot;\n loggato come : {0}&quot;,r);</span>
+<span class="fc" id="L32">				UsersDao.pickData(user);</span>
+<span class="fc" id="L33">				java.util.logging.Logger.getLogger(&quot;Test log&quot;).log(Level.INFO, &quot;loggato come {0}&quot;, r);</span>
+
 <span class="fc" id="L35">				ControllerSystemState.getIstance().setIsLogged(true);</span>
 <span class="fc" id="L36">				 esito = true;</span>
 			}

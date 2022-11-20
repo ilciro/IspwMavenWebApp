@@ -66,6 +66,7 @@ class TestDaoUser {
 	@Test
 	void testCheckTempUser() throws SQLException
 	{
+		tu.setEmail("alfredino25@libro.it");
 		assertEquals(-1,UsersDao.checkTempUser(tu));
 	}
 	

@@ -4,19 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.util.logging.Level;
 
-import model.Log;
 import model.Pagamento;
 import model.User;
 import utilities.ConnToDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-<span class="fc" id="L17">public class PagamentoDao {</span>
+<span class="fc" id="L15">public class PagamentoDao {</span>
 	private String query;
-<span class="fc" id="L19">	private static String eccezione=&quot;eccezione ottenuta:&quot;;</span>
+<span class="fc" id="L17">	private static String eccezione=&quot;eccezione ottenuta:&quot;;</span>
 
 	
 
@@ -31,43 +29,45 @@ import javafx.collections.ObservableList;
 		
 		
 
-<span class="fc" id="L34">		query=&quot;INSERT INTO ispw.pagamento(metodo,esito,nomeUtente,spesaTotale,eMail,tipoAcquisto,idProd) values (?,?,?,?,?,?,?)&quot;;</span>
+<span class="fc" id="L32">		query=&quot;INSERT INTO ispw.pagamento(metodo,esito,nomeUtente,spesaTotale,eMail,tipoAcquisto,idProd) values (?,?,?,?,?,?,?)&quot;;</span>
 
-<span class="fc" id="L36">		try(Connection conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L37">				PreparedStatement prepQ=conn.prepareStatement(query);)</span>
+<span class="fc" id="L34">		try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L35">				PreparedStatement prepQ=conn.prepareStatement(query);)</span>
 		{
 			
 			
-<span class="fc" id="L41">			prepQ.setString(1,p.getMetodo()); // </span>
-<span class="fc" id="L42">			prepQ.setInt(2,p.getEsito());</span>
-<span class="fc" id="L43">			prepQ.setString(3,p.getNomeUtente());</span>
-<span class="fc" id="L44">			prepQ.setFloat(4,p.getAmmontare());</span>
-<span class="fc" id="L45">			prepQ.setString(5, User.getInstance().getEmail());</span>
-<span class="fc" id="L46">			prepQ.setString(6,p.getTipo());</span>
-<span class="fc" id="L47">			prepQ.setInt(7, p.getId());</span>
-<span class="fc" id="L48">			prepQ.executeUpdate();</span>
-<span class="nc" id="L49">		}catch(SQLException e)</span>
+<span class="fc" id="L39">			prepQ.setString(1,p.getMetodo()); // </span>
+<span class="fc" id="L40">			prepQ.setInt(2,p.getEsito());</span>
+<span class="fc" id="L41">			prepQ.setString(3,p.getNomeUtente());</span>
+<span class="fc" id="L42">			prepQ.setFloat(4,p.getAmmontare());</span>
+<span class="fc" id="L43">			prepQ.setString(5, User.getInstance().getEmail());</span>
+<span class="fc" id="L44">			prepQ.setString(6,p.getTipo());</span>
+<span class="fc" id="L45">			prepQ.setInt(7, p.getId());</span>
+<span class="fc" id="L46">			prepQ.executeUpdate();</span>
+<span class="nc" id="L47">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L51">			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
-<span class="fc" id="L52">		}</span>
+<span class="nc" id="L49">						java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="fc" id="L50">		}</span>
 		
 		
-<span class="fc" id="L55">		}</span>
+<span class="fc" id="L53">		}</span>
 		
 	public void daiPrivilegi() throws SQLException 
 	{
 
 		
-<span class="fc" id="L61">		query=&quot;set sql_safe_updates=?&quot;;</span>
-<span class="fc" id="L62">		try(Connection conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L63">				PreparedStatement prepQ=conn.prepareStatement(query);)</span>
+<span class="fc" id="L59">		query=&quot;set sql_safe_updates=?&quot;;</span>
+<span class="fc" id="L60">		try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L61">				PreparedStatement prepQ=conn.prepareStatement(query);)</span>
 		{
-<span class="fc" id="L65">			prepQ.setInt(1, 0);</span>
-<span class="nc" id="L66">			prepQ.executeQuery();</span>
-<span class="fc" id="L67">		}catch(SQLException e)</span>
+<span class="fc" id="L63">			prepQ.setInt(1,0);</span>
+
+<span class="fc" id="L65">			prepQ.executeUpdate();</span>
+
+<span class="nc" id="L67">		}catch(SQLException e)</span>
 		{
-<span class="fc" id="L69">			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
-<span class="nc" id="L70">		}</span>
+<span class="nc" id="L69">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="fc" id="L70">		}</span>
 
 
 <span class="fc" id="L73">	}</span>
@@ -80,16 +80,16 @@ import javafx.collections.ObservableList;
 			{
 <span class="fc" id="L81">				prepQ.setString(1, User.getInstance().getEmail());</span>
 <span class="fc" id="L82">				ResultSet rs=prepQ.executeQuery();</span>
-<span class="fc bfc" id="L83" title="All 2 branches covered.">			while(rs.next())</span>
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">			while(rs.next())</span>
 			{
 
 
-<span class="fc" id="L87">				catalogo.add(new Pagamento (rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getFloat(5),rs.getString(6)));</span>
+<span class="nc" id="L87">				catalogo.add(new Pagamento (rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getFloat(5),rs.getString(6)));</span>
 
 			}
 <span class="nc" id="L90">			}catch(SQLException e)</span>
 			{
-<span class="nc" id="L92">				Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
+<span class="nc" id="L92">							java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L93">			}</span>
 		
 <span class="fc" id="L95">		return catalogo;</span>
@@ -113,7 +113,7 @@ import javafx.collections.ObservableList;
 			}
 <span class="nc" id="L114">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L116">			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
+<span class="nc" id="L116">						java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L117">		}</span>
 				
 <span class="fc" id="L119">		return id;</span>
@@ -135,7 +135,7 @@ import javafx.collections.ObservableList;
 <span class="fc" id="L135">				state=true;</span>
 <span class="nc" id="L136">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L138">			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
+<span class="nc" id="L138">						java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L139">		}</span>
 			
 <span class="fc" id="L141">			return state;</span>

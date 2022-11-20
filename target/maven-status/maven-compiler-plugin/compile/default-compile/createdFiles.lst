@@ -22,7 +22,6 @@ exception\LogoutException.class
 model\TempUser.class
 view\BoundaryVisualizza.class
 exception\IdException.class
-model\Log.class
 view\BoundaryScegliNegozio.class
 database\UsersDao.class
 controller\ControllerVisualizzaProfilo.class

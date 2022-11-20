@@ -10,7 +10,6 @@ import controller.ControllerCompravendita;
 import controller.ControllerSystemState;
 
 import exception.IdException;
-import model.Log;
 import model.raccolta.Raccolta;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -81,7 +80,8 @@ public class BoundaryCompravendita implements Initializable {
 					
 				}catch(IdException idE)
 				{
-					Log.LOGGER.log(Level.SEVERE,"eccezione generata : {0}.",idE.getMessage());
+					java.util.logging.Logger.getLogger("Test pagacc").log(Level.SEVERE,"\n eccezione ottenuta {0}",idE);
+
 				}
 			}		
 			
@@ -123,7 +123,7 @@ public class BoundaryCompravendita implements Initializable {
 				
 			}catch(IdException idE)
 			{
-				Log.LOGGER.log(Level.SEVERE,"eccezione generata :{0}.",idE.getMessage());
+				java.util.logging.Logger.getLogger("Test pagacc").log(Level.SEVERE,"\n eccezione ottenuta {0}",idE);
 			}
 		}	
 		if( cCV.disponibilitaLibro(i) || cCV.disponibilitaGiornale(i) || cCV.disponibilitaRivista(i))
@@ -161,7 +161,6 @@ public class BoundaryCompravendita implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		Log.LOGGER.log(Level.INFO," oggetto scelto : {0}",ControllerSystemState.getIstance().getType());
 		cCV = new ControllerCompravendita();
 		
 		buttonV.setText(cCV.popolaBottoneV());

@@ -2,7 +2,7 @@ package controller;
 
 import java.util.logging.Level;
 
-import model.Log;
+
 
 
 public class ControllerRicercaPerTipo {
@@ -12,7 +12,8 @@ public class ControllerRicercaPerTipo {
 	
 	public ControllerRicercaPerTipo() 
 	{
-		Log.LOGGER.log(Level.INFO,"ControllerRicercaPErTipo");
+		java.util.logging.Logger.getLogger("Test Costruttore").log(Level.INFO,"Costruttore ControllerRicercaPerTipo");
+
 	}
 	
 	public boolean setRicercaL()

@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.Date;
 
 import model.CartaDiCredito;
-import model.Log;
 import utilities.ConnToDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,7 +46,7 @@ public class CartaCreditoDao {
 			}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+						java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 			
 	
@@ -63,11 +62,11 @@ public class CartaCreditoDao {
 		try(Connection conn=ConnToDb.generalConnection();
 				PreparedStatement prepQ=conn.prepareStatement(query);)
 		{
-			prepQ.setInt(1, 0);
+			prepQ.setString(1, "0");
 			prepQ.executeQuery();
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+						java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 
 
@@ -91,7 +90,8 @@ public class CartaCreditoDao {
 				prepQ.executeUpdate();
 			}catch(SQLException e)
 			{
-				Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+				java.util.logging.Logger.getLogger("report libro").log(Level.SEVERE,"\n eccezione ottenuta .",e);
+
 			}
 
 

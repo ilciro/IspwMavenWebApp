@@ -2,7 +2,7 @@
 
 import java.util.logging.Level;
 
-import model.Log;
+
 
 
 public class ControllerRicercaPerTipo {
@@ -12,29 +12,30 @@ public class ControllerRicercaPerTipo {
 	
 	public ControllerRicercaPerTipo() 
 <span class="fc" id="L14">	{</span>
-<span class="fc" id="L15">		Log.LOGGER.log(Level.INFO,&quot;ControllerRicercaPErTipo&quot;);</span>
-<span class="fc" id="L16">	}</span>
+<span class="fc" id="L15">		java.util.logging.Logger.getLogger(&quot;Test Costruttore&quot;).log(Level.INFO,&quot;Costruttore ControllerRicercaPerTipo&quot;);</span>
+
+<span class="fc" id="L17">	}</span>
 	
 	public boolean setRicercaL()
 	{
 		
-<span class="pc bpc" id="L21" title="1 of 2 branches missed.">		if (vis.getType().equals(&quot;libro&quot;))</span>
-<span class="fc" id="L22">			state=true;</span>
-<span class="fc" id="L23">		return state;</span>
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">		if (vis.getType().equals(&quot;libro&quot;))</span>
+<span class="fc" id="L23">			state=true;</span>
+<span class="fc" id="L24">		return state;</span>
 	}
 	public boolean setRicercaG()
 	{
-<span class="fc" id="L27">		ControllerSystemState.getIstance().setTypeAsDaily();</span>
-<span class="pc bpc" id="L28" title="1 of 2 branches missed.">		if (ControllerSystemState.getIstance().getType().equals(&quot;giornale&quot;))</span>
-<span class="fc" id="L29">			state= true;</span>
-<span class="fc" id="L30">		return state;</span>
+<span class="fc" id="L28">		ControllerSystemState.getIstance().setTypeAsDaily();</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">		if (ControllerSystemState.getIstance().getType().equals(&quot;giornale&quot;))</span>
+<span class="fc" id="L30">			state= true;</span>
+<span class="fc" id="L31">		return state;</span>
 	}
 	public boolean setRicercaR()
 	{
-<span class="fc" id="L34">		ControllerSystemState.getIstance().setTypeAsMagazine();</span>
-<span class="pc bpc" id="L35" title="1 of 2 branches missed.">		if (ControllerSystemState.getIstance().getType().equals(&quot;rivista&quot;))</span>
-<span class="fc" id="L36">			state= true;</span>
-<span class="fc" id="L37">		return state;</span>
+<span class="fc" id="L35">		ControllerSystemState.getIstance().setTypeAsMagazine();</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">		if (ControllerSystemState.getIstance().getType().equals(&quot;rivista&quot;))</span>
+<span class="fc" id="L37">			state= true;</span>
+<span class="fc" id="L38">		return state;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -19,7 +19,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.Log;
 
 public class BoundaryReportPage implements Initializable {
 	
@@ -74,12 +73,13 @@ public class BoundaryReportPage implements Initializable {
 				ta.appendText(line.concat("\n"));
             
 
-				Log.LOGGER.log(Level.INFO,line);
+				
 			}
 		} 
 		catch(IOException | NullPointerException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+			java.util.logging.Logger.getLogger("report libro").log(Level.SEVERE,eccezione,e);
+
 		}
 		
 		try (BufferedReader readerG = new BufferedReader(new FileReader(fileGiornale)))
@@ -91,12 +91,12 @@ public class BoundaryReportPage implements Initializable {
 				ta.appendText(line.concat("\n"));
             
 
-				Log.LOGGER.log(Level.INFO,line);
 			}
 		} 
 		catch(IOException | NullPointerException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+			java.util.logging.Logger.getLogger("report giornale").log(Level.SEVERE,eccezione,e);
+
 		}
 		
 		try (BufferedReader readerR = new BufferedReader(new FileReader(fileRiviste)))
@@ -108,12 +108,12 @@ public class BoundaryReportPage implements Initializable {
 				ta.appendText(line.concat("\n"));
             
 
-				Log.LOGGER.log(Level.INFO,line);
 			}
 		} 
 		catch(IOException | NullPointerException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+			java.util.logging.Logger.getLogger("report rivista").log(Level.SEVERE,eccezione,e);
+
 		}
 		try (BufferedReader readerU = new BufferedReader(new FileReader(fileUtenti)))
 		{
@@ -124,12 +124,13 @@ public class BoundaryReportPage implements Initializable {
 				ta.appendText(line.concat("\n"));
             
 
-				Log.LOGGER.log(Level.INFO,line);
+				
 			}
 		} 
 		catch(IOException | NullPointerException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+			java.util.logging.Logger.getLogger("report utenti").log(Level.SEVERE,eccezione,e);
+
 		}
 		
 
@@ -187,7 +188,8 @@ public class BoundaryReportPage implements Initializable {
 		catch(IOException e)
 		{
 			
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+			java.util.logging.Logger.getLogger("report libro").log(Level.SEVERE,"\n eccezione ottenuta .",e);
+
 		}
 		
         
@@ -231,7 +233,8 @@ public class BoundaryReportPage implements Initializable {
 			 }
 		}catch(IOException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+			java.util.logging.Logger.getLogger("report giornale").log(Level.SEVERE,"\n eccezione ottenuta .",e);
+
 		}
 		
 	}

@@ -8,14 +8,13 @@ import java.sql.Connection;
 import java.util.logging.Level;
 
 import org.apache.ibatis.jdbc.ScriptRunner;
-import model.Log;
 
 public class PopulateDefaultDb {
 
 	
 	private static Connection conn;
 	private static ScriptRunner sr;
-<span class="fc" id="L18">	private static boolean state=false;</span>
+<span class="fc" id="L17">	private static boolean state=false;</span>
 
 	private PopulateDefaultDb()
 	{
@@ -24,37 +23,38 @@ public class PopulateDefaultDb {
 	
 	public static boolean populateDefaultDb() throws FileNotFoundException
 	{
-<span class="fc" id="L27">			createLibri();</span>
-<span class="fc" id="L28">			 createGiornale() ;</span>
-<span class="fc" id="L29">			  createRivista();</span>
-<span class="fc" id="L30">			   createUser(); </span>
-<span class="fc" id="L31">			   createNegozio();</span>
+<span class="fc" id="L26">			createLibri();</span>
+<span class="fc" id="L27">			 createGiornale() ;</span>
+<span class="fc" id="L28">			  createRivista();</span>
+<span class="fc" id="L29">			   createUser(); </span>
+<span class="fc" id="L30">			   createNegozio();</span>
 		
-<span class="fc" id="L33">			state=true;</span>
+<span class="fc" id="L32">			state=true;</span>
 		
-<span class="fc" id="L35">		return state;</span>
+<span class="fc" id="L34">		return state;</span>
 	}
 
 	public static boolean createLibri() throws FileNotFoundException
 	{
-<span class="fc" id="L40">		Log.LOGGER.log(Level.INFO,&quot;---------Chiamo stored insLibri---------\n\n&quot;);</span>
+<span class="fc" id="L39">		java.util.logging.Logger.getLogger(&quot;Test create libri&quot;).log(Level.INFO,&quot;---------Chiamo stored insLibri---------\n\n&quot;);</span>
 		
-<span class="fc" id="L42">			conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L43">			sr = new ScriptRunner(conn);</span>
-<span class="fc" id="L44">			sr.setSendFullScript(true);</span>
-<span class="fc" id="L45">			Reader reader = new BufferedReader(new FileReader(&quot;FileSql/storedInsLibri.sql&quot;));</span>
+<span class="fc" id="L41">			conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L42">			sr = new ScriptRunner(conn);</span>
+<span class="fc" id="L43">			sr.setSendFullScript(true);</span>
+<span class="fc" id="L44">			Reader reader = new BufferedReader(new FileReader(&quot;FileSql/storedInsLibri.sql&quot;));</span>
 			//Running the script
-<span class="fc" id="L47">			sr.runScript(reader);</span>
-<span class="fc" id="L48">			state=true;</span>
+<span class="fc" id="L46">			sr.runScript(reader);</span>
+<span class="fc" id="L47">			state=true;</span>
 
 			
 		
-<span class="fc" id="L52">		return state;</span>
+<span class="fc" id="L51">		return state;</span>
 	}
 
 	public static boolean createGiornale() throws FileNotFoundException
 	{
-<span class="fc" id="L57">		Log.LOGGER.log(Level.INFO,&quot;---------Chiamo stored insGiornali---------\n\n&quot;);</span>
+<span class="fc" id="L56">		java.util.logging.Logger.getLogger(&quot;Test create giornali&quot;).log(Level.INFO,&quot;---------Chiamo stored insGiornali---------\n\n&quot;);</span>
+
 		
 <span class="fc" id="L59">			conn=ConnToDb.generalConnection();</span>
 <span class="fc" id="L60">			sr = new ScriptRunner(conn);</span>
@@ -69,44 +69,47 @@ public class PopulateDefaultDb {
 
 	private static boolean createRivista() throws FileNotFoundException
 	{
-<span class="fc" id="L72">		Log.LOGGER.log(Level.INFO,&quot;---------Chiamo stored insRiviste---------\n\n&quot;);</span>
-<span class="fc" id="L73">		conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L74">			sr = new ScriptRunner(conn);</span>
-<span class="fc" id="L75">			sr.setSendFullScript(true);</span>
-<span class="fc" id="L76">			Reader reader = new BufferedReader(new FileReader(&quot;FileSql/storedInsRiviste.sql&quot;));</span>
+<span class="fc" id="L72">		java.util.logging.Logger.getLogger(&quot;Test create riviste&quot;).log(Level.INFO,&quot;---------Chiamo stored insRiviste---------\n\n&quot;);</span>
+
+<span class="fc" id="L74">		conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L75">			sr = new ScriptRunner(conn);</span>
+<span class="fc" id="L76">			sr.setSendFullScript(true);</span>
+<span class="fc" id="L77">			Reader reader = new BufferedReader(new FileReader(&quot;FileSql/storedInsRiviste.sql&quot;));</span>
 			//Running the script
-<span class="fc" id="L78">			sr.runScript(reader);</span>
-<span class="fc" id="L79">				state=true;</span>
+<span class="fc" id="L79">			sr.runScript(reader);</span>
+<span class="fc" id="L80">				state=true;</span>
 		
 		
-<span class="fc" id="L82">		return state;</span>
+<span class="fc" id="L83">		return state;</span>
 	}
 
 	public static boolean createUser() throws FileNotFoundException
 	{
-<span class="fc" id="L87">		Log.LOGGER.log(Level.INFO,&quot;---------Chiamo stored insUtenti---------\n\n&quot;);</span>
+<span class="fc" id="L88">		java.util.logging.Logger.getLogger(&quot;Test create users&quot;).log(Level.INFO,&quot;---------Chiamo stored insUsers---------\n\n&quot;);</span>
+
 		
-<span class="fc" id="L89">			conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L90">			sr = new ScriptRunner(conn);</span>
-<span class="fc" id="L91">			sr.setSendFullScript(true);</span>
-<span class="fc" id="L92">			Reader 	reader = new BufferedReader(new FileReader(&quot;FileSql/storedInsUtenti.sql&quot;));</span>
-<span class="fc" id="L93">			sr.runScript(reader);</span>
-<span class="fc" id="L94">			state=true;</span>
+<span class="fc" id="L91">			conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L92">			sr = new ScriptRunner(conn);</span>
+<span class="fc" id="L93">			sr.setSendFullScript(true);</span>
+<span class="fc" id="L94">			Reader 	reader = new BufferedReader(new FileReader(&quot;FileSql/storedInsUtenti.sql&quot;));</span>
+<span class="fc" id="L95">			sr.runScript(reader);</span>
+<span class="fc" id="L96">			state=true;</span>
 		
-<span class="fc" id="L96">		return state;</span>
+<span class="fc" id="L98">		return state;</span>
 	}
 
 	public static boolean createNegozio() throws FileNotFoundException
 	{
-<span class="fc" id="L101">		Log.LOGGER.log(Level.INFO,&quot;---------Chiamo stored insNegozi---------\n\n&quot;);</span>
+<span class="fc" id="L103">		java.util.logging.Logger.getLogger(&quot;Test create negozio&quot;).log(Level.INFO,&quot;---------Chiamo stored insNegozi---------\n\n&quot;);</span>
+
 		
-<span class="fc" id="L103">			conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L104">			sr = new ScriptRunner(conn);</span>
-<span class="fc" id="L105">			sr.setSendFullScript(true);</span>
-<span class="fc" id="L106">			Reader reader = new BufferedReader(new FileReader(&quot;FileSql/storedInsNegozio.sql&quot;));</span>
-<span class="fc" id="L107">			sr.runScript(reader);</span>
-<span class="fc" id="L108">			state=true;</span>
-<span class="fc" id="L109">	return state;</span>
+<span class="fc" id="L106">			conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L107">			sr = new ScriptRunner(conn);</span>
+<span class="fc" id="L108">			sr.setSendFullScript(true);</span>
+<span class="fc" id="L109">			Reader reader = new BufferedReader(new FileReader(&quot;FileSql/storedInsNegozio.sql&quot;));</span>
+<span class="fc" id="L110">			sr.runScript(reader);</span>
+<span class="fc" id="L111">			state=true;</span>
+<span class="fc" id="L112">	return state;</span>
 
 
 	}

@@ -8,11 +8,10 @@ import java.util.logging.Level;
 
 import utilities.ConnToDb;
 import model.Fattura;
-import model.Log;
 
-<span class="fc" id="L13">public class ContrassegnoDao {</span>
+<span class="fc" id="L12">public class ContrassegnoDao {</span>
 	
-<span class="fc" id="L15">	private static String eccezione=&quot;eccezione ottenuta:&quot;;</span>
+<span class="fc" id="L14">	private static String eccezione=&quot;eccezione ottenuta:&quot;;</span>
 	private String query;
 
 	
@@ -20,94 +19,96 @@ import model.Log;
 	public void inserisciFattura(Fattura f) throws SQLException 
 	{
 		 
-<span class="fc" id="L23">		query=&quot;insert into fattura values (?,?,?,?,?,?)&quot;;</span>
+<span class="fc" id="L22">		query=&quot;insert into fattura values (?,?,?,?,?,?)&quot;;</span>
 		 		
-<span class="fc" id="L25"> 		try(Connection conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L26"> 			PreparedStatement prepQ=conn.prepareStatement(query);){</span>
+<span class="fc" id="L24"> 		try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L25"> 			PreparedStatement prepQ=conn.prepareStatement(query);){</span>
  			
-<span class="fc" id="L28"> 			prepQ.setString(1, f.getNome());</span>
-<span class="fc" id="L29"> 			prepQ.setString(2, f.getCognome());</span>
-<span class="fc" id="L30"> 			prepQ.setString(3, f.getVia());</span>
-<span class="fc" id="L31"> 			prepQ.setString(4,f.getCom());</span>
-<span class="fc" id="L32"> 			prepQ.setInt(5, 0);</span>
-<span class="fc" id="L33"> 			prepQ.setFloat(6,f.getAmmontare());</span>
-<span class="fc" id="L34"> 			prepQ.execute();</span>
+<span class="fc" id="L27"> 			prepQ.setString(1, f.getNome());</span>
+<span class="fc" id="L28"> 			prepQ.setString(2, f.getCognome());</span>
+<span class="fc" id="L29"> 			prepQ.setString(3, f.getVia());</span>
+<span class="fc" id="L30"> 			prepQ.setString(4,f.getCom());</span>
+<span class="fc" id="L31"> 			prepQ.setInt(5, 0);</span>
+<span class="fc" id="L32"> 			prepQ.setFloat(6,f.getAmmontare());</span>
+<span class="fc" id="L33"> 			prepQ.execute();</span>
  			
  			 
-<span class="nc" id="L37"> 		}catch(SQLException e)</span>
+<span class="nc" id="L36"> 		}catch(SQLException e)</span>
  		{
-<span class="nc" id="L39"> 			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
-<span class="fc" id="L40"> 		}</span>
+<span class="nc" id="L38"> 			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="fc" id="L39"> 		}</span>
        
 		 
 
          
         	 
-<span class="fc" id="L46">	}  </span>
+<span class="fc" id="L45">	}  </span>
 	public void daiPrivilegi() throws SQLException 
 	{
 		
-<span class="fc" id="L50">			query=&quot;set sql_safe_updates=?&quot;;</span>
-<span class="fc" id="L51">			try(Connection conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L52">					PreparedStatement prepQ=conn.prepareStatement(query);)</span>
+<span class="fc" id="L49">			query=&quot;set sql_safe_updates=?&quot;;</span>
+<span class="fc" id="L50">			try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L51">					PreparedStatement prepQ=conn.prepareStatement(query);)</span>
 			{
-<span class="fc" id="L54">				prepQ.setInt(1, 0);</span>
-<span class="nc" id="L55">				prepQ.executeQuery();</span>
-<span class="fc" id="L56">			}catch(SQLException e)</span>
-			{
-<span class="fc" id="L58">				Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
-<span class="nc" id="L59">			}</span>
+<span class="fc" id="L53">				prepQ.setInt(1,0);</span>
 
-<span class="fc" id="L61">		}</span>
+<span class="fc" id="L55">				prepQ.executeUpdate();</span>
+
+<span class="nc" id="L57">			}catch(SQLException e)</span>
+			{
+<span class="nc" id="L59">				java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="fc" id="L60">			}</span>
+
+<span class="fc" id="L62">		}</span>
 	
 
 	public int retUltimoOrdine() throws SQLException 
 	{
-<span class="fc" id="L66">		int id=0;</span>
-<span class="fc" id="L67">		 query=&quot;select count(*) as massimo from fattura&quot;;</span>
+<span class="fc" id="L67">		int id=0;</span>
+<span class="fc" id="L68">		 query=&quot;select count(*) as massimo from fattura&quot;;</span>
 		 
-<span class="fc" id="L69">		 try(Connection conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L70">				 PreparedStatement prepQ=conn.prepareStatement(query);</span>
+<span class="fc" id="L70">		 try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L71">				 PreparedStatement prepQ=conn.prepareStatement(query);</span>
 				 )
 		 {
-<span class="fc" id="L73">			 ResultSet rs=prepQ.executeQuery();</span>
-<span class="fc bfc" id="L74" title="All 2 branches covered.">			 while(rs.next())</span>
+<span class="fc" id="L74">			 ResultSet rs=prepQ.executeQuery();</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">			 while(rs.next())</span>
 				{
-<span class="fc" id="L76">					id=rs.getInt(&quot;massimo&quot;);</span>
+<span class="fc" id="L77">					id=rs.getInt(&quot;massimo&quot;);</span>
 
 				}
 			
-<span class="nc" id="L80">		 }catch(SQLException e)</span>
+<span class="nc" id="L81">		 }catch(SQLException e)</span>
 		 {
-<span class="nc" id="L82">			 Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
-<span class="fc" id="L83">		 }</span>
+<span class="nc" id="L83">			 java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="fc" id="L84">		 }</span>
 
 		
 			
-<span class="fc" id="L87">		return id;</span>
+<span class="fc" id="L88">		return id;</span>
 		
 		
 	}
 	
 	public boolean annullaOrdine(int idC) throws SQLException
 	{
-<span class="fc" id="L94">		boolean state=false;</span>
-<span class="fc" id="L95">		int row=0;</span>
+<span class="fc" id="L95">		boolean state=false;</span>
+<span class="fc" id="L96">		int row=0;</span>
 		
-<span class="fc" id="L97">		query=&quot;delete from fattura where id=?&quot;;</span>
-<span class="fc" id="L98">		try(Connection conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L99">				PreparedStatement prepQ=conn.prepareStatement(query);)</span>
+<span class="fc" id="L98">		query=&quot;delete from fattura where id=?&quot;;</span>
+<span class="fc" id="L99">		try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L100">				PreparedStatement prepQ=conn.prepareStatement(query);)</span>
 		{
-<span class="fc" id="L101">			prepQ.setInt(1,idC);</span>
-<span class="fc" id="L102">			row=prepQ.executeUpdate();</span>
-<span class="fc bfc" id="L103" title="All 2 branches covered.">			if(row==1)</span>
-<span class="fc" id="L104">				state=true;</span>
-<span class="nc" id="L105">		}catch(SQLException e)</span>
+<span class="fc" id="L102">			prepQ.setInt(1,idC);</span>
+<span class="fc" id="L103">			row=prepQ.executeUpdate();</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">			if(row==1)</span>
+<span class="fc" id="L105">				state=true;</span>
+<span class="nc" id="L106">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L107">			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
-<span class="fc" id="L108">		}</span>
+<span class="nc" id="L108">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="fc" id="L109">		}</span>
 			
-<span class="fc" id="L110">			return state;</span>
+<span class="fc" id="L111">			return state;</span>
 
 		}
 		

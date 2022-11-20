@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 
 import database.UsersDao;
-import model.Log;
+
 import model.User;
 
 public class ControllerPassword {
@@ -12,7 +12,8 @@ public class ControllerPassword {
 	private boolean status=false;
 	public ControllerPassword()
 	{
-		Log.LOGGER.log(Level.INFO,"controllerPassword ");
+		java.util.logging.Logger.getLogger("Test Costruttore").log(Level.INFO,"Costruttore ControllerPassword");
+
 	}
 
 	public boolean aggiornaPass(String email,String vecchiaP,String nuovaP) throws SQLException

@@ -8,50 +8,49 @@ import java.sql.Connection;
 import java.sql.Date;
 
 import model.CartaDiCredito;
-import model.Log;
 import utilities.ConnToDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-<span class="fc" id="L16">public class CartaCreditoDao {</span>
+<span class="fc" id="L15">public class CartaCreditoDao {</span>
 
 	private  String n;
 	private  String cog;
 	private String query;
-<span class="fc" id="L21">	private static String eccezione=&quot;eccezione ottenuta :&quot;;</span>
+<span class="fc" id="L20">	private static String eccezione=&quot;eccezione ottenuta :&quot;;</span>
 	
 
 
 	public ObservableList&lt;CartaDiCredito&gt; getCarteCredito(String nome) throws SQLException 
 	{
 		String cod;
-<span class="fc" id="L28">		query=&quot;select nomeP,cognomeP,codiceCarta from cartacredito where nomeP=?&quot;;</span>
+<span class="fc" id="L27">		query=&quot;select nomeP,cognomeP,codiceCarta from cartacredito where nomeP=?&quot;;</span>
 		
-<span class="fc" id="L30">		ObservableList&lt;CartaDiCredito&gt; catalogo=FXCollections.observableArrayList();</span>
+<span class="fc" id="L29">		ObservableList&lt;CartaDiCredito&gt; catalogo=FXCollections.observableArrayList();</span>
 
-<span class="fc" id="L32">		try(Connection conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L33">				PreparedStatement prepQ=conn.prepareStatement(query);)</span>
+<span class="fc" id="L31">		try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L32">				PreparedStatement prepQ=conn.prepareStatement(query);)</span>
 		{
-<span class="fc" id="L35">			prepQ.setString(1, nome);</span>
-<span class="fc" id="L36">			ResultSet rs=prepQ.executeQuery();</span>
-<span class="fc bfc" id="L37" title="All 2 branches covered.">			while(rs.next())</span>
+<span class="fc" id="L34">			prepQ.setString(1, nome);</span>
+<span class="fc" id="L35">			ResultSet rs=prepQ.executeQuery();</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">			while(rs.next())</span>
 			{
-<span class="fc" id="L39">				n=rs.getString(1);</span>
-<span class="fc" id="L40">				cog=rs.getString(2);</span>
-<span class="fc" id="L41">				cod=rs.getString(3);</span>
+<span class="fc" id="L38">				n=rs.getString(1);</span>
+<span class="fc" id="L39">				cog=rs.getString(2);</span>
+<span class="fc" id="L40">				cod=rs.getString(3);</span>
 
 
-<span class="fc" id="L44">				catalogo.add(new CartaDiCredito(n,cog,cod, null, cod,0));</span>
+<span class="fc" id="L43">				catalogo.add(new CartaDiCredito(n,cog,cod, null, cod,0));</span>
 
 
 			}
-<span class="nc" id="L48">		}catch(SQLException e)</span>
+<span class="nc" id="L47">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L50">			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
-<span class="fc" id="L51">		}</span>
+<span class="nc" id="L49">						java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="fc" id="L50">		}</span>
 			
 	
-<span class="fc" id="L54">		return catalogo;</span>
+<span class="fc" id="L53">		return catalogo;</span>
 
 
 	}	
@@ -59,39 +58,40 @@ import javafx.collections.ObservableList;
 	public void daiPrivilegi() throws SQLException
 	{
 
-<span class="fc" id="L62">		query=&quot;set sql_safe_updates=?&quot;;</span>
-<span class="fc" id="L63">		try(Connection conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L64">				PreparedStatement prepQ=conn.prepareStatement(query);)</span>
+<span class="fc" id="L61">		query=&quot;set sql_safe_updates=?&quot;;</span>
+<span class="fc" id="L62">		try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L63">				PreparedStatement prepQ=conn.prepareStatement(query);)</span>
 		{
-<span class="fc" id="L66">			prepQ.setInt(1, 0);</span>
-<span class="nc" id="L67">			prepQ.executeQuery();</span>
-<span class="fc" id="L68">		}catch(SQLException e)</span>
+<span class="fc" id="L65">			prepQ.setString(1, &quot;0&quot;);</span>
+<span class="nc" id="L66">			prepQ.executeQuery();</span>
+<span class="fc" id="L67">		}catch(SQLException e)</span>
 		{
-<span class="fc" id="L70">			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());</span>
-<span class="nc" id="L71">		}</span>
+<span class="fc" id="L69">						java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L70">		}</span>
 
 
-<span class="fc" id="L74">	}</span>
+<span class="fc" id="L73">	}</span>
 	public void insCC(CartaDiCredito cc) throws SQLException
 	{
 
-<span class="fc" id="L78">		query=&quot;insert into cartacredito (nomeP,cognomeP,codiceCarta,scad,codicePin,ammontare)  values(?,?,?,?,?,?)&quot;;</span>
+<span class="fc" id="L77">		query=&quot;insert into cartacredito (nomeP,cognomeP,codiceCarta,scad,codicePin,ammontare)  values(?,?,?,?,?,?)&quot;;</span>
 				 
 		
-<span class="fc" id="L81">			try(Connection conn=ConnToDb.generalConnection();</span>
-<span class="fc" id="L82">					PreparedStatement prepQ=conn.prepareStatement(query);)</span>
+<span class="fc" id="L80">			try(Connection conn=ConnToDb.generalConnection();</span>
+<span class="fc" id="L81">					PreparedStatement prepQ=conn.prepareStatement(query);)</span>
 			{
-<span class="fc" id="L84">				prepQ.setString(1,cc.getNomeUser());</span>
-<span class="fc" id="L85">				prepQ.setString(2, cc.getCognomeUser());</span>
-<span class="fc" id="L86">				prepQ.setString(3, cc.getNumeroCC());</span>
-<span class="fc" id="L87">				prepQ.setDate(4, (Date) cc.getScadenza());</span>
-<span class="fc" id="L88">				prepQ.setString(5,cc.getCiv());</span>
+<span class="fc" id="L83">				prepQ.setString(1,cc.getNomeUser());</span>
+<span class="fc" id="L84">				prepQ.setString(2, cc.getCognomeUser());</span>
+<span class="fc" id="L85">				prepQ.setString(3, cc.getNumeroCC());</span>
+<span class="fc" id="L86">				prepQ.setDate(4, (Date) cc.getScadenza());</span>
+<span class="fc" id="L87">				prepQ.setString(5,cc.getCiv());</span>
 				//in alternativa vis.getSpesa
-<span class="fc" id="L90">				prepQ.setFloat(6, cc.getPrezzoTransazine());</span>
-<span class="fc" id="L91">				prepQ.executeUpdate();</span>
-<span class="nc" id="L92">			}catch(SQLException e)</span>
+<span class="fc" id="L89">				prepQ.setFloat(6, cc.getPrezzoTransazine());</span>
+<span class="fc" id="L90">				prepQ.executeUpdate();</span>
+<span class="nc" id="L91">			}catch(SQLException e)</span>
 			{
-<span class="nc" id="L94">				Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());</span>
+<span class="nc" id="L93">				java.util.logging.Logger.getLogger(&quot;report libro&quot;).log(Level.SEVERE,&quot;\n eccezione ottenuta .&quot;,e);</span>
+
 <span class="fc" id="L95">			}</span>
 
 

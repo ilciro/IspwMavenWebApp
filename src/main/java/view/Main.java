@@ -10,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Log;
 
 public class Main  extends Application {
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -29,7 +28,8 @@ public class Main  extends Application {
 		} 
 		catch (Exception e)
 		{
-			Log.LOGGER.log(Level.SEVERE,"eccezione ottenuta:.",e.getMessage());
+			java.util.logging.Logger.getLogger("main page").log(Level.SEVERE,"\n eccezione ottenuta .",e);
+
 			
 		}
 
@@ -47,7 +47,8 @@ public class Main  extends Application {
 			
 
 		} catch (FileNotFoundException  |SQLException |ClassNotFoundException  eFile) {
-			Log.LOGGER.log(Level.SEVERE,()->"eccezione Ottenuta : "+eFile);
+			java.util.logging.Logger.getLogger("crwa db").log(Level.SEVERE,"\n eccezione ottenuta .",eFile);
+
 		}
 			
 		

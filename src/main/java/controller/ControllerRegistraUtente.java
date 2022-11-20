@@ -6,7 +6,6 @@ import java.util.logging.Level;
 import java.util.regex.Pattern;
 
 import database.UsersDao;
-import model.Log;
 import model.User;
 
 
@@ -86,7 +85,8 @@ public class ControllerRegistraUtente {
 	
 	public ControllerRegistraUtente()
 	{
-		Log.LOGGER.log(Level.INFO,"ControllerBsoRegster");
+		java.util.logging.Logger.getLogger("Test Costruttore").log(Level.INFO, "Costruttore ControllerRegistaUtente");
+
 	}
 	
 	// TO DO: checkData o lo facciamo diretti in mysql

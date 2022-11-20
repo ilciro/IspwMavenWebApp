@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 
-import model.Log;
 
 public class CreateDefaultDB 
 {
@@ -74,7 +73,7 @@ public class CreateDefaultDB
 
 	private CreateDefaultDB() 
 	{
-		Log.LOGGER.log(Level.INFO,"Creo db di default");
+		java.util.logging.Logger.getLogger("Test Costruttore").log(Level.INFO, "creo db default");
 		
 	}
 
@@ -132,27 +131,31 @@ public class CreateDefaultDB
 							+ ")");
 				}
 				
-				
-				Log.LOGGER.log(Level.INFO,"Connesso a mysql workbench, ma non ho torvato il database 'ispw'\n"
+				java.util.logging.Logger.getLogger("Test create db").log(Level.INFO, "Connesso a mysql workbench, ma non ho torvato il database 'ispw'\n"
 						+ "Database creato "+ "tabelle create" +"\n");
 				
+				
 				if (PopulateDefaultDb.populateDefaultDb()) {
-					Log.LOGGER.log(Level.INFO,"Tabella populata con valori di default");
+					java.util.logging.Logger.getLogger("Test create db").log(Level.INFO, "tabella popolata valori default");
+
 					
 						ConnToDb.conn.close();
-						Log.LOGGER.log(Level.INFO,"Trovato database e connesso senza problemi! Buone madonne!");
+						java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, "trovato db e connesso.. buon proseguimento");
+
 					
 				}
 				else
 				{
-					Log.LOGGER.log(Level.WARNING,"Ops..! qualcosa è andato storto nel populare il database!");
+					java.util.logging.Logger.getLogger("Test popolamento db").log(Level.INFO, "Ops ..! Qualcosa andato storto nel popolamento");
+
 				}
 			}
 			// Se trovo tutto  chiudo la connesione e vado avanti con l'esecuzione del programma
 			// Se qualcosa non va chiudo la connessione e vado nel cacth
 			else 
 			{
-				Log.LOGGER.log(Level.WARNING,"Ops..! qualcosa è andato storto nella connesione al database!");
+				java.util.logging.Logger.getLogger("Test Eccezione").log(Level.WARNING, "Ops..! qualcosa è andato storto nella connesione al database!");
+
 			}
 		}
 		

@@ -6,7 +6,7 @@ import java.util.logging.Level;
 import controller.ControllerHomePageAfterLogin;
 import controller.ControllerSystemState;
 import exception.LogoutException;
-import model.Log;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -131,8 +131,9 @@ public class BoundaryHomePageAfterLoginSE {
 		}
 		else
 		{
+			java.util.logging.Logger.getLogger("logout").log(Level.SEVERE,"\n eccezione logout",new LogoutException("errore nel logout"));
+
 			
-			Log.LOGGER.log(Level.SEVERE,"Error in logout ");
 
 		}
 	

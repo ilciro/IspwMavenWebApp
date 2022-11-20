@@ -10,8 +10,9 @@ import database.GiornaleDao;
 import database.LibroDao;
 import database.PagamentoDao;
 import database.RivistaDao;
+
 import model.CartaDiCredito;
-import model.Log;
+
 import model.Pagamento;
 import model.raccolta.Giornale;
 import model.raccolta.Libro;
@@ -20,21 +21,21 @@ import javafx.collections.ObservableList;
 
 public class ControllerPagamentoCC {
 	private CartaCreditoDao cDao;
-<span class="fc" id="L23">	private String appoggio = &quot;&quot;;</span>
+<span class="fc" id="L24">	private String appoggio = &quot;&quot;;</span>
 	private CartaDiCredito cc;
 	private PagamentoDao pDao;
 	private ContrassegnoDao pD;
-<span class="fc" id="L27">	private ControllerSystemState vis= ControllerSystemState.getIstance();</span>
+<span class="fc" id="L28">	private ControllerSystemState vis= ControllerSystemState.getIstance();</span>
 	private Libro l;
 	private LibroDao lD;
 	private GiornaleDao gD;
 	private RivistaDao rD;
 	private Giornale g;
 	private Rivista r;
-<span class="fc" id="L34">	private boolean state=false;</span>
+<span class="fc" id="L35">	private boolean state=false;</span>
 	
 	
-<span class="fc" id="L37">	private int cont=0;</span>
+<span class="fc" id="L38">	private int cont=0;</span>
 
 	public boolean controllaPag(String d, String c,String civ) {
 		int x;
@@ -42,28 +43,28 @@ public class ControllerPagamentoCC {
 		 int anno;
 		 int mese;
 		 int giorno;
-<span class="fc" id="L45">		String[] verifica=null;</span>
+<span class="fc" id="L46">		String[] verifica=null;</span>
 
 
-<span class="fc" id="L48">		appoggio = appoggio + d;</span>
-<span class="fc" id="L49">		  anno = Integer.parseInt((String) appoggio.subSequence(0, 4));</span>
-<span class="fc" id="L50">		  mese = Integer.parseInt((String) appoggio.subSequence(5, 7));</span>
-<span class="fc" id="L51">		  giorno = Integer.parseInt((String) appoggio.subSequence(8, 10));</span>
+<span class="fc" id="L49">		appoggio = appoggio + d;</span>
+<span class="fc" id="L50">		  anno = Integer.parseInt((String) appoggio.subSequence(0, 4));</span>
+<span class="fc" id="L51">		  mese = Integer.parseInt((String) appoggio.subSequence(5, 7));</span>
+<span class="fc" id="L52">		  giorno = Integer.parseInt((String) appoggio.subSequence(8, 10));</span>
 		
-<span class="pc bpc" id="L53" title="7 of 14 branches missed.">		if (anno &gt; 2020 &amp;&amp; (mese &gt;= 1 &amp;&amp; mese &lt;= 12) &amp;&amp; (giorno &gt;= 1 &amp;&amp; giorno &lt;= 31) &amp;&amp; c.length() &lt;= 20 &amp;&amp; civ.length()==3 ) {</span>
+<span class="pc bpc" id="L54" title="7 of 14 branches missed.">		if (anno &gt; 2020 &amp;&amp; (mese &gt;= 1 &amp;&amp; mese &lt;= 12) &amp;&amp; (giorno &gt;= 1 &amp;&amp; giorno &lt;= 31) &amp;&amp; c.length() &lt;= 20 &amp;&amp; civ.length()==3 ) {</span>
 			
 				
-<span class="fc" id="L56">					 verifica= c.split(&quot;-&quot;);</span>
+<span class="fc" id="L57">					 verifica= c.split(&quot;-&quot;);</span>
 					
-<span class="fc bfc" id="L58" title="All 2 branches covered.">					for ( x=0; x&lt;verifica.length; x++) {</span>
-<span class="pc bpc" id="L59" title="1 of 2 branches missed.">							if(verifica[x].length()==4)</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">					for ( x=0; x&lt;verifica.length; x++) {</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">							if(verifica[x].length()==4)</span>
 							{
-<span class="fc" id="L61">								cont++;</span>
+<span class="fc" id="L62">								cont++;</span>
 							}
 					}
-<span class="pc bpc" id="L64" title="1 of 2 branches missed.">					if (cont==4)</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">					if (cont==4)</span>
 					{
-<span class="fc" id="L66">						state=true;</span>
+<span class="fc" id="L67">						state=true;</span>
 					}
 					
 				
@@ -71,123 +72,124 @@ public class ControllerPagamentoCC {
 		} 
 		
 		
-<span class="fc" id="L74">		return state;</span>
+<span class="fc" id="L75">		return state;</span>
 
 	}
 
-<span class="fc" id="L78">	public ControllerPagamentoCC() {</span>
+<span class="fc" id="L79">	public ControllerPagamentoCC() {</span>
 		try {
-<span class="fc" id="L80">		cDao = new CartaCreditoDao();</span>
-<span class="fc" id="L81">		cDao.daiPrivilegi();</span>
-<span class="fc" id="L82">		pD=new ContrassegnoDao();</span>
-<span class="fc" id="L83">		pD.daiPrivilegi();</span>
-<span class="fc" id="L84">		pDao=new PagamentoDao();</span>
-<span class="fc" id="L85">		lD=new LibroDao();</span>
-<span class="fc" id="L86">		l=new Libro();</span>
-<span class="fc" id="L87">		gD=new GiornaleDao();</span>
-<span class="fc" id="L88">		g=new Giornale();</span>
-<span class="fc" id="L89">		rD=new RivistaDao();</span>
-<span class="fc" id="L90">		r=new Rivista();</span>
-<span class="nc" id="L91">		} catch (SQLException e) {</span>
-<span class="nc" id="L92">			e.printStackTrace();</span>
-<span class="fc" id="L93">		}</span>
-<span class="fc" id="L94">	}</span>
+<span class="fc" id="L81">		cDao = new CartaCreditoDao();</span>
+<span class="fc" id="L82">		cDao.daiPrivilegi();</span>
+<span class="fc" id="L83">		pD=new ContrassegnoDao();</span>
+<span class="fc" id="L84">		pD.daiPrivilegi();</span>
+<span class="fc" id="L85">		pDao=new PagamentoDao();</span>
+<span class="fc" id="L86">		lD=new LibroDao();</span>
+<span class="fc" id="L87">		l=new Libro();</span>
+<span class="fc" id="L88">		gD=new GiornaleDao();</span>
+<span class="fc" id="L89">		g=new Giornale();</span>
+<span class="fc" id="L90">		rD=new RivistaDao();</span>
+<span class="fc" id="L91">		r=new Rivista();</span>
+<span class="nc" id="L92">		} catch (SQLException e) {</span>
+<span class="nc" id="L93">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, &quot;errore in sql&quot;,e);</span>
+
+<span class="fc" id="L95">		}</span>
+<span class="fc" id="L96">	}</span>
 
 	public void aggiungiCartaDB(String n, String c, String cod, java.sql.Date data, String civ, float prezzo)
 			throws SQLException {
 		
 		
 		
-<span class="fc" id="L101">			cc = new CartaDiCredito(n, c, cod,  data, civ, prezzo);</span>
+<span class="fc" id="L103">			cc = new CartaDiCredito(n, c, cod,  data, civ, prezzo);</span>
 						
-<span class="fc" id="L103">			cc.setPrezzoTransazine(vis.getSpesaT());</span>
-<span class="fc" id="L104">			cDao.insCC(cc);</span>
+<span class="fc" id="L105">			cc.setPrezzoTransazine(vis.getSpesaT());</span>
+<span class="fc" id="L106">			cDao.insCC(cc);</span>
 						
 			Pagamento p;
-<span class="fc" id="L107">			 p=new Pagamento(0,&quot;cc&quot;,0,cc.getNomeUser(),vis.getSpesaT(),null);</span>
-<span class="fc" id="L108">				p.setMetodo(&quot;cc&quot;);</span>
-<span class="fc" id="L109">				p.setNomeUtente(cc.getNomeUser());</span>
-<span class="fc" id="L110">				String tipo=vis.getType();</span>
-<span class="fc bfc" id="L111" title="All 2 branches covered.">				if(tipo.equals(&quot;libro&quot;))</span>
+<span class="fc" id="L109">			 p=new Pagamento(0,&quot;cc&quot;,0,cc.getNomeUser(),vis.getSpesaT(),null);</span>
+<span class="fc" id="L110">				p.setMetodo(&quot;cc&quot;);</span>
+<span class="fc" id="L111">				p.setNomeUtente(cc.getNomeUser());</span>
+<span class="fc" id="L112">				String tipo=vis.getType();</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">				if(tipo.equals(&quot;libro&quot;))</span>
 				{
 					//prenod spesa da vis
-<span class="fc" id="L114">					l.setId(vis.getId());</span>
-<span class="fc" id="L115">					p.setAmmontare(vis.getSpesaT());</span>
-<span class="fc" id="L116">					p.setId(l.getId());</span>
-<span class="fc" id="L117">					p.setTipo(lD.retTip(l));</span>
+<span class="fc" id="L116">					l.setId(vis.getId());</span>
+<span class="fc" id="L117">					p.setAmmontare(vis.getSpesaT());</span>
+<span class="fc" id="L118">					p.setId(l.getId());</span>
+<span class="fc" id="L119">					p.setTipo(lD.retTip(l));</span>
 				}
-<span class="fc bfc" id="L119" title="All 2 branches covered.">				if(tipo.equals(&quot;giornale&quot;))</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">				if(tipo.equals(&quot;giornale&quot;))</span>
 				{
 					//prenod spesa da vis
-<span class="fc" id="L122">					g.setId(vis.getId());</span>
-<span class="fc" id="L123">					p.setAmmontare(vis.getSpesaT());</span>
-<span class="fc" id="L124">					p.setId(g.getId());</span>
-<span class="fc" id="L125">					p.setTipo(gD.retTip(g));</span>
+<span class="fc" id="L124">					g.setId(vis.getId());</span>
+<span class="fc" id="L125">					p.setAmmontare(vis.getSpesaT());</span>
+<span class="fc" id="L126">					p.setId(g.getId());</span>
+<span class="fc" id="L127">					p.setTipo(gD.retTip(g));</span>
 					
 				}
-<span class="fc bfc" id="L128" title="All 2 branches covered.">				if(tipo.equals(&quot;rivista&quot;))</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">				if(tipo.equals(&quot;rivista&quot;))</span>
 				{
 					//prenod spesa da vis
-<span class="fc" id="L131">					r.setId(vis.getId());</span>
-<span class="fc" id="L132">					p.setAmmontare(vis.getSpesaT());</span>
-<span class="fc" id="L133">					p.setId(r.getId());</span>
-<span class="fc" id="L134">					p.setTipo(rD.retTip(r));</span>
+<span class="fc" id="L133">					r.setId(vis.getId());</span>
+<span class="fc" id="L134">					p.setAmmontare(vis.getSpesaT());</span>
+<span class="fc" id="L135">					p.setId(r.getId());</span>
+<span class="fc" id="L136">					p.setTipo(rD.retTip(r));</span>
 					
 				}
 								
-<span class="fc" id="L138">				pDao.inserisciPagamento(p);</span>
+<span class="fc" id="L140">				pDao.inserisciPagamento(p);</span>
 		
 		
 
-<span class="fc" id="L142">	}</span>
+<span class="fc" id="L144">	}</span>
 
 	public ObservableList&lt;CartaDiCredito&gt; ritornaElencoCC(String nomeU) throws SQLException {
 		
-<span class="fc" id="L146">		return cDao.getCarteCredito(nomeU);</span>
+<span class="fc" id="L148">		return cDao.getCarteCredito(nomeU);</span>
 	}
 	
 	public CartaDiCredito tornaDalDb(String codiceCarta) throws SQLException
 	{
-<span class="fc" id="L151">		cc=new CartaDiCredito();</span>
-<span class="fc" id="L152">		cc.setNumeroCC(codiceCarta);</span>
-<span class="fc" id="L153">		return cDao.popolaDati(cc);</span>
+<span class="fc" id="L153">		cc=new CartaDiCredito();</span>
+<span class="fc" id="L154">		cc.setNumeroCC(codiceCarta);</span>
+<span class="fc" id="L155">		return cDao.popolaDati(cc);</span>
 	}
 
 	public void pagamentoCC(String nome) throws SQLException
 	{
 		Pagamento p;
-<span class="fc" id="L159">		p=new Pagamento(0,&quot;cartaCredito&quot;, 0,nome,0, null);</span>
+<span class="fc" id="L161">		p=new Pagamento(0,&quot;cartaCredito&quot;, 0,nome,0, null);</span>
 			
 		//inserire qui
-<span class="fc" id="L162">		p.setMetodo(&quot;cCredito&quot;);</span>
-<span class="fc" id="L163">		p.setNomeUtente(nome);</span>
-<span class="fc" id="L164">		String tipo=vis.getType();</span>
-<span class="fc bfc" id="L165" title="All 2 branches covered.">		if(tipo.equals(&quot;libro&quot;))</span>
+<span class="fc" id="L164">		p.setMetodo(&quot;cCredito&quot;);</span>
+<span class="fc" id="L165">		p.setNomeUtente(nome);</span>
+<span class="fc" id="L166">		String tipo=vis.getType();</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">		if(tipo.equals(&quot;libro&quot;))</span>
 		{
 			//prenod spesa da vis
-<span class="fc" id="L168">			l.setId(vis.getId());</span>
-<span class="fc" id="L169">			p.setAmmontare(vis.getSpesaT());</span>
-<span class="fc" id="L170">			p.setId(l.getId());</span>
-<span class="fc" id="L171">			p.setTipo(lD.retTip(l));</span>
-<span class="fc" id="L172">			lD.aggiornaDisponibilita(l);</span>
+<span class="fc" id="L170">			l.setId(vis.getId());</span>
+<span class="fc" id="L171">			p.setAmmontare(vis.getSpesaT());</span>
+<span class="fc" id="L172">			p.setId(l.getId());</span>
+<span class="fc" id="L173">			p.setTipo(lD.retTip(l));</span>
+<span class="fc" id="L174">			lD.aggiornaDisponibilita(l);</span>
 		}
-<span class="fc bfc" id="L174" title="All 2 branches covered.">		if(tipo.equals(&quot;giornale&quot;))</span>
+<span class="fc bfc" id="L176" title="All 2 branches covered.">		if(tipo.equals(&quot;giornale&quot;))</span>
 		{
 			//prenod spesa da vis
-<span class="fc" id="L177">			g.setId(vis.getId());</span>
-<span class="fc" id="L178">			p.setAmmontare(vis.getSpesaT());</span>
-<span class="fc" id="L179">			p.setId(g.getId());</span>
-<span class="fc" id="L180">			p.setTipo(gD.retTip(g));</span>
-<span class="fc" id="L181">			gD.aggiornaDisponibilita(g);</span>
+<span class="fc" id="L179">			g.setId(vis.getId());</span>
+<span class="fc" id="L180">			p.setAmmontare(vis.getSpesaT());</span>
+<span class="fc" id="L181">			p.setId(g.getId());</span>
+<span class="fc" id="L182">			p.setTipo(gD.retTip(g));</span>
+<span class="fc" id="L183">			gD.aggiornaDisponibilita(g);</span>
 		}
-<span class="fc bfc" id="L183" title="All 2 branches covered.">		if(tipo.equals(&quot;rivista&quot;))</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">		if(tipo.equals(&quot;rivista&quot;))</span>
 		{
 			//prenod spesa da vis
-<span class="fc" id="L186">			r.setId(vis.getId());</span>
-<span class="fc" id="L187">			p.setAmmontare(vis.getSpesaT());</span>
-<span class="fc" id="L188">			p.setId(r.getId());</span>
-<span class="fc" id="L189">			p.setTipo(rD.retTip(r));</span>
-<span class="fc" id="L190">			rD.aggiornaDisponibilita(r);</span>
+<span class="fc" id="L188">			r.setId(vis.getId());</span>
+<span class="fc" id="L189">			p.setAmmontare(vis.getSpesaT());</span>
+<span class="fc" id="L190">			p.setId(r.getId());</span>
+<span class="fc" id="L191">			p.setTipo(rD.retTip(r));</span>
+<span class="fc" id="L192">			rD.aggiornaDisponibilita(r);</span>
 			
 		}
 		
@@ -196,9 +198,10 @@ public class ControllerPagamentoCC {
 		//ammontare,acquisto,idProd
 		//settare in p
 		
-<span class="fc" id="L199">		Log.LOGGER.log(Level.INFO,&quot;metodo {0}.&quot;,p.getAmmontare()+ p.getTipo()+p.getId());</span>
-<span class="fc" id="L200">		pDao.inserisciPagamento(p);</span>
-<span class="fc" id="L201">	}</span>
+<span class="fc" id="L201">		java.util.logging.Logger.getLogger(&quot;Pagamento effettuato&quot;).log(Level.INFO, &quot;info {0}&quot;,p.getAmmontare()+p.getTipo()+p.getId());</span>
+
+<span class="fc" id="L203">		pDao.inserisciPagamento(p);</span>
+<span class="fc" id="L204">	}</span>
 	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

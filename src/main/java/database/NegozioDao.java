@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import java.util.logging.Level;
 
-import model.Log;
 import model.Negozio;
 import utilities.ConnToDb;
 import javafx.collections.FXCollections;
@@ -42,7 +41,7 @@ public class NegozioDao {
 				}
 			 }catch(SQLException e)
 			 {
-				 Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 			 }
 		
 		return listOfNegozi;
@@ -64,7 +63,7 @@ public class NegozioDao {
 					prepQ.executeUpdate();
 				}catch(SQLException e)
 				{
-					Log.LOGGER.log(Level.SEVERE,eccezione,e.getCause());
+					java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 				}
 					
 			
@@ -113,7 +112,7 @@ public class NegozioDao {
 			}
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 			 
 			
@@ -145,7 +144,7 @@ public class NegozioDao {
 			
 		}catch(SQLException e)
 		{
-			Log.LOGGER.log(Level.SEVERE,eccezione,e.getMessage());
+			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
 		}
 			
 		return state;

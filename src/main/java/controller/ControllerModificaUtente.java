@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 
 import database.UsersDao;
-import model.Log;
 import model.User;
 
 public class ControllerModificaUtente {
@@ -16,7 +15,8 @@ public class ControllerModificaUtente {
 
 	public ControllerModificaUtente()
 	{
-		Log.LOGGER.log(Level.INFO,"ControllerModifUtente");
+		java.util.logging.Logger.getLogger("Test Costruttore").log(Level.INFO,"Costruttore ControllerModificaUtente");
+
 		uT=User.getInstance();
 	}
 
