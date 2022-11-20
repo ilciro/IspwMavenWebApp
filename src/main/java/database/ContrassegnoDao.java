@@ -35,7 +35,7 @@ public class ContrassegnoDao {
  			 
  		}catch(SQLException e)
  		{
- 			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+ 			java.util.logging.Logger.getLogger("insert fattura").log(Level.INFO, eccezione, e);
  		}
        
 		 
@@ -52,11 +52,11 @@ public class ContrassegnoDao {
 			{
 				prepQ.setInt(1,0);
 
-				prepQ.executeUpdate();
+				prepQ.execute();
 
 			}catch(SQLException e)
 			{
-				java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+				java.util.logging.Logger.getLogger("dai privilegi").log(Level.INFO, eccezione, e);
 			}
 
 		}

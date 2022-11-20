@@ -52,7 +52,7 @@ public class LibroDao  {
 			}
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("costo libro").log(Level.INFO, ECCEZIONE, e);
 		}
 		return prezzo;
 
@@ -79,7 +79,7 @@ public class LibroDao  {
 			prepQ.executeUpdate();
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("aggiorna disp l").log(Level.INFO, ECCEZIONE, e);
 		}
 		
 
@@ -96,11 +96,12 @@ public class LibroDao  {
 			prepQ.setInt(1,0);
 
 
-			prepQ.executeUpdate();
+			prepQ.execute();
+
 
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("dai privilegi").log(Level.INFO, ECCEZIONE, e);
 		}
 			
 
@@ -129,7 +130,7 @@ public class LibroDao  {
 		}
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("get libri").log(Level.INFO, ECCEZIONE, e);
 		}
 		
 
@@ -160,7 +161,7 @@ public class LibroDao  {
 		
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("get libri by name").log(Level.INFO, ECCEZIONE, e);
 		}
 		
 		
@@ -189,7 +190,7 @@ public class LibroDao  {
 		}
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("get libro").log(Level.INFO, ECCEZIONE, e);
 		}
 		
 		return l;
@@ -216,7 +217,7 @@ public class LibroDao  {
 			}
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("ret id libro").log(Level.INFO, ECCEZIONE, e);
 		}
 		return id;
 
@@ -244,7 +245,7 @@ public class LibroDao  {
 			}
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("tipo l").log(Level.INFO, ECCEZIONE, e);
 		}
 		return categoria;
 
@@ -271,7 +272,7 @@ public class LibroDao  {
 			prepQ.executeUpdate();
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("aggiorna copie vendute").log(Level.INFO, ECCEZIONE, e);
 		}
 		
 
@@ -323,7 +324,7 @@ public class LibroDao  {
 				state= true; // true	
 				}catch(SQLException e)
 				{
-								java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+						java.util.logging.Logger.getLogger("crea libro").log(Level.INFO, ECCEZIONE, e);
 				}
 			
 			
@@ -349,7 +350,7 @@ public class LibroDao  {
 
 			}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("quantita l").log(Level.INFO, ECCEZIONE, e);
 		}
 			
 		
@@ -387,7 +388,7 @@ public class LibroDao  {
 				}
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("disponibilita l").log(Level.INFO, ECCEZIONE, e);
 		}
 				
 
@@ -412,7 +413,7 @@ public class LibroDao  {
 		}
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("nome l").log(Level.INFO, ECCEZIONE, e);
 		}
 		return name;
 	}
@@ -439,7 +440,7 @@ public class LibroDao  {
 		}
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+			java.util.logging.Logger.getLogger("libro singolo").log(Level.INFO, ECCEZIONE, e);
 		}
 		
 		java.util.logging.Logger.getLogger("Catalogo").log(Level.INFO, "ctalogo {0}",catalogo);
@@ -490,7 +491,7 @@ public class LibroDao  {
 
 		}catch(SQLException e)
 		{
-						java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, ECCEZIONE, e);
+						java.util.logging.Logger.getLogger("libro by id").log(Level.INFO, ECCEZIONE, e);
 		}
 		java.util.logging.Logger.getLogger("catalogo").log(Level.INFO,"catalogo trovato");
 

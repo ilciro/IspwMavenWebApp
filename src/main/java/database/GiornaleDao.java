@@ -136,7 +136,8 @@ public class GiornaleDao {
 				prepQ.setInt(1,0);
 
 
-				prepQ.executeUpdate();
+				prepQ.execute();
+
 
 			}catch(SQLException e)
 			{

@@ -41,7 +41,7 @@ public class NegozioDao {
 				}
 			 }catch(SQLException e)
 			 {
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("get negozi").log(Level.INFO, eccezione, e);
 			 }
 		
 		return listOfNegozi;
@@ -63,7 +63,7 @@ public class NegozioDao {
 					prepQ.executeUpdate();
 				}catch(SQLException e)
 				{
-					java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+					java.util.logging.Logger.getLogger("set open").log(Level.INFO, eccezione, e);
 				}
 					
 			

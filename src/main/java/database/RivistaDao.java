@@ -94,7 +94,7 @@ public class RivistaDao {
          }
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("get costo").log(Level.INFO, eccezione, e);
 		}
 		
 		
@@ -121,7 +121,7 @@ public class RivistaDao {
 			prepQ.executeUpdate();
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("aggiorna disp").log(Level.INFO, eccezione, e);
 		}
 		
 		
@@ -139,11 +139,11 @@ public class RivistaDao {
 
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("dai privilegi").log(Level.INFO, eccezione, e);
 		}
 
 		
-		java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, "rivistaDao dai privilegi");
+		java.util.logging.Logger.getLogger("privilegi").log(Level.INFO, "rivistaDao dai privilegi");
 		
 
 	}
@@ -173,7 +173,7 @@ public class RivistaDao {
             }
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("elenco riviste").log(Level.INFO, eccezione, e);
 		}
 		return catalogo;
 		
@@ -208,7 +208,7 @@ public class RivistaDao {
             }
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("rivista by name").log(Level.INFO, eccezione, e);
 		}
 		return catalogo;
 		 
@@ -234,7 +234,7 @@ public class RivistaDao {
         }
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("rivista by id").log(Level.INFO, eccezione, e);
 		}
              return r;
 	}
@@ -258,7 +258,7 @@ public class RivistaDao {
          }
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("rivista by titolo").log(Level.INFO, eccezione, e);
 		}
 		return id;
 
@@ -282,7 +282,7 @@ public class RivistaDao {
 	         }
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("rivista titolo/id").log(Level.INFO, eccezione, e);
 		}
 		return categoria;
 
@@ -304,7 +304,7 @@ public class RivistaDao {
 	        }
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("nome rivista").log(Level.INFO, eccezione, e);
 		}
         	
         return name;
@@ -332,7 +332,7 @@ public class RivistaDao {
 				}
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("disp r").log(Level.INFO, eccezione, e);
 		}
 			
 		
@@ -357,7 +357,7 @@ public class RivistaDao {
 			
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("quantita r").log(Level.INFO, eccezione, e);
 		}
 
 		return q;
@@ -384,14 +384,14 @@ public class RivistaDao {
 					state=true;
 				else
 				{
-					java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, new IdException("id non trovato"));
+					java.util.logging.Logger.getLogger("check disp").log(Level.INFO, eccezione, new IdException("id non trovato"));
 					
 				
 				}
 			}
 			}catch(SQLException e)
 			{
-				java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+				java.util.logging.Logger.getLogger("disp ecc").log(Level.INFO, eccezione, e);
 			}
 			
 	 	return state;
@@ -416,7 +416,7 @@ public class RivistaDao {
         }
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("rivista singola").log(Level.INFO, eccezione, e);
 		}
              return catalogo;
              
@@ -461,7 +461,7 @@ public class RivistaDao {
 				}catch(SQLException e)
 				{
 					state=false;
-					java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+					java.util.logging.Logger.getLogger("crea rivista").log(Level.INFO, eccezione, e);
 				}
 			
 		
@@ -483,9 +483,9 @@ public class RivistaDao {
 			 row=prepQ.executeUpdate();
 		 }catch(SQLException e)
 		 {
-			 java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			 java.util.logging.Logger.getLogger("cancella r").log(Level.INFO, eccezione, e);
 		 }
-		 java.util.logging.Logger.getLogger("Test Cancella").log(Level.INFO, "row delected{0}",row);
+		 java.util.logging.Logger.getLogger("rivista cancellata").log(Level.INFO, "row delected{0}",row);
 
 	}
 
@@ -508,7 +508,7 @@ public class RivistaDao {
             }
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("rivista by id").log(Level.INFO, eccezione, e);
 		}
 		
 		return catalogo;
@@ -555,7 +555,7 @@ public class RivistaDao {
 			rowAffected = prepQ.executeUpdate();
 		 	}catch(SQLException e)
 		 	{
-		 		java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+		 		java.util.logging.Logger.getLogger("aggiorna rivista").log(Level.INFO, eccezione, e);
 		 	}
 		 	java.util.logging.Logger.getLogger("Aggiorno").log(Level.INFO,"rows afffected{0}",rowAffected);
 	 }	

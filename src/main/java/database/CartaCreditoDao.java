@@ -63,7 +63,8 @@ public class CartaCreditoDao {
 				PreparedStatement prepQ=conn.prepareStatement(query);)
 		{
 			prepQ.setString(1, "0");
-			prepQ.executeQuery();
+			prepQ.execute();
+
 		}catch(SQLException e)
 		{
 						java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);

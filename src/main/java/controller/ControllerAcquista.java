@@ -150,7 +150,7 @@ public class ControllerAcquista {
 		
 		if(rimanenza-i<0)
 		 {
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, stringaErrore,new IdException(erroreId));
+			java.util.logging.Logger.getLogger("get tipo R").log(Level.INFO, stringaErrore,new IdException(erroreId));
 
 
 		}

@@ -46,7 +46,7 @@ public class PagamentoDao {
 			prepQ.executeUpdate();
 		}catch(SQLException e)
 		{
-						java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+						java.util.logging.Logger.getLogger("insert pagamento").log(Level.INFO, eccezione, e);
 		}
 		
 		
@@ -66,7 +66,7 @@ public class PagamentoDao {
 
 		}catch(SQLException e)
 		{
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+			java.util.logging.Logger.getLogger("dai pribvilegi").log(Level.INFO, eccezione, e);
 		}
 
 
@@ -89,7 +89,7 @@ public class PagamentoDao {
 			}
 			}catch(SQLException e)
 			{
-							java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+							java.util.logging.Logger.getLogger("lista pagamenti").log(Level.INFO, eccezione, e);
 			}
 		
 		return catalogo;
@@ -113,7 +113,7 @@ public class PagamentoDao {
 			}
 		}catch(SQLException e)
 		{
-						java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+						java.util.logging.Logger.getLogger("ultimo ordine").log(Level.INFO, eccezione, e);
 		}
 				
 		return id;
@@ -135,7 +135,7 @@ public class PagamentoDao {
 				state=true;
 		}catch(SQLException e)
 		{
-						java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, eccezione, e);
+						java.util.logging.Logger.getLogger("annulla ordine").log(Level.INFO, eccezione, e);
 		}
 			
 			return state;
