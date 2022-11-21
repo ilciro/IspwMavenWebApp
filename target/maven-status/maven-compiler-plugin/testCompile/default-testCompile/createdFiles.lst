@@ -16,6 +16,7 @@ test\TestControllerPassword.class
 test\TestControllerHPALSE.class
 test\TestControllerReportRaccolta.class
 test\TestFactory.class
+test\TestGiornaleDao.class
 test\TestControllerRegistraUtente.class
 test\TestNegozio.class
 test\TestControllerHPAL.class

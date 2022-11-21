@@ -49,7 +49,7 @@ class TestTempUser {
 
 	@Test
 	void testGetDescrizione() {
-		assertNotNull(tu.getDescrizione());
+		assertNotEquals("",tu.getDescrizione());
 	}
 
 	@Test

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: test.TestCartaCredito
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.712 s - in test.TestCartaCredito
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.717 s - in test.TestCartaCredito

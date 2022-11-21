@@ -34,7 +34,7 @@ class TestControllerAcquista {
 
 	@Test
 	void testTotaleG() throws SQLException {
-		g.setTitolo("La Republica");
+		g.setTitolo("La Republica1");
 		vis.setId(3);
 		g.setCopieRimanenti(50);
 		vis.setQuantita(3);
@@ -104,6 +104,7 @@ class TestControllerAcquista {
 	{
 		vis.setTypeAsDaily();
 		g.setId(1);
+		vis.setId(g.getId());
 		assertNotEquals(0,cA.getCosto());
 	}
 	@Test 
@@ -111,7 +112,7 @@ class TestControllerAcquista {
 	{
 		vis.setTypeAsMagazine();
 		r.setId(1);
-		assertEquals(2,cA.getCosto());
+		assertEquals(5,cA.getCosto());
 	}
 
 }

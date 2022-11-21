@@ -233,7 +233,7 @@ public class GiornaleDao {
 
 	public  String getNome(Giornale g) throws SQLException  
 	{
-		String name = null;
+		String name = "";
 		query="select titolo from giornale where id=?";
 		try(Connection conn=ConnToDb.generalConnection();
 				PreparedStatement prepQ=conn.prepareStatement(query);)
@@ -267,10 +267,8 @@ public class GiornaleDao {
 				{
 				
 				disp = rs.getInt(1);
-				if (disp >= 1)
-					disp=1;
-				else if (disp == 0)
-					disp= 0;
+				
+				
 			}
 		}catch(SQLException e) {
 			java.util.logging.Logger.getLogger("get disp g").log(Level.INFO, eccezione, e);

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import database.UsersDao;
@@ -14,7 +15,7 @@ class TestDaoUser {
 	private TempUser tu=TempUser.getInstance();
 	
 
-	@Test
+	@BeforeAll
 	void testCreateUser2() throws SQLException {
 		tu.setIdRuolo("E");
 		tu.setNome("tempUser nome");

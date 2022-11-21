@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: test.TestControllerDownload
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.36 s - in test.TestControllerDownload
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.303 s - in test.TestControllerDownload
