@@ -124,7 +124,7 @@ public class NegozioDao {
 	//controllo se il negozio fa PickUP
 	public boolean checkRitiro(Negozio shop) throws SQLException
 	{
-		query="select isValid form negozio where nome=?";
+		query="select isValid from negozio where nome=?";
 		boolean state=false;
 		int disp;
 		

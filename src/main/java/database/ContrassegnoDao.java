@@ -52,7 +52,7 @@ public class ContrassegnoDao {
 			{
 				prepQ.setInt(1,0);
 
-				prepQ.execute();
+				prepQ.executeUpdate();
 
 			}catch(SQLException e)
 			{

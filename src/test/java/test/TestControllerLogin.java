@@ -15,12 +15,12 @@ class TestControllerLogin {
 	@Test
 	void testControlla() throws SQLException {
 		
-		assertTrue(cL.controlla("baoPublishing@gmail.com", "BaoPub2021"));
+		assertTrue(cL.controlla("zerocalcare@gmail.com", "Zerocalcare21"));
 	}
 
 	@Test
 	void testGetRuoloTempUSer() throws SQLException  {
-			assertEquals("E",cL.getRuoloTempUSer("BaoPublishing@gmail.com"));
+			assertEquals("W",cL.getRuoloTempUSer("zerocalcare@gmail.com"));
 	}
 
 }

@@ -6,7 +6,7 @@ IspwMavenWebApp Maven Webapp,controller,ControllerReportRaccolta,0,9,0,0,0,3,0,3
 IspwMavenWebApp Maven Webapp,controller,ControllerAcquista,152,307,7,17,30,74,14,16,10,8
 IspwMavenWebApp Maven Webapp,controller,ControllerModifPage,0,251,0,0,0,52,0,7,0,7
 IspwMavenWebApp Maven Webapp,controller,ControllerScegliNegozio,7,26,0,0,3,8,2,3,2,3
-IspwMavenWebApp Maven Webapp,controller,ControllerPassword,11,44,5,3,1,11,4,2,0,2
+IspwMavenWebApp Maven Webapp,controller,ControllerPassword,4,51,5,3,0,12,4,2,0,2
 IspwMavenWebApp Maven Webapp,controller,ControllerRicercaPerTipo,0,52,3,3,0,16,3,4,0,4
 IspwMavenWebApp Maven Webapp,controller,ControllerGestionePage,27,90,7,5,8,21,5,7,1,5
 IspwMavenWebApp Maven Webapp,controller,ControllerHomePageAfterLogin,0,54,0,2,0,16,0,3,0,2
@@ -25,13 +25,13 @@ IspwMavenWebApp Maven Webapp,controller,ControllerPagamentoCash,0,197,0,6,0,43,0
 IspwMavenWebApp Maven Webapp,controller,ControllerRicercaPage,3,55,0,6,1,14,1,5,1,2
 IspwMavenWebApp Maven Webapp,controller,ControllerReportPage,0,32,0,0,0,13,0,5,0,5
 IspwMavenWebApp Maven Webapp,database,RivistaDao,286,937,10,24,68,223,8,31,2,20
-IspwMavenWebApp Maven Webapp,database,NegozioDao,48,154,7,3,15,45,4,8,0,7
+IspwMavenWebApp Maven Webapp,database,NegozioDao,48,154,6,4,14,46,4,8,0,7
 IspwMavenWebApp Maven Webapp,database,LibroDao,185,1030,3,23,55,218,4,30,2,19
 IspwMavenWebApp Maven Webapp,database,ContrassegnoDao,28,124,0,4,8,41,0,8,0,6
-IspwMavenWebApp Maven Webapp,database,UsersDao,280,789,10,12,82,237,14,26,7,22
-IspwMavenWebApp Maven Webapp,database,GiornaleDao,275,899,11,23,79,204,9,30,3,19
+IspwMavenWebApp Maven Webapp,database,UsersDao,347,795,12,16,102,240,15,27,5,23
+IspwMavenWebApp Maven Webapp,database,GiornaleDao,212,899,9,23,61,204,7,30,2,19
 IspwMavenWebApp Maven Webapp,database,PagamentoDao,60,156,2,4,11,51,2,8,0,7
-IspwMavenWebApp Maven Webapp,database,CartaCreditoDao,18,185,0,4,6,50,0,8,0,6
+IspwMavenWebApp Maven Webapp,database,CartaCreditoDao,21,182,0,4,6,50,0,8,0,6
 IspwMavenWebApp Maven Webapp,model,User.Ruoli,0,27,0,0,0,5,0,1,0,1
 IspwMavenWebApp Maven Webapp,model,CartaDiCredito,22,118,0,0,11,38,6,17,6,17
 IspwMavenWebApp Maven Webapp,model,User,10,110,0,10,1,43,1,25,1,17

@@ -104,7 +104,7 @@ public class ControllerAcquista {
 
 	public int getIdL(String text) throws SQLException {
 		l.setCodIsbn(text);
-		return lD.retId( l);
+		return lD.retId(l);
 		
 		
 	}

@@ -29,6 +29,7 @@ public class GiornaleDao {
 	private String categoria;
 	private int disp=0;
 	private int id=0;
+	
 
 	private boolean state=false;
 	private ControllerSystemState vis=ControllerSystemState.getIstance();
@@ -39,38 +40,6 @@ public class GiornaleDao {
 
 
 
-
-
-
-	public void getDesc(Giornale g) throws SQLException 
-	{	  
-		query="select * from giornale where titolo=?";
-		
-		try(Connection conn=ConnToDb.generalConnection();
-				PreparedStatement prepQ=conn.prepareStatement(query);)
-		{
-			prepQ.setString(1, g.getTitolo());
-			ResultSet rs=prepQ.executeQuery();
-			
-			while ( rs.next() ) {
-				rs.getString("titolo");
-				rs.getString("tipologia");
-				rs.getString("lingua");	       
-				rs.getString("editore");
-				rs.getDate("dataPubblicazione");	
-				rs.getInt("copiRim");	
-				rs.getInt("disp");
-
-				rs.getFloat("prezzo");
-
-
-			}
-		}catch(SQLException e)
-		{
-			java.util.logging.Logger.getLogger("get DescG").log(Level.INFO, eccezione, e);
-		}
-
-	}
 
 
 	public float getCosto(Giornale g) throws SQLException  
@@ -124,6 +93,30 @@ public class GiornaleDao {
 		
 		
 	}
+	
+	public  int retId(Giornale g) throws SQLException  {
+		query="select id from giornale where titolo=?";
+		
+		try(Connection conn=ConnToDb.generalConnection();
+				PreparedStatement prepQ=conn.prepareStatement(query);)
+		{
+			prepQ.setString(1, g.getTitolo());
+			ResultSet rs=prepQ.executeQuery();
+			while ( rs.next() ) {
+				id=rs.getInt("id");
+
+			}
+		}catch(SQLException e)
+		{
+			java.util.logging.Logger.getLogger("id girnoale").log(Level.INFO, eccezione, e);
+		}
+
+		return id;
+
+
+
+	}
+	
 
 	public   void daiPrivilegi() throws  SQLException 
 	{
@@ -136,7 +129,7 @@ public class GiornaleDao {
 				prepQ.setInt(1,0);
 
 
-				prepQ.execute();
+				prepQ.executeUpdate();
 
 
 			}catch(SQLException e)
@@ -212,28 +205,7 @@ public class GiornaleDao {
 		f=new Factory();
 	}
 
-	public  int retId(Giornale g) throws SQLException  {
-		query="select id from giornale where titolo=?";
-		
-		try(Connection conn=ConnToDb.generalConnection();
-				PreparedStatement prepQ=conn.prepareStatement(query);)
-		{
-			prepQ.setString(1, g.getTitolo());
-			ResultSet rs=prepQ.executeQuery();
-			while ( rs.next() ) {
-				id=rs.getInt("id");
 
-			}
-		}catch(SQLException e)
-		{
-			java.util.logging.Logger.getLogger("id girnoale").log(Level.INFO, eccezione, e);
-		}
-
-		return id;
-
-
-
-	}
 
 	public  String retTip(Giornale g) throws SQLException  {
 		

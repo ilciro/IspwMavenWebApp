@@ -15,7 +15,7 @@ class TestControllerPassword {
 
 	@Test
 	void testAggiornaPass() throws SQLException {
-		assertFalse(cP.aggiornaPass("baoPublishing@gmail.com","BaoPub2021","BaoPub2022"));
+		assertTrue(cP.aggiornaPass("baoPublishing@gmail.com","BaoPub2021","BaoPub2022"));
 	}
 
 }

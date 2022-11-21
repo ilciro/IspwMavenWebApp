@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.logging.Level;
 
@@ -19,14 +18,13 @@ import model.User;
 public class UsersDao {
 
 	
-	private static Statement st = null ;
+	
 	private static String query ;
-	private static ResultSet rs;
-	private static PreparedStatement prepQ = null;
-	private static Connection conn;
 	private static int max;
 	private static String r;
 	private static boolean state=false;
+	private static String eccezione="errore in mysql :";
+	private static int row=0;
 
 
 
@@ -37,30 +35,37 @@ public class UsersDao {
 	{
 		LocalDate d=u.getDataDiNascita();
 		
-			
-				conn = ConnToDb.generalConnection();
-				st=conn.createStatement();
+		query= "INSERT INTO `ispw`.`users`"
+				+ "(`Nome`,"
+				+ "`Cognome`,"
+				+ "`Email`,"
+				+ "`pwd`,"
+				+ "`DataDiNascita`)"
+				+ "VALUES"
+				+" "
+				+ "(?,?,?,?,?)";
+		
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
 				
-				query= "INSERT INTO `ispw`.`users`"
-						+ "(`Nome`,"
-						+ "`Cognome`,"
-						+ "`Email`,"
-						+ "`pwd`,"
-						+ "`DataDiNascita`)"
-						+ "VALUES"
-						+" "
-						+ "(?,?,?,?,?)";
-				prepQ = conn.prepareStatement(query);	
+			
 				prepQ.setString(1,User.getInstance().getNome()); 
 				prepQ.setString(2,User.getInstance().getCognome()); 
 				prepQ.setString(3,User.getInstance().getEmail());
 				prepQ.setString(4, User.getInstance().getPassword());
 				prepQ.setDate(5, java.sql.Date.valueOf(d));  
-				prepQ.executeUpdate();
-				state= true; 		 			 	
+				row=prepQ.executeUpdate();
+				if(row==1)
+					state= true;
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("createUser").log(Level.INFO, eccezione, e);
+
+			}
 			
 		
-		conn.close();
+		
 		return state;
 
 	}
@@ -71,21 +76,23 @@ public class UsersDao {
 	{
 
 		LocalDate d=uT.getDataDiNascita();
+		query= "INSERT INTO `ispw`.`users`"
+				+ "(`idRuolo`,"
+				+ "`Nome`,"
+				+ "`Cognome`,"
+				+ "`Email`,"
+				+ "`pwd`,"
+				+ "`descrizione`,"
+				+ "`DataDiNascita`)"
+				+ "VALUES (?,?,?,?,?,?,?)";
 		
+		try(Connection conn=ConnToDb.generalConnection();
+				PreparedStatement prepQ=conn.prepareStatement(query);)
 
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
+		{
 			
-			query= "INSERT INTO `ispw`.`users`"
-					+ "(`idRuolo`,"
-					+ "`Nome`,"
-					+ "`Cognome`,"
-					+ "`Email`,"
-					+ "`pwd`,"
-					+ "`descrizione`,"
-					+ "`DataDiNascita`)"
-					+ "VALUES (?,?,?,?,?,?,?)";
-			prepQ = conn.prepareStatement(query);	
+			
+			
 			prepQ.setString(1,uT.getIdRuolo().substring(0,1));
 			prepQ.setString(2,uT.getNome()); 
 			prepQ.setString(3,uT.getCognome()); 
@@ -96,14 +103,17 @@ public class UsersDao {
 			// vuole un oggetto di tipo data sql 
 			prepQ.setDate(7, java.sql.Date.valueOf(d)); 
 			//prepQ.setString(7,U.getInstance())
-			prepQ.executeUpdate();
+			row=prepQ.executeUpdate();
+			if(row==1)
+				state=true;
 
-			state= true; // true		 			 	
+		}catch(SQLException e)
+		{
+			java.util.logging.Logger.getLogger("create temp User").log(Level.INFO, eccezione, e);
 
+		}
 		
-		conn.close();
-		// errore
-
+		
 		return state;
 
 	}
@@ -116,29 +126,31 @@ public class UsersDao {
 		// ritorna int per motivi legati al controller
 		// anche se lo tratto come boolean
 		//levato pwd se no non aggiorna
-		String email = User.getInstance().getEmail();
 
 
-
-		
-
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
-			
-			query="SELECT idUser FROM ispw.users where Email = '"+email+"'";
-			rs = st.executeQuery(query);
-			while(rs.next())
+			query="SELECT idUser FROM ispw.users where Email =?";
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
+				
+			prepQ.setString(1, u.getEmail());
+			ResultSet rs = prepQ.executeQuery();
+			if(rs.next())
 			{
 				 int id=rs.getInt(1);
 				 if(id>0)
 					 status=1;	 			
 
 			}
-			java.util.logging.Logger.getLogger("Test Eccezione").log(Level.INFO, "idUser {0}",u.getEmail());
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("check user").log(Level.INFO, eccezione, e);
 
-		
+			}
+			
+			java.util.logging.Logger.getLogger("check user id").log(Level.INFO, "idUser {0}",u.getEmail());
 
-		conn.close();
+
 		return status ;
 	}
 
@@ -152,56 +164,57 @@ public class UsersDao {
 		
 		int idUser=0;
 		
-		query="SELECT idRuolo FROM ispw.users where Email = '"+email+"'";
-			conn = ConnToDb.generalConnection();
-			prepQ=conn.prepareStatement(query);
-
-			
-			rs = prepQ.executeQuery();
-			if(rs.next())
+		query="SELECT idRuolo FROM ispw.users where Email = ?";
+			try(Connection conn = ConnToDb.generalConnection();
+			PreparedStatement prepQ=conn.prepareStatement(query))
 			{
-			idUser=rs.getInt("idUser");		
-				if(idUser!=0)
-					status=1; // true
-				
-				// account al ready exists
+				prepQ.setString(1,email);
+			
+				ResultSet rs = prepQ.executeQuery();
+				if(rs.next())
+				{
+				idUser=rs.getInt("idUser");		
+					if(idUser!=0)
+						status=1; // true
+					
+					// account al ready exists
+				}
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("check temp user").log(Level.INFO, eccezione, e);
+
 			}
 			
-
-		conn.close();
 		return status;
 	}
 
 	public static String getRuolo (User u) throws SQLException
 	{
 
-		String email = u.getEmail();
 		
 
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
 			
-			query="SELECT idRuolo FROM ispw.users where Email = '"+email+"'";
-			rs = st.executeQuery(query);
-			while(rs.next())
+			
+			query="SELECT idRuolo FROM ispw.users where Email = ?";
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
 			{
-				r =rs.getString(1);
-				User.getInstance().setIdRuolo(r);
+				prepQ.setString(1, u.getEmail());
+			
+				ResultSet rs = prepQ.executeQuery();
+				while(rs.next())
+				{
+					r =rs.getString(1);
+	
+				}
+			
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("get ruolo user").log(Level.INFO, eccezione, e);
 
 			}
-			
-
+		u.setIdRuolo(r);
 		
-		
-		// errore
-		
-			
-				conn.close();
-		
-
-			
-		
-
 		return r;
 
 	}
@@ -210,25 +223,30 @@ public class UsersDao {
 	public static boolean checkResetpass (User u, String pwd,String email ) throws SQLException
 	{
 
-		int row =0;
+				query="Update ispw.users SET pwd = ?  where Email = ?";
+				try(Connection conn=ConnToDb.generalConnection();
+						PreparedStatement prepQ=conn.prepareStatement(query);)
+				{
 		
-			conn = ConnToDb.generalConnection();
-			query="Update ispw.users SET pwd = ?  where Email = '"+email+"'";
-
 			
-			prepQ=conn.prepareStatement(query);
 			prepQ.setString(1,pwd);
+			prepQ.setString(2,email);
 			row=prepQ.executeUpdate();			
 			if(row==1)
 				state= true;
 			
-		conn.close();
-		// errore
+				}catch(SQLException e)
+				{
+					java.util.logging.Logger.getLogger("check reset pwd").log(Level.INFO, eccezione, e);
+
+				}
+		
+		
 		java.util.logging.Logger.getLogger("Reset pwd").log(Level.INFO, "row affected{0}",u.getEmail());
 		return state ;
 	}
 
-	//
+	
 	public static TempUser findUser(TempUser u)
 	{
 		r = TempUser.getInstance().getIdRuolo();
@@ -243,26 +261,28 @@ public class UsersDao {
 	{
 		String email = user.getEmail();
 		String ruolo=user.getIdRuolo();
-		int row=0;
+		query="DELETE FROM ispw.users WHERE Email = ?";
+		try(Connection conn=ConnToDb.generalConnection();
+				PreparedStatement prepQ=conn.prepareStatement(query);)
+		{
 		
 		
 		
 			
-				conn = ConnToDb.generalConnection();
-				
-				query="DELETE FROM ispw.users WHERE Email = ?";
-				prepQ=conn.prepareStatement(query);
 				prepQ.setString(1,email);
 				row=prepQ.executeUpdate();
 				if(row==1)
 					state= true;
 
-							
+		}catch(SQLException e)
+		{
+			java.util.logging.Logger.getLogger("delete user").log(Level.INFO, eccezione, e);
+
+		}
 			
 
 		
-				conn.close();
-			java.util.logging.Logger.getLogger("Test Cance").log(Level.INFO,"cancello user ruolo{0}",ruolo);
+			java.util.logging.Logger.getLogger("delete user ruolo").log(Level.INFO,"cancello user ruolo{0}",ruolo);
 
 
 		
@@ -275,19 +295,25 @@ public class UsersDao {
 		String email = uT.getEmail();
 		
 
-			conn = ConnToDb.generalConnection();
+		
 			
 			query="DELETE FROM ispw.users WHERE Email = ?";
-			prepQ=conn.prepareStatement(query);
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
+			
 			prepQ.setString(1,email);
-			prepQ.executeUpdate();
-			java.util.logging.Logger.getLogger("delete temp user").log(Level.INFO,"\n ruolo {0}",uT.getIdRuolo());
+			row=prepQ.executeUpdate();
+			if(row==1)
+				state=true;
+			
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("delete user").log(Level.INFO, eccezione, e);
 
-			state= true;
+			}
+			java.util.logging.Logger.getLogger("delete user okr").log(Level.INFO, "user deleted ");
 
-
-
-		conn.close();
 		return state ;
 	}
 
@@ -296,18 +322,15 @@ public class UsersDao {
 	// e poi il controller lo specializza nelle 4 classi 
 	public static User pickData(User u) throws SQLException
 	{
-		String email = u.getEmail();
 		
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
-			query="SELECT `idRuolo`,"
-					+ "    `Nome`,"
-					+ "    `Cognome`,"
-					+ "    `Email`,"
-					+ "    `descrizione`,"
-					+ "    `DataDiNascita` "
-					+ "FROM users where Email = '"+email+"' ;";
-			rs = st.executeQuery(query);
+		
+			query="SELECT idRuolo,nome,cognome,Email,descrizione,dataDiNascita from ispw.users where Email=?";
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
+				prepQ.setString(1, u.getEmail());
+			
+			ResultSet rs = prepQ.executeQuery();
 			while(rs.next())
 			{
 				// setto i vari dati 
@@ -321,12 +344,15 @@ public class UsersDao {
 
 
 			}
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("pick data ").log(Level.INFO, eccezione, e);
+
+			}
+
+			java.util.logging.Logger.getLogger("pick user data email").log(Level.INFO, eccezione, u.getEmail());
 
 
-
-	
-		
-				conn.close();
 			
 		
 		// errore
@@ -335,53 +361,58 @@ public class UsersDao {
 
 	public static User aggiornaNome(User u) throws SQLException
 	{
-		String email = User.getInstance().getEmail();
+		
 
 		
 
 
-
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
 			
-			query="UPDATE ispw.users set Nome=? where Email='"+email+"'";
+			query="UPDATE ispw.users set Nome=? where Email=?";
+			
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
+				prepQ.setString(1, u.getNome());
+				prepQ.setString(2, u.getEmail());
+				prepQ.executeUpdate();
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiorna nome user").log(Level.INFO, eccezione, e);
+
+			}
 
 
 
-			prepQ = conn.prepareStatement(query);
-
-			prepQ.setString(1,User.getInstance().getNome() );
-			prepQ.executeUpdate();  		 		
-
-
-
-		conn.close();
-		// errore
 		return u;
 	}
 
 	public static User aggiornaCognome(User u) throws SQLException
 	{
-		String email = User.getInstance().getEmail();
-
+		
 		
 
 
 
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
 			
-			query="UPDATE ispw.users set Cognome=? where Email='"+email+"'";
+			
+			query="UPDATE ispw.users set Cognome=? where Email=?";
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
 
 
 
-			prepQ = conn.prepareStatement(query);
+			
 
-			prepQ.setString(1,User.getInstance().getCognome() );
+			prepQ.setString(1,u.getNome() );
+			prepQ.setString(2, u.getEmail());
 			prepQ.executeUpdate();  		 		
 
-			conn.close();	
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiorna cognome").log(Level.INFO, eccezione, e);
 
+			}
 
 		
 		// errore
@@ -390,210 +421,175 @@ public class UsersDao {
 
 	public static User aggiornaEmail(User u,String m) throws SQLException
 	{
-		String email = u.getEmail();
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
+		
 			
-			query="UPDATE ispw.users set Email=? where Email='"+email+"'";
+			query="UPDATE ispw.users set Email=? where Email=?";
 
 			u.setEmail(m);
+			
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
 
-			prepQ = conn.prepareStatement(query);
-
+			
 			prepQ.setString(1,u.getEmail() );
-			prepQ.executeUpdate();  		 		
+			prepQ.setString(2, u.getEmail());
+			prepQ.executeUpdate();  
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiorna email user").log(Level.INFO, eccezione, e);
 
+			}
 
-
-		
-		conn.close();
-		// errore
 		return u;
 	}
 
 	public static  User aggiornaPass(User u) throws SQLException {
 
-		String email = u.getEmail();
-
 		
 
 
 
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
 			
-			query="UPDATE ispw.users set pwd=? where Email='"+email+"'";
+			
+			query="UPDATE ispw.users set pwd=? where Email=?";
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
 
 
-			prepQ = conn.prepareStatement(query);
+			
 
 			prepQ.setString(1,u.getPassword());
-			prepQ.executeUpdate();  		 		
+			prepQ.setString(2, u.getEmail());
+			prepQ.executeUpdate();  	
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiornaPass").log(Level.INFO, eccezione, e);
+
+			}
 
 
-
-	
-			conn.close();
-		
-		// errore
 		return u;
 	}
 
 	public static User aggiornaDesc(User u) throws SQLException {
-		String email = u.getEmail();
-
-		
-
-
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
-			
-			query="UPDATE ispw.users set descrizione=? where Email='"+email+"'";
+					
+			query="UPDATE ispw.users set descrizione=? where Email=?";
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
 
 
-			prepQ = conn.prepareStatement(query);
 
 			prepQ.setString(1,u.getDescrizione());
+			prepQ.setString(2, u.getEmail());
 			prepQ.executeUpdate();  		 		
 
 
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiorna desc").log(Level.INFO, eccezione, e);
 
-		
-				conn.close();
-			
+			}
 		return u;
 	}
 
+	
 	public static User aggiornaData(User u) throws SQLException {
-		String email = User.getInstance().getEmail();
-		LocalDate data=u.getDataDiNascita();
-
-
-
-
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
-			
-			query="UPDATE ispw.users set DataDiNascita=? where Email='"+email+"'";
-
-
-
-			prepQ = conn.prepareStatement(query);
-
-			prepQ.setString(1,data.toString());
-			prepQ.executeUpdate();  		 		
-
-
-
-
 		
-		
-				conn.close();
-			
-		
-		return u;
-	}
+			query="UPDATE ispw.users set DataDiNascita=? where Email=?";
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
+				prepQ.setString(1, u.getDataDiNascita().toString());
+				prepQ.setString(2, u.getEmail());
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiorna data user").log(Level.INFO, eccezione, e);
+				
+			}
+			return u;
+}
+	
 
 	// Per il terzo caso d'uso creo e uso sempre il temp user per appoggiarmi all'utente che modifico  e quindi 
 
 	public static TempUser aggiornaTempNome(TempUser uT) throws SQLException
 	{
-		String email = uT.getEmail();
-
 		
-
-
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
 			
-			query="UPDATE users set Nome=? where Email='"+email+"'";
-
-
-
-			prepQ = conn.prepareStatement(query);
+			query="UPDATE users set Nome=? where Email=?";
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
 
 			prepQ.setString(1,uT.getNome() );
+			prepQ.setString(2, uT.getEmail());
 			prepQ.executeUpdate();  		 		
 
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiorna temp nome").log(Level.INFO, eccezione, e);
 
-
-		
-		conn.close();
-		// errore
+			}
 		return uT;
 	}
 
 	public static TempUser aggiornaCognome(TempUser uT) throws SQLException
 	{
-		String email = uT.getEmail();
-
 		
-
-
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
 			
-			query="UPDATE ispw.users set Cognome=? where Email='"+email+"'";
+			query="UPDATE ispw.users set Cognome=? where Email=?";
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
+				prepQ.setString(1,uT.getCognome());
+				prepQ.setString(2, uT.getEmail());
+				prepQ.executeUpdate();
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiorna cognome tempUser").log(Level.INFO, eccezione, e);
 
-
-
-			prepQ = conn.prepareStatement(query);
-
-			prepQ.setString(1,uT.getCognome() );
-			prepQ.executeUpdate();  		 		
-
-
-
-
-		
-			conn.close();
-		// errore
-		return uT;
+			}
+	return uT;
 	}
 
 	public static TempUser aggiornaEmail(TempUser uT,String m) throws SQLException
 	{
-		String email = uT.getEmail();
+					query="UPDATE ispw.users set Email=? where Email=?";
 
-		
-
-
-
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
 			
-			query="UPDATE ispw.users set Email=? where Email='"+email+"'";
-
-			TempUser.getInstance().setEmail(m);
-
-			prepQ = conn.prepareStatement(query);
-
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
+				
+		
+		
 			prepQ.setString(1,uT.getEmail() );
-			prepQ.executeUpdate();  		 		
+			uT.setEmail(m);
+			prepQ.setString(2, uT.getEmail());
+			prepQ.executeUpdate();  
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiorna email temp user").log(Level.INFO, eccezione, e);
+
+			}
 
 
-
-		
-			conn.close();
-		
-		// errore
 		return uT;
 	}
 
 	public static TempUser aggiornaTempUtente(TempUser uT, String emailN) throws SQLException
 	{
-		String email = uT.getEmail();
-
 		
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
 			
-			query="UPDATE ispw.users set idRuolo=?,Nome=?,Cognome=?,Email=?,pwd=?,descrizione=?,DataDiNascita=? where Email='"+email+"'";
+			query="UPDATE ispw.users set idRuolo=?,Nome=?,Cognome=?,Email=?,pwd=?,descrizione=?,DataDiNascita=? where Email=?";
 
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
 			uT.setEmail(emailN);
-
-
-			prepQ = conn.prepareStatement(query);
 
 
 			// setto i vari dati 
@@ -604,101 +600,86 @@ public class UsersDao {
 			prepQ.setString(5, uT.getPassword());
 			prepQ.setString(6, uT.getDescrizione());
 			prepQ.setString(7, uT.getDataDiNascita().toString());
+			prepQ.setString(8, emailN);
 
 
 
 
 			prepQ.executeUpdate();
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiorna temp utente").log(Level.INFO, eccezione, e);
+
+			}
 
 
-
-
-
-
-		
-			conn.close();
-		
-		// errore
 		return uT;
 	}
 
 	public static TempUser aggiornaTempPass(TempUser uT) throws SQLException {
 
-		String email = uT.getEmail();
-
 		
-
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
 			
-			query="UPDATE ispw.users set pwd=? where Email='"+email+"'";
+			query="UPDATE ispw.users set pwd=? where Email=?";
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
 
 
-			prepQ = conn.prepareStatement(query);
+			
 
 			prepQ.setString(1,uT.getPassword());
+			prepQ.setString(2, uT.getEmail());
 			prepQ.executeUpdate();  		 		
 
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiorna pass temp user").log(Level.INFO, eccezione, e);
 
+			}
 
-
-		
-		
-			conn.close();
-		
-		// errore
 		return uT;
 	}
 
 	public static TempUser aggiornaTempDesc(TempUser uT) throws SQLException {
-		String email = uT.getEmail();
-
-		
-
-
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
-			
-			query="UPDATE ispw.users set descrizione=? where Email='"+email+"'";
+					
+			query="UPDATE ispw.users set descrizione=? where Email=?";
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
 
 
-			prepQ = conn.prepareStatement(query);
 
 			prepQ.setString(1,uT.getDescrizione());
+			prepQ.setString(2, uT.getEmail());
 			prepQ.executeUpdate();  		 		
 
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiorna email temp user").log(Level.INFO, eccezione, e);
+			}
 
-
-		
-				conn.close();
-			
-		// errore
 		return uT;
 	}
 
 	public static TempUser aggiornaTempData(TempUser uT) throws SQLException {
-		String email = uT.getEmail();
+		query="UPDATE ispw.users set DataDiNascita=? where Email=?";
 
-		
+		try(Connection conn=ConnToDb.generalConnection();
+				PreparedStatement prepQ=conn.prepareStatement(query);)
+		{
 
-
-
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
 			
-			query="UPDATE ispw.users set DataDiNascita=? where Email='"+email+"'";
-
-
-			prepQ = conn.prepareStatement(query);
 
 			prepQ.setString(1,uT.getDataDiNascita().toString());
+			prepQ.setString(2, uT.getEmail());
 			prepQ.executeUpdate();  		 		
 
+		}catch(SQLException e)
+		{
+			java.util.logging.Logger.getLogger("aggiorna data temp user").log(Level.INFO, eccezione, e);
 
-
-		
-			conn.close();
-		
+		}
 		// errore
 		return uT;
 	}
@@ -747,17 +728,16 @@ public class UsersDao {
 
 	public static TempUser getTempUserSingolo(TempUser uT) throws SQLException
 	{
-		int id=uT.getId();
-
-
-
-
-		conn = ConnToDb.generalConnection();
-		st=conn.createStatement();
 		
-		query="SELECT * FROM ispw.users where idUser = "+id+" ;";
+		
+		query="SELECT * FROM ispw.users where idUser = ?";
+		try(Connection conn=ConnToDb.generalConnection();
+				PreparedStatement prepQ=conn.prepareStatement(query);)
+		{
+			
+		prepQ.setInt(1, uT.getId());
 
-		rs = st.executeQuery(query);
+		ResultSet rs = prepQ.executeQuery(query);
 		while(rs.next())
 		{
 
@@ -771,6 +751,11 @@ public class UsersDao {
 
 
 		}
+		}catch(SQLException e)
+		{
+			java.util.logging.Logger.getLogger("get single temp user").log(Level.INFO, eccezione, e);
+
+		}
 
 		return uT;
 	}
@@ -778,17 +763,15 @@ public class UsersDao {
 	public static User aggiornaUtente(User u) throws SQLException
 	{
 
-		LocalDate d=u.getDataDiNascita();
-
 		
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
 			
-			query="UPDATE ispw.users set idRuolo=?,Nome=?,Cognome=?,Email=?,pwd=?,descrizione=?,DataDiNascita=? where idUser="+u.getId()+"";
+			query="UPDATE ispw.users set idRuolo=?,Nome=?,Cognome=?,Email=?,pwd=?,descrizione=?,DataDiNascita=? where idUser=?";
+
+			try(Connection conn=ConnToDb.generalConnection();
+					PreparedStatement prepQ=conn.prepareStatement(query);)
+			{
 
 
-
-			prepQ = conn.prepareStatement(query);
 
 			// setto i vari dati 
 			prepQ.setString(1,u.getIdRuolo().substring(0,1));
@@ -797,76 +780,44 @@ public class UsersDao {
 			prepQ.setString(4, u.getEmail());
 			prepQ.setString(5,u.getPassword());
 			prepQ.setString(6, u.getDescrizione());
-			prepQ.setString(7,d.toString());
-
+			prepQ.setString(7,u.getDataDiNascita().toString());
+			prepQ.setInt(8, u.getId());
 
 
 
 			prepQ.executeUpdate();
 
+			}catch(SQLException e)
+			{
+				java.util.logging.Logger.getLogger("aggiorna utente").log(Level.INFO, eccezione, e);
 
+			}
 
-
-
-
-
-		
-			conn.close();
-		
 		return u;
 	}
 
 	public static int maxIdUSer() throws SQLException
 	{
-		conn=ConnToDb.generalConnection();
-		st=conn.createStatement();
-		st.execute("select max(idUser) from ispw.users");
-		rs=st.getResultSet();
+		query="select max(idUser) as idMax from ispw.users";
+	
+		try(Connection conn=ConnToDb.generalConnection();
+				PreparedStatement prepQ=conn.prepareStatement(query);)
+		{
+		
+			ResultSet rs=prepQ.executeQuery();
 		if (rs.next())
 		{
-			max=rs.getInt(1);
+			max=rs.getInt("idMax");
+		}
+		}catch(SQLException e)
+		{
+			java.util.logging.Logger.getLogger("get max id user").log(Level.INFO, eccezione, e);
+
 		}
 		return max;
 	}
 
-	public static TempUser aggiornaUtenteTemp(TempUser uT) throws NullPointerException, SQLException
-	{
-		
-		//uso subsequence per prendere 1 lettera
-		
-
-
-
-			conn = ConnToDb.generalConnection();
-			st=conn.createStatement();
-			
-			query="UPDATE ispw.users set idRuolo=?,Nome=?,Cognome=?,Email=?,pwd=?,descrizione=?,DataDiNascita=? where idUser="+uT.getId()+"";
-
-
-
-			prepQ = conn.prepareStatement(query);
-
-			
-			prepQ.setString(1,(String) uT.getIdRuolo().subSequence(0, 1));
-			prepQ.setString(2,uT.getNome() );
-			prepQ.setString(3, uT.getCognome());
-			prepQ.setString(4, uT.getEmail());
-			prepQ.setString(5, uT.getPassword());
-			prepQ.setString(6, uT.getDescrizione());
-			prepQ.setString(7, uT.getDataDiNascita().toString());
-
-			prepQ.executeUpdate();
-
-
-
-
-
-		
-			conn.close();
-		
-		// errore
-		return uT;
-	}
+	
 	
 	private UsersDao()
 	{}

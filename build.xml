@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="IspwMavenWebApp">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../eclipse/jee-2022-09/eclipse/"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="11"/>
+    <property name="source" value="11"/>
+    <path id="Maven Dependencies.libraryclasspath">
+        <pathelement location="../../../.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.2/junit-jupiter-api-5.6.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar"/>
+        <pathelement location="../../../.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar"/>
+        <pathelement location="../../../.m2/repository/org/junit/platform/junit-platform-commons/1.6.2/junit-platform-commons-1.6.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.2/junit-jupiter-engine-5.6.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/junit/platform/junit-platform-engine/1.6.2/junit-platform-engine-1.6.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/junit/jupiter/junit-jupiter-params/5.6.2/junit-jupiter-params-5.6.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/openjfx/javafx-controls/11/javafx-controls-11-win.jar"/>
+        <pathelement location="../../../.m2/repository/org/openjfx/javafx-graphics/11/javafx-graphics-11.jar"/>
+        <pathelement location="../../../.m2/repository/org/openjfx/javafx-graphics/11/javafx-graphics-11-win.jar"/>
+        <pathelement location="../../../.m2/repository/org/openjfx/javafx-base/11/javafx-base-11.jar"/>
+        <pathelement location="../../../.m2/repository/org/openjfx/javafx-base/11/javafx-base-11-win.jar"/>
+        <pathelement location="../../../.m2/repository/org/openjfx/javafx-fxml/11/javafx-fxml-11.jar"/>
+        <pathelement location="../../../.m2/repository/org/openjfx/javafx-fxml/11/javafx-fxml-11-win.jar"/>
+        <pathelement location="../../../.m2/repository/org/openjfx/javafx-controls/11/javafx-controls-11.jar"/>
+        <pathelement location="../../../.m2/repository/com/mysql/mysql-connector-j/8.0.31/mysql-connector-j-8.0.31.jar"/>
+        <pathelement location="../../../.m2/repository/com/google/protobuf/protobuf-java/3.19.4/protobuf-java-3.19.4.jar"/>
+        <pathelement location="../../../.m2/repository/org/mybatis/mybatis/3.5.9/mybatis-3.5.9.jar"/>
+        <pathelement location="../../../.m2/repository/com/itextpdf/itextpdf/5.5.13.3/itextpdf-5.5.13.3.jar"/>
+        <pathelement location="../../../.m2/repository/org/jacoco/jacoco-maven-plugin/0.8.8/jacoco-maven-plugin-0.8.8.jar"/>
+        <pathelement location="../../../.m2/repository/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/maven/shared/maven-shared-io/1.1/maven-shared-io-1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/maven/maven-artifact/2.0.2/maven-artifact-2.0.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/maven/maven-artifact-manager/2.0.2/maven-artifact-manager-2.0.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/maven/maven-repository-metadata/2.0.2/maven-repository-metadata-2.0.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/maven/wagon/wagon-provider-api/1.0-alpha-6/wagon-provider-api-1.0-alpha-6.jar"/>
+        <pathelement location="../../../.m2/repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9/plexus-container-default-1.0-alpha-9.jar"/>
+        <pathelement location="../../../.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar"/>
+        <pathelement location="../../../.m2/repository/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.jar"/>
+        <pathelement location="../../../.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar"/>
+        <pathelement location="../../../.m2/repository/org/jacoco/org.jacoco.core/0.8.8/org.jacoco.core-0.8.8.jar"/>
+        <pathelement location="../../../.m2/repository/org/ow2/asm/asm/9.2/asm-9.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/ow2/asm/asm-commons/9.2/asm-commons-9.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/ow2/asm/asm-analysis/9.2/asm-analysis-9.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/ow2/asm/asm-tree/9.2/asm-tree-9.2.jar"/>
+        <pathelement location="../../../.m2/repository/org/jacoco/org.jacoco.report/0.8.8/org.jacoco.report-0.8.8.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/tomcat/tomcat-catalina/10.1.1/tomcat-catalina-10.1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/tomcat/tomcat-servlet-api/10.1.1/tomcat-servlet-api-10.1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/tomcat/tomcat-jsp-api/10.1.1/tomcat-jsp-api-10.1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/tomcat/tomcat-el-api/10.1.1/tomcat-el-api-10.1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/tomcat/tomcat-juli/10.1.1/tomcat-juli-10.1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/tomcat/tomcat-annotations-api/10.1.1/tomcat-annotations-api-10.1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/tomcat/tomcat-api/10.1.1/tomcat-api-10.1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/tomcat/tomcat-jni/10.1.1/tomcat-jni-10.1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/tomcat/tomcat-coyote/10.1.1/tomcat-coyote-10.1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/tomcat/tomcat-util/10.1.1/tomcat-util-10.1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/tomcat/tomcat-util-scan/10.1.1/tomcat-util-scan-10.1.1.jar"/>
+        <pathelement location="../../../.m2/repository/org/apache/tomcat/tomcat-jaspic-api/10.1.1/tomcat-jaspic-api-10.1.1.jar"/>
+        <pathelement location="../../../.m2/repository/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar"/>
+    </path>
+    <path id="IspwMavenWebApp.classpath">
+        <pathelement location="target/test-classes"/>
+        <pathelement location="target/classes"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.IspwMavenWebApp.classpath">
+        <path refid="IspwMavenWebApp.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.test (1).classpath">
+        <path refid="IspwMavenWebApp.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/test-classes"/>
+        <mkdir dir="target/classes"/>
+        <copy includeemptydirs="false" todir="target/test-classes">
+            <fileset dir="src/test/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/resources">
+                <exclude name="**/*.java"/>
+                <exclude name="**"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/test-classes"/>
+        <delete dir="target/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/test/java"/>
+            <classpath refid="IspwMavenWebApp.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/main/resources"/>
+            <src path="src/main/java"/>
+            <exclude name="**"/>
+            <classpath refid="IspwMavenWebApp.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="IspwMavenWebApp">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.IspwMavenWebApp.classpath"/>
+        </junit>
+    </target>
+    <target name="test (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.test (1).classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>

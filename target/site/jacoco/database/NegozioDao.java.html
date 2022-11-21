@@ -41,7 +41,7 @@ import javafx.collections.ObservableList;
 				}
 <span class="nc" id="L42">			 }catch(SQLException e)</span>
 			 {
-<span class="nc" id="L44">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L44">			java.util.logging.Logger.getLogger(&quot;get negozi&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L45">			 }</span>
 		
 <span class="fc" id="L47">		return listOfNegozi;</span>
@@ -63,7 +63,7 @@ import javafx.collections.ObservableList;
 <span class="fc" id="L63">					prepQ.executeUpdate();</span>
 <span class="nc" id="L64">				}catch(SQLException e)</span>
 				{
-<span class="nc" id="L66">					java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L66">					java.util.logging.Logger.getLogger(&quot;set open&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L67">				}</span>
 					
 			
@@ -124,7 +124,7 @@ import javafx.collections.ObservableList;
 	//controllo se il negozio fa PickUP
 	public boolean checkRitiro(Negozio shop) throws SQLException
 	{
-<span class="fc" id="L127">		query=&quot;select isValid form negozio where nome=?&quot;;</span>
+<span class="fc" id="L127">		query=&quot;select isValid from negozio where nome=?&quot;;</span>
 <span class="fc" id="L128">		boolean state=false;</span>
 		int disp;
 		
@@ -132,8 +132,8 @@ import javafx.collections.ObservableList;
 <span class="fc" id="L132">				PreparedStatement prepQ=conn.prepareStatement(query);)</span>
 		{
 <span class="fc" id="L134">			prepQ.setString(1, shop.getNome());</span>
-<span class="nc" id="L135">			ResultSet rs=prepQ.executeQuery();</span>
-<span class="nc bnc" id="L136" title="All 2 branches missed.">			while ( rs.next() ) {</span>
+<span class="fc" id="L135">			ResultSet rs=prepQ.executeQuery();</span>
+<span class="pc bpc" id="L136" title="1 of 2 branches missed.">			while ( rs.next() ) {</span>
 
 <span class="nc" id="L138">					disp=rs.getInt(1);</span>
 <span class="nc bnc" id="L139" title="All 2 branches missed.">					if (disp==1)</span>
@@ -142,10 +142,10 @@ import javafx.collections.ObservableList;
 						
 			}
 			
-<span class="fc" id="L145">		}catch(SQLException e)</span>
+<span class="nc" id="L145">		}catch(SQLException e)</span>
 		{
-<span class="fc" id="L147">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
-<span class="nc" id="L148">		}</span>
+<span class="nc" id="L147">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="fc" id="L148">		}</span>
 			
 <span class="fc" id="L150">		return state;</span>
 	}

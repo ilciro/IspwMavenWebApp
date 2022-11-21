@@ -94,7 +94,7 @@ public class RivistaDao {
          }
 <span class="nc" id="L95">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L97">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L97">			java.util.logging.Logger.getLogger(&quot;get costo&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L98">		}</span>
 		
 		
@@ -121,7 +121,7 @@ public class RivistaDao {
 <span class="fc" id="L121">			prepQ.executeUpdate();</span>
 <span class="nc" id="L122">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L124">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L124">			java.util.logging.Logger.getLogger(&quot;aggiorna disp&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L125">		}</span>
 		
 		
@@ -139,11 +139,11 @@ public class RivistaDao {
 
 <span class="nc" id="L140">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L142">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L142">			java.util.logging.Logger.getLogger(&quot;dai privilegi&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L143">		}</span>
 
 		
-<span class="fc" id="L146">		java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, &quot;rivistaDao dai privilegi&quot;);</span>
+<span class="fc" id="L146">		java.util.logging.Logger.getLogger(&quot;privilegi&quot;).log(Level.INFO, &quot;rivistaDao dai privilegi&quot;);</span>
 		
 
 <span class="fc" id="L149">	}</span>
@@ -173,7 +173,7 @@ public class RivistaDao {
             }
 <span class="nc" id="L174">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L176">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L176">			java.util.logging.Logger.getLogger(&quot;elenco riviste&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L177">		}</span>
 <span class="fc" id="L178">		return catalogo;</span>
 		
@@ -208,7 +208,7 @@ public class RivistaDao {
             }
 <span class="nc" id="L209">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L211">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L211">			java.util.logging.Logger.getLogger(&quot;rivista by name&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L212">		}</span>
 <span class="fc" id="L213">		return catalogo;</span>
 		 
@@ -234,7 +234,7 @@ public class RivistaDao {
         }
 <span class="nc" id="L235">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L237">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L237">			java.util.logging.Logger.getLogger(&quot;rivista by id&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L238">		}</span>
 <span class="fc" id="L239">             return r;</span>
 	}
@@ -258,7 +258,7 @@ public class RivistaDao {
          }
 <span class="nc" id="L259">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L261">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L261">			java.util.logging.Logger.getLogger(&quot;rivista by titolo&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="nc" id="L262">		}</span>
 <span class="nc" id="L263">		return id;</span>
 
@@ -282,7 +282,7 @@ public class RivistaDao {
 	         }
 <span class="nc" id="L283">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L285">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L285">			java.util.logging.Logger.getLogger(&quot;rivista titolo/id&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L286">		}</span>
 <span class="fc" id="L287">		return categoria;</span>
 
@@ -304,7 +304,7 @@ public class RivistaDao {
 	        }
 <span class="nc" id="L305">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L307">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L307">			java.util.logging.Logger.getLogger(&quot;nome rivista&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L308">		}</span>
         	
 <span class="fc" id="L310">        return name;</span>
@@ -332,7 +332,7 @@ public class RivistaDao {
 				}
 <span class="nc" id="L333">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L335">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L335">			java.util.logging.Logger.getLogger(&quot;disp r&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="nc" id="L336">		}</span>
 			
 		
@@ -357,7 +357,7 @@ public class RivistaDao {
 			
 <span class="nc" id="L358">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L360">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L360">			java.util.logging.Logger.getLogger(&quot;quantita r&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L361">		}</span>
 
 <span class="fc" id="L363">		return q;</span>
@@ -384,14 +384,14 @@ public class RivistaDao {
 <span class="fc" id="L384">					state=true;</span>
 				else
 				{
-<span class="nc" id="L387">					java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, new IdException(&quot;id non trovato&quot;));</span>
+<span class="nc" id="L387">					java.util.logging.Logger.getLogger(&quot;check disp&quot;).log(Level.INFO, eccezione, new IdException(&quot;id non trovato&quot;));</span>
 					
 				
 				}
 			}
 <span class="nc" id="L392">			}catch(SQLException e)</span>
 			{
-<span class="nc" id="L394">				java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L394">				java.util.logging.Logger.getLogger(&quot;disp ecc&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L395">			}</span>
 			
 <span class="fc" id="L397">	 	return state;</span>
@@ -416,7 +416,7 @@ public class RivistaDao {
         }
 <span class="nc" id="L417">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L419">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L419">			java.util.logging.Logger.getLogger(&quot;rivista singola&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L420">		}</span>
 <span class="fc" id="L421">             return catalogo;</span>
              
@@ -461,7 +461,7 @@ public class RivistaDao {
 <span class="nc" id="L461">				}catch(SQLException e)</span>
 				{
 <span class="nc" id="L463">					state=false;</span>
-<span class="nc" id="L464">					java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L464">					java.util.logging.Logger.getLogger(&quot;crea rivista&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L465">				}</span>
 			
 		
@@ -483,9 +483,9 @@ public class RivistaDao {
 <span class="fc" id="L483">			 row=prepQ.executeUpdate();</span>
 <span class="nc" id="L484">		 }catch(SQLException e)</span>
 		 {
-<span class="nc" id="L486">			 java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L486">			 java.util.logging.Logger.getLogger(&quot;cancella r&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L487">		 }</span>
-<span class="fc" id="L488">		 java.util.logging.Logger.getLogger(&quot;Test Cancella&quot;).log(Level.INFO, &quot;row delected{0}&quot;,row);</span>
+<span class="fc" id="L488">		 java.util.logging.Logger.getLogger(&quot;rivista cancellata&quot;).log(Level.INFO, &quot;row delected{0}&quot;,row);</span>
 
 <span class="fc" id="L490">	}</span>
 
@@ -508,7 +508,7 @@ public class RivistaDao {
             }
 <span class="nc" id="L509">		}catch(SQLException e)</span>
 		{
-<span class="nc" id="L511">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L511">			java.util.logging.Logger.getLogger(&quot;rivista by id&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L512">		}</span>
 		
 <span class="fc" id="L514">		return catalogo;</span>
@@ -555,7 +555,7 @@ public class RivistaDao {
 <span class="fc" id="L555">			rowAffected = prepQ.executeUpdate();</span>
 <span class="nc" id="L556">		 	}catch(SQLException e)</span>
 		 	{
-<span class="nc" id="L558">		 		java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, eccezione, e);</span>
+<span class="nc" id="L558">		 		java.util.logging.Logger.getLogger(&quot;aggiorna rivista&quot;).log(Level.INFO, eccezione, e);</span>
 <span class="fc" id="L559">		 	}</span>
 <span class="fc" id="L560">		 	java.util.logging.Logger.getLogger(&quot;Aggiorno&quot;).log(Level.INFO,&quot;rows afffected{0}&quot;,rowAffected);</span>
 <span class="fc" id="L561">	 }	</span>

@@ -62,8 +62,8 @@ public class CartaCreditoDao {
 		try(Connection conn=ConnToDb.generalConnection();
 				PreparedStatement prepQ=conn.prepareStatement(query);)
 		{
-			prepQ.setString(1, "0");
-			prepQ.execute();
+			prepQ.setInt(1, 0);
+			prepQ.executeUpdate();
 
 		}catch(SQLException e)
 		{

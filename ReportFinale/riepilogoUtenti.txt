@@ -2,6 +2,6 @@
 2	ADMIN	gianni	morandi	gMorandi@gmail.com	un mito	1952-06-07
 3	UTENTE	gino	zaia	gino@zaia.eu	null	1995-04-25
 4	UTENTE	Giulia	Conforto	giuliaConforto@gmail.eu	null	1998-09-05
-5	SCRITTORE	Zerocalcare	Zerocalcare	zerocalcare@gmail.com	null	1980-05-20
-6	EDITORE	g	c	emailProva@gmail.com	descProva	1960-11-21
+5	SCRITTORE	g	g	zerocalcare@gmail.com	null	1980-05-20
+6	EDITORE	Bao Publishing	Bao Publishing	baoPublishing@gmail.com	null	1960-11-21
 7	UTENTE	nuovoUtenteN	nuovoUtenteC	nuovoUtente@gmail.com	null	1985-02-24
