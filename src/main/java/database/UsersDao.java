@@ -33,6 +33,9 @@ public class UsersDao {
 	// prende i dati dall'oggetto che gli abbiamo passato 
 	public static boolean createUser(User u) throws SQLException
 	{
+		
+		System.out.println("roba nel dao:" + u.getEmail()+ u.getPassword()+u.getDataDiNascita());
+
 		LocalDate d=u.getDataDiNascita();
 		
 		query= "INSERT INTO `ispw`.`users`"
@@ -42,7 +45,6 @@ public class UsersDao {
 				+ "`pwd`,"
 				+ "`DataDiNascita`)"
 				+ "VALUES"
-				+" "
 				+ "(?,?,?,?,?)";
 		
 			try(Connection conn=ConnToDb.generalConnection();
@@ -55,9 +57,9 @@ public class UsersDao {
 				prepQ.setString(3,User.getInstance().getEmail());
 				prepQ.setString(4, User.getInstance().getPassword());
 				prepQ.setDate(5, java.sql.Date.valueOf(d));  
-				row=prepQ.executeUpdate();
-				if(row==1)
-					state= true;
+				prepQ.executeUpdate();
+				
+				state= true;
 			}catch(SQLException e)
 			{
 				java.util.logging.Logger.getLogger("createUser").log(Level.INFO, eccezione, e);
@@ -496,21 +498,7 @@ public class UsersDao {
 	}
 
 	
-	public static User aggiornaData(User u) throws SQLException {
-		
-			query="UPDATE ispw.users set DataDiNascita=? where Email=?";
-			try(Connection conn=ConnToDb.generalConnection();
-					PreparedStatement prepQ=conn.prepareStatement(query);)
-			{
-				prepQ.setString(1, u.getDataDiNascita().toString());
-				prepQ.setString(2, u.getEmail());
-			}catch(SQLException e)
-			{
-				java.util.logging.Logger.getLogger("aggiorna data user").log(Level.INFO, eccezione, e);
-				
-			}
-			return u;
-}
+	
 	
 
 	// Per il terzo caso d'uso creo e uso sempre il temp user per appoggiarmi all'utente che modifico  e quindi 
@@ -536,86 +524,12 @@ public class UsersDao {
 		return uT;
 	}
 
-	public static TempUser aggiornaCognome(TempUser uT) throws SQLException
-	{
-		
-			
-			query="UPDATE ispw.users set Cognome=? where Email=?";
-			try(Connection conn=ConnToDb.generalConnection();
-					PreparedStatement prepQ=conn.prepareStatement(query);)
-			{
-				prepQ.setString(1,uT.getCognome());
-				prepQ.setString(2, uT.getEmail());
-				prepQ.executeUpdate();
-			}catch(SQLException e)
-			{
-				java.util.logging.Logger.getLogger("aggiorna cognome tempUser").log(Level.INFO, eccezione, e);
+	
+	
 
-			}
-	return uT;
-	}
+	
 
-	public static TempUser aggiornaEmail(TempUser uT,String m) throws SQLException
-	{
-					query="UPDATE ispw.users set Email=? where Email=?";
-
-			
-			try(Connection conn=ConnToDb.generalConnection();
-					PreparedStatement prepQ=conn.prepareStatement(query);)
-			{
-				
-		
-		
-			prepQ.setString(1,uT.getEmail() );
-			uT.setEmail(m);
-			prepQ.setString(2, uT.getEmail());
-			prepQ.executeUpdate();  
-			}catch(SQLException e)
-			{
-				java.util.logging.Logger.getLogger("aggiorna email temp user").log(Level.INFO, eccezione, e);
-
-			}
-
-
-		return uT;
-	}
-
-	public static TempUser aggiornaTempUtente(TempUser uT, String emailN) throws SQLException
-	{
-		
-			
-			query="UPDATE ispw.users set idRuolo=?,Nome=?,Cognome=?,Email=?,pwd=?,descrizione=?,DataDiNascita=? where Email=?";
-
-			try(Connection conn=ConnToDb.generalConnection();
-					PreparedStatement prepQ=conn.prepareStatement(query);)
-			{
-			uT.setEmail(emailN);
-
-
-			// setto i vari dati 
-			prepQ.setString(1,uT.getIdRuolo());
-			prepQ.setString(2,uT.getNome() );
-			prepQ.setString(3, uT.getCognome());
-			prepQ.setString(4, uT.getEmail());
-			prepQ.setString(5, uT.getPassword());
-			prepQ.setString(6, uT.getDescrizione());
-			prepQ.setString(7, uT.getDataDiNascita().toString());
-			prepQ.setString(8, emailN);
-
-
-
-
-			prepQ.executeUpdate();
-			}catch(SQLException e)
-			{
-				java.util.logging.Logger.getLogger("aggiorna temp utente").log(Level.INFO, eccezione, e);
-
-			}
-
-
-		return uT;
-	}
-
+	
 	public static TempUser aggiornaTempPass(TempUser uT) throws SQLException {
 
 		

@@ -19,5 +19,23 @@ class TestRivistaDao {
 		rD.getDesc(r);
 		assertNotNull(r.getTitolo());
 	}
+	@Test
+	void testRetId() throws SQLException
+	{
+		r.setTitolo("Rivista A");
+		assertEquals(4,rD.retId(r));
+	}
+	@Test
+	void testCheckDisp() throws SQLException
+	{
+		r.setId(4);
+		assertTrue(rD.checkDisp(r));
+	}
+	@Test
+	void testRivistaSinngoloById() throws SQLException
+	{
+		r.setId(4);
+		assertNotNull(rD.getRivistaSingoloById(r));
+	}
 
 }

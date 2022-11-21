@@ -70,7 +70,12 @@ public class BoundaryRegistraUtente implements Initializable {
 	@FXML
 	private void procedi() throws IOException, SQLException {
 		LocalDate data=calendarL.getValue();
+		
+		
 		state = cR.registra(nomeTF.getText(),cognomeTF.getText(),emailTF.getText(),passwordTF.getText(),passCheckTF.getText(),data);
+		
+		
+		
 		if(Boolean.TRUE.equals(state)) // cosi' controllo e includo i casi di false e null
 		{
 
@@ -92,6 +97,7 @@ public class BoundaryRegistraUtente implements Initializable {
 			alert.setTitle("Credenziali errate");// line 2
 			alert.setHeaderText("Credenziali non valide ");// line 3
 			alert.setContentText(" Per favore reiimetterle");// line 4
+			alert.setContentText(" Vedere se lunghezza password>=8");// line 4
 			alert.showAndWait(); // line 5
 
 		}

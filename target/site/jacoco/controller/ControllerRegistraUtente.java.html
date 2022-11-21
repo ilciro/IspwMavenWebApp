@@ -16,29 +16,30 @@ public class ControllerRegistraUtente {
 	public Boolean registra(String n, String c, String email, String pwd, String pwdC, LocalDate localDate) throws SQLException {
 		
 		
-<span class="fc" id="L19">		User.getInstance().setEmail(email);</span>
-<span class="fc" id="L20">		User.getInstance().setPassword(pwd);</span>
-<span class="fc" id="L21">		User.getInstance().setDataDiNascita(localDate);</span>
+<span class="fc" id="L19">		u.setEmail(email);</span>
+<span class="fc" id="L20">		u.setPassword(pwd);</span>
+<span class="fc" id="L21">		u.setDataDiNascita(localDate);</span>
 		
-<span class="pc bpc" id="L23" title="1 of 2 branches missed.">		if(checkData ( n,c,email,pwd,pwdC) )</span>
+		
+<span class="pc bpc" id="L24" title="1 of 2 branches missed.">		if(checkData ( n,c,email,pwd,pwdC) )</span>
 		{
-<span class="pc bpc" id="L25" title="1 of 2 branches missed.">			if (UsersDao.checkUser(u) == 0)</span>
+<span class="pc bpc" id="L26" title="1 of 2 branches missed.">			if (UsersDao.checkUser(u) == 0)</span>
 			{
 				// nuovo utente creo l'account
-<span class="fc" id="L28">				u.setNome(n);</span>
-<span class="fc" id="L29">				u.setCognome(c);</span>
+<span class="fc" id="L29">				u.setNome(n);</span>
+<span class="fc" id="L30">				u.setCognome(c);</span>
 				
-<span class="fc" id="L31">				state=UsersDao.createUser(u);</span>
+<span class="fc" id="L32">				state=UsersDao.createUser(u);</span>
 			}
 			else 			{
 				// utente gia registrato o errore 
-<span class="nc" id="L35">				state = false;</span>
+<span class="nc" id="L36">				state = false;</span>
 			}
 		}
 		else {
-<span class="nc" id="L39">			state=false;</span>
+<span class="nc" id="L40">			state=false;</span>
 		}
-<span class="fc" id="L41">		return state;</span>
+<span class="fc" id="L42">		return state;</span>
 	}
 	
 	
@@ -46,11 +47,11 @@ public class ControllerRegistraUtente {
 	public boolean checkData (String n, String c, String email, String pwd, String pwdC)
 	// controll  all data
 	{
-<span class="pc bpc" id="L49" title="3 of 6 branches missed.">		if(checkEmail(email) &amp;&amp; checkPassword(pwd,pwdC) &amp;&amp; checkNomeCognome(n,c))</span>
+<span class="pc bpc" id="L50" title="3 of 6 branches missed.">		if(checkEmail(email) &amp;&amp; checkPassword(pwd,pwdC) &amp;&amp; checkNomeCognome(n,c))</span>
 		{
-<span class="fc" id="L51">			state=true;</span>
+<span class="fc" id="L52">			state=true;</span>
 		}
-<span class="fc" id="L53">		return state;</span>
+<span class="fc" id="L54">		return state;</span>
 	}
 	
 	public boolean checkEmail(String email)
@@ -58,36 +59,36 @@ public class ControllerRegistraUtente {
 		 Pattern pattern;
 
 		String emailRegex;
-<span class="fc" id="L61">		emailRegex= &quot;^[a-zA-Z0-9_+&amp;*-]+(?:\\.[a-zA-Z0-9_+&amp;*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$&quot;; </span>
+<span class="fc" id="L62">		emailRegex= &quot;^[a-zA-Z0-9_+&amp;*-]+(?:\\.[a-zA-Z0-9_+&amp;*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$&quot;; </span>
                   
-<span class="fc" id="L63">		pattern = Pattern.compile(emailRegex); </span>
-<span class="pc bpc" id="L64" title="1 of 2 branches missed.">		if (email == null) </span>
-<span class="nc" id="L65">			return false; </span>
-<span class="fc" id="L66">		return pattern.matcher(email).matches();</span>
+<span class="fc" id="L64">		pattern = Pattern.compile(emailRegex); </span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">		if (email == null) </span>
+<span class="nc" id="L66">			return false; </span>
+<span class="fc" id="L67">		return pattern.matcher(email).matches();</span>
 	}
     
 	public boolean checkPassword(String pwd, String pwdC )
 	{
-<span class="pc bpc" id="L71" title="3 of 6 branches missed.">		if(pwd.length()&gt;=8 &amp;&amp; pwdC.length()&gt;=8 &amp;&amp; pwd.equals(pwdC)) {</span>
-<span class="fc" id="L72">			state= true;</span>
+<span class="pc bpc" id="L72" title="3 of 6 branches missed.">		if(pwd.length()&gt;=8 &amp;&amp; pwdC.length()&gt;=8 &amp;&amp; pwd.equals(pwdC)) {</span>
+<span class="fc" id="L73">			state= true;</span>
 		}
-<span class="fc" id="L74">		return state;</span>
+<span class="fc" id="L75">		return state;</span>
 	}
 	
 	public boolean checkNomeCognome(String n, String c)
 	{
-<span class="pc bpc" id="L79" title="2 of 4 branches missed.">		if (n != null &amp;&amp; c != null)</span>
+<span class="pc bpc" id="L80" title="2 of 4 branches missed.">		if (n != null &amp;&amp; c != null)</span>
 		{
-<span class="fc" id="L81">			state= true;</span>
+<span class="fc" id="L82">			state= true;</span>
 		}
-<span class="fc" id="L83">		return state;</span>
+<span class="fc" id="L84">		return state;</span>
 	}
 	
 	public ControllerRegistraUtente()
-<span class="fc" id="L87">	{</span>
-<span class="fc" id="L88">		java.util.logging.Logger.getLogger(&quot;Test Costruttore&quot;).log(Level.INFO, &quot;Costruttore ControllerRegistaUtente&quot;);</span>
+<span class="fc" id="L88">	{</span>
+<span class="fc" id="L89">		java.util.logging.Logger.getLogger(&quot;Test Costruttore&quot;).log(Level.INFO, &quot;Costruttore ControllerRegistaUtente&quot;);</span>
 
-<span class="fc" id="L90">	}</span>
+<span class="fc" id="L91">	}</span>
 	
 	// TO DO: checkData o lo facciamo diretti in mysql
 }

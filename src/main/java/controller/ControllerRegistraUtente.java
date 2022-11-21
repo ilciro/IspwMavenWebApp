@@ -16,9 +16,10 @@ public class ControllerRegistraUtente {
 	public Boolean registra(String n, String c, String email, String pwd, String pwdC, LocalDate localDate) throws SQLException {
 		
 		
-		User.getInstance().setEmail(email);
-		User.getInstance().setPassword(pwd);
-		User.getInstance().setDataDiNascita(localDate);
+		u.setEmail(email);
+		u.setPassword(pwd);
+		u.setDataDiNascita(localDate);
+		
 		
 		if(checkData ( n,c,email,pwd,pwdC) )
 		{

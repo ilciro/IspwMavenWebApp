@@ -498,7 +498,7 @@ public class RivistaDao {
 		{
 			prepQ.setInt(1, r.getId());
 			ResultSet rs=prepQ.executeQuery();
-            if(rs.next())
+            while(rs.next())
             {
 
         		

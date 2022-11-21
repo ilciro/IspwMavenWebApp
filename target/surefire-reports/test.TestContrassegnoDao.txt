@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: test.TestContrassegnoDao
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.224 s - in test.TestContrassegnoDao
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.655 s - in test.TestContrassegnoDao

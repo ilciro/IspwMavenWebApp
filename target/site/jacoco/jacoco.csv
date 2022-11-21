@@ -1,7 +1,7 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 IspwMavenWebApp Maven Webapp,exception,IdException,4,0,0,0,2,0,1,0,1,0
 IspwMavenWebApp Maven Webapp,exception,LogoutException,0,4,0,0,0,2,0,1,0,1
-IspwMavenWebApp Maven Webapp,controller,ControllerRegistraUtente,11,120,11,11,3,27,11,6,0,6
+IspwMavenWebApp Maven Webapp,controller,ControllerRegistraUtente,11,123,11,11,3,27,11,6,0,6
 IspwMavenWebApp Maven Webapp,controller,ControllerReportRaccolta,0,9,0,0,0,3,0,3,0,3
 IspwMavenWebApp Maven Webapp,controller,ControllerAcquista,152,307,7,17,30,74,14,16,10,8
 IspwMavenWebApp Maven Webapp,controller,ControllerModifPage,0,251,0,0,0,52,0,7,0,7
@@ -24,11 +24,11 @@ IspwMavenWebApp Maven Webapp,controller,ControllerVisualizzaOrdine,0,12,0,0,0,4,
 IspwMavenWebApp Maven Webapp,controller,ControllerPagamentoCash,0,197,0,6,0,43,0,5,0,2
 IspwMavenWebApp Maven Webapp,controller,ControllerRicercaPage,3,55,0,6,1,14,1,5,1,2
 IspwMavenWebApp Maven Webapp,controller,ControllerReportPage,0,32,0,0,0,13,0,5,0,5
-IspwMavenWebApp Maven Webapp,database,RivistaDao,286,937,10,24,68,223,8,31,2,20
+IspwMavenWebApp Maven Webapp,database,RivistaDao,200,1024,7,27,56,235,5,34,1,21
 IspwMavenWebApp Maven Webapp,database,NegozioDao,48,154,6,4,14,46,4,8,0,7
 IspwMavenWebApp Maven Webapp,database,LibroDao,185,1030,3,23,55,218,4,30,2,19
 IspwMavenWebApp Maven Webapp,database,ContrassegnoDao,28,124,0,4,8,41,0,8,0,6
-IspwMavenWebApp Maven Webapp,database,UsersDao,347,795,12,16,102,240,15,27,5,23
+IspwMavenWebApp Maven Webapp,database,UsersDao,297,694,11,15,87,208,13,24,4,20
 IspwMavenWebApp Maven Webapp,database,GiornaleDao,212,899,9,23,61,204,7,30,2,19
 IspwMavenWebApp Maven Webapp,database,PagamentoDao,60,156,2,4,11,51,2,8,0,7
 IspwMavenWebApp Maven Webapp,database,CartaCreditoDao,21,182,0,4,6,50,0,8,0,6
