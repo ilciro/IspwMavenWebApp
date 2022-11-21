@@ -5,8 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import database.UsersDao;
 import model.TempUser;
@@ -15,7 +16,7 @@ class TestDaoUser {
 	private TempUser tu=TempUser.getInstance();
 	
 
-	@BeforeAll
+	@Test
 	void testCreateUser2() throws SQLException {
 		tu.setIdRuolo("E");
 		tu.setNome("tempUser nome");
@@ -41,11 +42,13 @@ class TestDaoUser {
 	void testMaxIdUSer() throws SQLException {
 		assertNotEquals(0,UsersDao.maxIdUSer());
 	}
-	@Test
-	void testCheckTempUser() throws SQLException
+	@ParameterizedTest
+	@ValueSource(strings={"baoPublishing@gmail.com","alfredino@hotmail.com"},ints= {1,-1} )
+	
+	void testCheckTempUser(String s,int i) throws SQLException
 	{
-		tu.setEmail("alfredino25@libro.it");
-		assertEquals(-1,UsersDao.checkTempUser(tu));
+		tu.setEmail(s);
+		assertEquals(i,UsersDao.checkTempUser(tu));
 	}
 	
 	@Test
