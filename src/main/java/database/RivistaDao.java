@@ -322,7 +322,7 @@ public class RivistaDao {
 			ResultSet rs=prepQ.executeQuery();
 			while(rs.next())
 				{
-					disp = rs.getInt(1);
+					disp = rs.getInt("disp");
 
 				
 					if(disp==1)

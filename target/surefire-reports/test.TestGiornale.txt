@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: test.TestGiornale
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.149 s - in test.TestGiornale
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.18 s - in test.TestGiornale

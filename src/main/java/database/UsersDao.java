@@ -34,7 +34,6 @@ public class UsersDao {
 	public static boolean createUser(User u) throws SQLException
 	{
 		
-		System.out.println("roba nel dao:" + u.getEmail()+ u.getPassword()+u.getDataDiNascita());
 
 		LocalDate d=u.getDataDiNascita();
 		
@@ -105,9 +104,8 @@ public class UsersDao {
 			// vuole un oggetto di tipo data sql 
 			prepQ.setDate(7, java.sql.Date.valueOf(d)); 
 			//prepQ.setString(7,U.getInstance())
-			row=prepQ.executeUpdate();
-			if(row==1)
-				state=true;
+			prepQ.executeUpdate();
+			state=true;
 
 		}catch(SQLException e)
 		{
@@ -139,7 +137,7 @@ public class UsersDao {
 			ResultSet rs = prepQ.executeQuery();
 			if(rs.next())
 			{
-				 int id=rs.getInt(1);
+				 int id=rs.getInt("idUser");
 				 if(id>0)
 					 status=1;	 			
 
@@ -173,7 +171,7 @@ public class UsersDao {
 				prepQ.setString(1,email);
 			
 				ResultSet rs = prepQ.executeQuery();
-				if(rs.next())
+				while(rs.next())
 				{
 				idUser=rs.getInt("idUser");		
 					if(idUser!=0)

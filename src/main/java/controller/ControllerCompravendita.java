@@ -16,7 +16,7 @@ import javafx.collections.ObservableList;
 
 public class ControllerCompravendita {
 	private LibroDao lD;
-	User u=User.getInstance();
+	private User u=User.getInstance();
 	private GiornaleDao gD;
 	private Giornale g;
 	private Libro l;

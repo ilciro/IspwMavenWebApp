@@ -28,7 +28,7 @@ IspwMavenWebApp Maven Webapp,database,RivistaDao,200,1024,7,27,56,235,5,34,1,21
 IspwMavenWebApp Maven Webapp,database,NegozioDao,48,154,6,4,14,46,4,8,0,7
 IspwMavenWebApp Maven Webapp,database,LibroDao,185,1030,3,23,55,218,4,30,2,19
 IspwMavenWebApp Maven Webapp,database,ContrassegnoDao,28,124,0,4,8,41,0,8,0,6
-IspwMavenWebApp Maven Webapp,database,UsersDao,297,694,11,15,87,208,13,24,4,20
+IspwMavenWebApp Maven Webapp,database,UsersDao,298,681,10,14,87,206,12,24,4,20
 IspwMavenWebApp Maven Webapp,database,GiornaleDao,212,899,9,23,61,204,7,30,2,19
 IspwMavenWebApp Maven Webapp,database,PagamentoDao,60,156,2,4,11,51,2,8,0,7
 IspwMavenWebApp Maven Webapp,database,CartaCreditoDao,21,182,0,4,6,50,0,8,0,6

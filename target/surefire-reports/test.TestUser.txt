@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: test.TestUser
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.606 s - in test.TestUser
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.819 s - in test.TestUser
